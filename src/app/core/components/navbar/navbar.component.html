@@ -1,0 +1,11 @@
+<mat-toolbar color="primary" *ngIf="!user">
+  <button mat-raised-button (click)="navigate(loginPath)" class="ml-auto">
+    SE CONNECTER
+  </button>
+</mat-toolbar>
+
+<mat-toolbar color="primary" *ngIf="user">
+  <button mat-icon-button (click)="logout()" class="ml-auto">
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
+</mat-toolbar>

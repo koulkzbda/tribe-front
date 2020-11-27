@@ -1,0 +1,9 @@
+@include angular-material-theme($default-theme);
+
+.color-grey {
+  background-color: map-get($mat-darkgray, 500) !important;
+}
+
+.color-grey-transparent {
+  background-color: $grey-transparant-color !important;
+}

@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins', 'abstracts/placeholders';
+
+@import 'base/reset', 'base/typography';
+
+@import 'themes/default-theme';
+
+@include utility-mat-color;
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

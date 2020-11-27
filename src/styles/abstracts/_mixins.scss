@@ -1,0 +1,28 @@
+@mixin utility-mat-color {
+  @each $key, $value in (primary: $primary-color, accent: $accent-color, warn: $warn-color) {
+    .mat-text-#{$key} {
+      color: map-get($value, default) !important;
+    }
+    .mat-color-#{$key} {
+      background-color: map-get($value, default) !important;
+    }
+  }
+}
+
+@mixin font-size {
+  @each $key, $value in $font-sizes {
+    .font-size-#{$key} {
+      font-size: $value;
+    }
+  }
+}
+
+@mixin width {
+  @each $extremum in min max {
+    @each $key, $value in $widths {
+      .#{$extremum}-width-#{$key} {
+        #{$extremum}-width: $value;
+      }
+    }
+  }
+}

@@ -1,0 +1,144 @@
+$mat-otc-cyan: (
+    50 : #e8f1f3,
+    100 : #c6dce2,
+    200 : #a0c5cf,
+    300 : #79aebc,
+    400 : #5d9cad,
+    500 : #408b9f,
+    600 : #3a8397,
+    700 : #32788d,
+    800 : #2a6e83,
+    900 : #1c5b72,
+    A100 : #aee8ff,
+    A200 : #7bd9ff,
+    A400 : #48caff,
+    A700 : #2fc3ff,
+    contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $dark-primary-text,
+      A400: $dark-primary-text,
+      A700: $dark-primary-text,
+    )
+);
+
+$mat-otc-teal: (
+    50 : #e9f6f6,
+    100 : #c9eae8,
+    200 : #a5dcd9,
+    300 : #81cdc9,
+    400 : #66c3be,
+    500 : #4bb8b2,
+    600 : #44b1ab,
+    700 : #3ba8a2,
+    800 : #33a099,
+    900 : #23918a,
+    A100 : #cffffc,
+    A200 : #9cfff8,
+    A400 : #69fff4,
+    A700 : #50fff2,
+    contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $dark-primary-text,
+      A400: $dark-primary-text,
+      A700: $dark-primary-text,
+    )
+);
+
+$mat-otc-amber: (
+    50 : #fbf3e6,
+    100 : #f5e0c1,
+    200 : #efcb98,
+    300 : #e9b66f,
+    400 : #e4a750,
+    500 : #df9731,
+    600 : #db8f2c,
+    700 : #d78425,
+    800 : #d27a1f,
+    900 : #ca6913,
+    A100 : #fffcfa,
+    A200 : #ffdfc7,
+    A400 : #ffc294,
+    A700 : #ffb37a,
+    contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: #666666,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $dark-primary-text,
+      600: $dark-primary-text,
+      700: $dark-primary-text,
+      800: $dark-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $dark-primary-text,
+      A400: $dark-primary-text,
+      A700: $dark-primary-text,
+    )
+);
+
+$mat-darkgray: (
+    50 : #f5f5f5,
+    100 : #e5e5e5,
+    200 : #d4d4d4,
+    300 : #c3c3c3,
+    400 : #b6b6b6,
+    500 : #a9a9a9,
+    600 : #a2a2a2,
+    700 : #989898,
+    800 : #8f8f8f,
+    900 : #7e7e7e,
+    A100 : #ffffff,
+    A200 : #fbdcdc,
+    A400 : #ffa5a5,
+    A700 : #ff8b8b,
+    contrast: (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $dark-primary-text,
+      A400: $dark-primary-text,
+      A700: $dark-primary-text,
+    )
+);
+
+$primary-color: mat-palette($mat-otc-cyan);
+$accent-color: mat-palette($mat-otc-teal);
+$warn-color: mat-palette($mat-otc-amber, 200, 50, 500);
+
+$default-theme: mat-light-theme($primary-color, $accent-color, $warn-color);
+
+$grey-theme: mat-light-theme($primary-color, mat-palette($mat-darkgray, 500, 300, 700), $warn-color);
+
+$grey-transparant-color: rgba(0, 0, 0, 0.01);
+
+$font-sizes: (1: 2.5rem, 2: 2rem, 3: 1.75rem, 4: 1.5rem, 5: 1.25rem, 6: 1rem);
+$widths: (xs: 60px, sm: 80px, md: 110px, l: 150px, xl: 200px);

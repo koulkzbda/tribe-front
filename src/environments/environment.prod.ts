@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  backend: {
+    baseURL: 'https://tribe-back.herokuapp.com'
+  }
 };
