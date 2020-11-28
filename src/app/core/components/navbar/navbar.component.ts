@@ -1,8 +1,9 @@
+import { LayoutService } from './../../services/layout.service';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
 import { User } from './../../../shared/models/user';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -15,19 +16,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public registerPath = 'register';
   public user: User;
   private userSub: Subscription;
+  public isSidenavOpened$: Observable<boolean>;
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private layoutService: LayoutService
   ) { }
 
   ngOnInit(): void {
     this.userSub =
       this.authService.user$.subscribe(user => this.user = user);
+    this.isSidenavOpened$ = this.layoutService.sidenavOpened$;
   }
 
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
+  }
+
+  public toggleSidenav(): void {
+    this.layoutService.toggleSidenav();
   }
 
   public isActive(page: string): boolean {

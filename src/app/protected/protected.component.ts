@@ -1,5 +1,5 @@
 import { LayoutService } from './../core/services/layout.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
@@ -11,6 +11,7 @@ export class ProtectedComponent implements OnInit, OnDestroy {
 
   public opened: boolean;
   private openedSub: Subscription;
+  public isLargerScreen$: Observable<boolean>;
 
   constructor(private layoutService: LayoutService) { }
 
@@ -19,6 +20,7 @@ export class ProtectedComponent implements OnInit, OnDestroy {
       this.layoutService.sidenavOpened$.subscribe(
         isSidenavOpened => this.opened = isSidenavOpened
       );
+    this.isLargerScreen$ = this.layoutService.onLargerScreen$;
   }
 
   ngOnDestroy(): void {

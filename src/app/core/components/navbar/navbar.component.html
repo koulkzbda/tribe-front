@@ -5,6 +5,12 @@
 </mat-toolbar>
 
 <mat-toolbar color="primary" *ngIf="user">
+  <button mat-icon-button (click)="toggleSidenav()" *ngIf="!(isSidenavOpened$ | async)">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-icon-button (click)="toggleSidenav()" *ngIf="(isSidenavOpened$ | async)">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
   <button mat-icon-button (click)="logout()" class="ml-auto">
     <mat-icon>power_settings_new</mat-icon>
   </button>

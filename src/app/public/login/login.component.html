@@ -1,13 +1,13 @@
-<h1 class="text-center display-4 my-5">Tribe</h1>
+<h1 class="text-center display-4 my-4 my-sm-5">Tribe</h1>
 <div class="container">
-  <div class="col-6 mx-auto">
+  <div class="col-10 col-sm-9 col-md-6 mx-auto mb-3 mb-md-0">
     <mat-card>
       <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
 
           <mat-form-field appearance="fill" class="w-100 my-3">
             <mat-label>Enter your email</mat-label>
-            <input matInput placeholder="patone@example.com" [formControl]="email">
+            <input matInput placeholder="victor.hugo@tribe.com" [formControl]="email">
             <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
           </mat-form-field>
 
