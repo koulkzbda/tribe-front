@@ -1,5 +1,6 @@
+import { ProfileService } from './profile.service';
 import { User } from './../../shared/models/user';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -10,11 +11,13 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+
   private user: BehaviorSubject<User | null> = new BehaviorSubject(null);
   public readonly user$: Observable<User | null> = this.user.asObservable();
 
   constructor(
     private http: HttpClient,
+    private profileService: ProfileService,
     private router: Router,
   ) { }
 
@@ -24,7 +27,7 @@ export class AuthService {
 
     return this.http.post<User | null>(url, data).pipe(
       tap(user => this.user.next(user)),
-      tap(user => console.log(user))
+      tap(_ => this.profileService.getProfile().subscribe())
     );
   }
 

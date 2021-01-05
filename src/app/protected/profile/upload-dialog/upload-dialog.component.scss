@@ -1,0 +1,21 @@
+.picture-wrapper {
+  position: relative;
+  width: 120px;
+}
+
+.legend {
+  position: absolute;
+  top: -42px;
+  left: 100px;
+  background-color: whitesmoke;
+  z-index: 20;
+}
+
+.picture-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}

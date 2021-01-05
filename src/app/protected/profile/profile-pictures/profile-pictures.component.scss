@@ -1,0 +1,49 @@
+.float-icon {
+  $icon-width: (24px + 3) * 1.41 * 1.5 - 8px - 6px;
+  left: calc(57vw - #{$icon-width});
+  bottom:9px;
+  position: absolute;
+  @media screen and (min-width: 400px) {
+    left: calc(56vw - #{$icon-width});
+    bottom: 9px;
+  }
+  @media screen and (min-width: 485px) {
+    left: calc(55vw - #{$icon-width});
+    bottom: 10px;
+  }
+  @media screen and (min-width: 550px) {
+    left: calc(54vw - #{$icon-width});
+    bottom: 11px;
+  }
+  @media screen and (min-width: 570px) {
+    left: calc(54vw - #{$icon-width});
+    bottom: 12px;
+  }
+  @media screen and (min-width: 620px) {
+    left: calc(53vw - #{$icon-width});
+    bottom: 14px;
+  }
+  @media screen and (min-width: 667px) {
+    left: 308px;
+    bottom: 15px;
+  }
+}
+
+.img-round {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  max-width: 400px;
+  max-height: 400px;
+  width: 60vw;
+  height: 60vw;
+  object-fit: cover;
+}
+
+.profile-picture-container {
+  position: relative;
+  max-width: 400px;
+  max-height: 400px;
+  width: 60vw;
+  height: 60vw;
+}

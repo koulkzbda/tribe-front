@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
+    NgxUsefulSwiperModule,
   ],
   exports: [
     CommonModule,
@@ -24,6 +27,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     HttpClientModule,
     MaterialModule,
     SidenavComponent,
+    NgxUsefulSwiperModule,
   ]
 })
 export class SharedModule { }

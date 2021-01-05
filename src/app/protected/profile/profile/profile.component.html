@@ -1,9 +1,9 @@
-<h1>Mon profil</h1>
-<div class="row">
+<h2 class="text-center">{{ user?.firstName }} {{ user?.lastName }}</h2>
+<div class="row mt-3" *ngIf="(profile$ | async) as profile">
   <div class="col-12">
-    <h2>Biographie</h2>
+    <app-profile-pictures [profile]="profile"></app-profile-pictures>
   </div>
-  <div class="col-12" *ngIf="(profile$ | async) as profile">
-    <p>{{profile.bio}}</p>
+  <div class="col-12 my-5">
+    <app-profile-bio [profile]="profile"></app-profile-bio>
   </div>
 </div>

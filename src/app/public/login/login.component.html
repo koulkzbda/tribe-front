@@ -6,14 +6,16 @@
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
 
           <mat-form-field appearance="fill" class="w-100 my-3">
-            <mat-label>Enter your email</mat-label>
-            <input matInput placeholder="victor.hugo@tribe.com" [formControl]="email">
+            <mat-label>Email</mat-label>
+            <input matInput (keydown.enter)="triggerSubmit($event)" placeholder="victor.hugo@tribe.com"
+              [formControl]="email">
             <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="w-100 mb-3">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [formControl]="password" [type]="hidePass ? 'password' : 'text'">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput (keydown.enter)="triggerSubmit($event)" [formControl]="password"
+              [type]="hidePass ? 'password' : 'text'">
             <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'hide password'"
               [attr.aria-pressed]="hidePass">
               <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -26,7 +28,7 @@
         <p class="text-center">
           <button type="submit" (click)="submit()" mat-raised-button [disabled]="!loginForm.valid"
             [ngClass]="{'mat-color-primary text-white': loginForm.valid, 'color-grey': !loginForm.valid}">
-            LOGIN <mat-icon>arrow_right_alt</mat-icon>
+            SE CONNECTER <mat-icon>arrow_right_alt</mat-icon>
           </button>
         </p>
       </mat-card-actions>

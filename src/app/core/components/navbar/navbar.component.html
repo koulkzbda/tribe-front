@@ -1,10 +1,10 @@
-<mat-toolbar color="primary" *ngIf="!user">
-  <button mat-raised-button (click)="navigate(loginPath)" class="ml-auto">
+<mat-toolbar color="accent" *ngIf="!user">
+  <button mat-raised-button color="primary" (click)="navigate(loginPath)" class="ml-auto">
     SE CONNECTER
   </button>
 </mat-toolbar>
 
-<mat-toolbar color="primary" *ngIf="user">
+<mat-toolbar color="accent" *ngIf="user">
   <button mat-icon-button (click)="toggleSidenav()" *ngIf="!(isSidenavOpened$ | async)">
     <mat-icon>menu</mat-icon>
   </button>

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (!this.isPublicRequest(request.url)) {
+    if (!this.isPublicRequest(request.url) && !this.withoutHeaders(request.url)) {
       request = this.addContentType(request);
     } else if (this.isAuthRequest(request.url)) {
       request = this.addContentTypeForAuth(request);
@@ -45,6 +45,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private isPublicRequest(url: string): boolean {
     return (url.includes('forgot-passowrd') || url.includes('login') || url.includes('logout') || url.includes('password-reset'));
+  }
+
+  private withoutHeaders(url: string): boolean {
+    return (url.includes('profile/pictures'));
   }
 
   private isAuthRequest(url: string): boolean {

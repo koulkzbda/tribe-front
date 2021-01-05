@@ -12,7 +12,7 @@
 @mixin font-size {
   @each $key, $value in $font-sizes {
     .font-size-#{$key} {
-      font-size: $value;
+      font-size: $value !important;
     }
   }
 }
@@ -23,6 +23,27 @@
       .#{$extremum}-width-#{$key} {
         #{$extremum}-width: $value;
       }
+    }
+  }
+}
+
+@mixin transform {
+  @each $key, $value in $transforms {
+    .icon-display-#{$key} {
+      transform: scale($value) !important;
+    }
+  }
+}
+
+@mixin button-icon-wrapper {
+  @each $key, $value in $transforms {
+    .button-icon-wrapper-#{$key} {
+      width: (24px + 3) * 1.41 * $value;
+      height: (24px + 3) * 1.41 * $value;
+      background-color: #E4E6EB;
+      border: 0.2rem solid #fff;
+      z-index: 100;
+      cursor: pointer;
     }
   }
 }

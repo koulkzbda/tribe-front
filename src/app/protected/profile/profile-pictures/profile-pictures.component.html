@@ -1,0 +1,12 @@
+<div class="profile-picture-container d-flex justify-content-center align-items-center mx-auto">
+  <img *ngIf="profilePicture; else defaultPicture" (click)="openDialog()" class="img-round ml-2 mt-2 rounded-circle"
+    src="{{ pictureDisplayingService.srcPrefix }}{{ profilePicture.imageFile }}">
+  <ng-template #defaultPicture>
+    <img class="img-round ml-2 mt-2 rounded-circle" width="400px" height="400px"
+      src="../../../../assets/img/Unknown-person.png">
+  </ng-template>
+
+  <div class="float-icon">
+    <app-pictures-upload [profileId]="profile?.id" [profilePicture]="profilePicture"></app-pictures-upload>
+  </div>
+</div>

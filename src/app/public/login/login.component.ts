@@ -36,15 +36,15 @@ export class LoginComponent implements OnInit {
 
   getEmailErrorMessage(): string {
     if (this.email.hasError('required')) {
-      return 'You must enter an email';
+      return 'Veuillez entrer votre email';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'Email invalide' : '';
   }
 
   getPasswordErrorMessage(): string {
     if (this.email.hasError('required')) {
-      return 'You must enter a password';
+      return 'Veuillez saisir votre mot de passe';
     }
 
     return '';
@@ -57,6 +57,13 @@ export class LoginComponent implements OnInit {
         _ => this.router.navigate(['/user']),
         _ => this.loginForm.reset()
       );
+  }
+
+  public triggerSubmit(event: any): void {
+    event.preventDefault();
+    if (this.loginForm.valid) {
+      this.submit();
+    }
   }
 
 }

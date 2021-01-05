@@ -15,6 +15,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 import { NgModule } from '@angular/core';
 
@@ -37,6 +40,9 @@ import { NgModule } from '@angular/core';
     MatTreeModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MaterialFileInputModule,
   ],
   exports: [
     MatButtonModule,
@@ -56,6 +62,9 @@ import { NgModule } from '@angular/core';
     MatTreeModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MaterialFileInputModule,
   ]
 })
 
