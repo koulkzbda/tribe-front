@@ -4,7 +4,7 @@
       <img *ngIf="profilePicture; else defaultPicture" class="rounded-circle" width="40px" height="40px"
         src="{{ pictureDisplayingService.srcPrefix }}{{ profilePicture.imageFile }}">
       <ng-template #defaultPicture>
-        <img class="rounded-circle" width="40px" height="40px" src="../../../../assets/img/Unknown-person.png">
+        <img class="rounded-circle" width="40px" height="40px" src="{{ assetPath }}assets/img/Unknown-person.png">
       </ng-template>
     </div>
     <mat-card-title>{{user?.firstName}} {{user?.lastName}}</mat-card-title>

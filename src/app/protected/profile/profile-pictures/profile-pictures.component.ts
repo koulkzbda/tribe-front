@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { Subscription } from 'rxjs';
 import { LayoutService } from './../../../core/services/layout.service';
 import { ProfilePicturesCarouselDialogComponent } from './../profile-pictures-carousel-dialog/profile-pictures-carousel-dialog.component';
@@ -17,6 +18,7 @@ export class ProfilePicturesComponent implements OnInit, OnDestroy {
   @Input() profile: Profile;
   public isLargerScreen: boolean;
   public screenSub: Subscription;
+  public assetPath = environment.assetsPath;
 
   constructor(
     public pictureDisplayingService: PictureDisplayingService,

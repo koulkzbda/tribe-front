@@ -1,8 +1,9 @@
+import { environment } from './../../../../environments/environment';
 import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { Picture } from './../../models/picture';
 import { ProfileService } from './../../../core/services/profile.service';
 import { Router } from '@angular/router';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { User } from './../../models/user';
 import { AuthService } from './../../../core/services/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -21,6 +22,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   public user: User;
   public profile: Profile;
   public profileSub: Subscription;
+  public assetPath = environment.assetsPath;
 
   constructor(
     public pictureDisplayingService: PictureDisplayingService,
