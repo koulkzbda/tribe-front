@@ -32,7 +32,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ) { }
 
   get profilePicture(): Picture | null {
-    return this.profile.profilePictures.filter(picture => picture.isHeadlinePicture)[0] || this.profile.profilePictures[0];
+    if (this.profile) {
+      return this.profile?.profilePictures.filter(picture => picture.isHeadlinePicture)[0] || this.profile?.profilePictures[0];
+    }
+
+    return null;
   }
 
   ngOnInit(): void {

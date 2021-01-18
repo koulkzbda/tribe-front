@@ -22,10 +22,10 @@ export class ProfilePicturesService {
     private profileService: ProfileService
   ) { }
 
-  public addProfilePictures(pictures: File[], profileId: number, profilePictureName?: string): Observable<Picture[]> {
+  public addProfilePictures(pictures: File[], profileId: string, profilePictureName?: string): Observable<Picture[]> {
     const url = `${environment.backend.baseURL}/profile/pictures`;
     const formData = new FormData();
-    formData.append('profileId', profileId.toString());
+    formData.append('profileId', profileId);
 
     if (profilePictureName !== null) {
       formData.append('profilePictureName', profilePictureName);

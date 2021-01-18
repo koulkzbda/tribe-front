@@ -13,7 +13,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class PicturesUploadComponent implements OnInit {
 
-  @Input() profileId: number;
+  @Input() profileId: string;
   @Input() profilePicture: Picture;
   public picturesForm: FormGroup;
   readonly maxSize = 104857600; // 100 MB

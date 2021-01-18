@@ -1,11 +1,11 @@
 import { Picture } from './picture';
 export class Profile {
-  public readonly id: number;
+  public readonly id: string;
   public bio: string;
   public profilePictures: Picture[];
 
   constructor(
-    id: number,
+    id: string,
     bio?: string,
     profilePictures?: Picture[]
   ) {
