@@ -1,3 +1,4 @@
+import { Picture, Pictures } from './../../shared/models/picture';
 import { PictureUrlInfo } from './../../shared/models/utils/picture-url-info';
 import { Injectable } from '@angular/core';
 
@@ -25,4 +26,18 @@ export class PictureDisplayingService {
 
     return new PictureUrlInfo(imgURLs, imgNames);
   }
+
+  public pictureListToPictures(pictures: Picture[]): Pictures {
+    const headlinePicture = this.getHeadlinePicture(pictures);
+
+    const otherPicturess = pictures.some(picture => picture.isHeadlinePicture) ?
+      pictures.filter(picture => !picture.isHeadlinePicture) : pictures.slice(1);
+
+    return new Pictures(headlinePicture, otherPicturess);
+  }
+
+  public getHeadlinePicture(pictures: Picture[]): Picture {
+    return pictures.filter(picture => picture.isHeadlinePicture)[0] || pictures[0];
+  }
+
 }

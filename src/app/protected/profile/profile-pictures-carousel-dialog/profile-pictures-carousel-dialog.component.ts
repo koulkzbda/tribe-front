@@ -1,19 +1,14 @@
 import { Subscription } from 'rxjs';
-import { ProfilePicturesService } from './../../../core/services/profile-pictures.service';
+import { ProfilePicturesService } from '../../../core/services/profile-pictures.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
+import { PictureDisplayingService } from '../../../core/services/picture-displaying.service';
 import { Component, OnInit, Inject, OnDestroy, ViewChild } from '@angular/core';
-import { Picture } from 'src/app/shared/models/picture';
+import { Picture, Pictures } from '../../../shared/models/picture';
 import { SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'ngx-useful-swiper';
 
-// export interface Pictures {
-//   headlinePicture?: Picture,
-//   otherPictures: Picture[]
-// }
-
 @Component({
-  selector: 'app-profile-pictures-carousel-dialog',
+  selector: 'app-profile-pictures-carousel',
   templateUrl: './profile-pictures-carousel-dialog.component.html',
   styleUrls: ['./profile-pictures-carousel-dialog.component.scss']
 })
@@ -40,7 +35,7 @@ export class ProfilePicturesCarouselDialogComponent implements OnInit, OnDestroy
   };
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: Pictures,
     private profilePicturesService: ProfilePicturesService,
     public pictureDisplayingService: PictureDisplayingService
   ) { }

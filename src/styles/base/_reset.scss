@@ -9,6 +9,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding-top: 1.34375em !important;
 }
 
+/* for mat form field outline */
+.no-wrapper-padding {
+  margin-bottom: -1.25em;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: -0.25em !important;
+}
+
 @include font-size;
 @include width;
 @include transform;

@@ -4,7 +4,7 @@ import { LayoutService } from './../../../core/services/layout.service';
 import { ProfilePicturesCarouselDialogComponent } from './../profile-pictures-carousel-dialog/profile-pictures-carousel-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
-import { Picture } from './../../../shared/models/picture';
+import { Picture, Pictures } from './../../../shared/models/picture';
 import { Profile } from './../../../shared/models/profile';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
@@ -50,7 +50,7 @@ export class ProfilePicturesComponent implements OnInit, OnDestroy {
     dialogConfig.width = this.isLargerScreen ? '55vw' : '100vw';
     dialogConfig.height = '80vh';
     dialogConfig.maxHeight = '115vw';
-    dialogConfig.data = { headlinePicture: this.profilePicture, otherPictures: this.otherPictures };
+    dialogConfig.data = new Pictures(this.profilePicture, this.otherPictures);
     const dialogRef = this.dialog.open(ProfilePicturesCarouselDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => { });

@@ -1,0 +1,21 @@
+.mat-checkbox .mat-checkbox-frame {
+  transform: scale(2);
+}
+
+// .mat-checkbox-background {
+//   .mat-checkbox-checked {
+//     transform: scale(2);
+//   }
+//   .mat-checkbox-indeterminate {
+//     transform: scale(2);
+//   }
+
+// }
+
+.mat-checkbox-checked .mat-checkbox-background {
+  transform: scale(2);
+}
+
+.mat-checkbox-indeterminate .mat-checkbox-background {
+  transform: scale(2);
+}

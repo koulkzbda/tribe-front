@@ -1,0 +1,156 @@
+<form [formGroup]="habitsForm" *ngIf="habitStacks && habitsForm && isPrefilled">
+  <pre>
+    {{ habitsForm.value | json }}
+  </pre>
+  <div *ngFor="let habitStack of habitStacks; let lastHabitStack = last; let i = index" class="mb-3"
+    formArrayName="habits">
+
+    <mat-card [formGroupName]="i">
+      <mat-card-header>
+        <mat-card-title>
+          {{habitStack.habitStackName}}
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="text-muted">more_horiz</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editHabitStack(habitStack)">
+              <mat-icon>edit</mat-icon>
+              <span>Éditer</span>
+            </button>
+            <button mat-menu-item (click)="deleteHabitStack(habitStack)">
+              <mat-icon>delete</mat-icon>
+              <span>Supprimer</span>
+            </button>
+          </mat-menu>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content formArrayName="repetitions">
+        <mat-card *ngFor="let progression of habitStack.progressions; let firstProgression = first; let j = index"
+          class="mat-elevation-z0">
+          <mat-card-header>
+            <mat-card-title class="font-size-6">{{ progression.habitName }}</mat-card-title>
+            <mat-card-subtitle *ngIf="firstProgression">{{ habitStack.time }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ progression.location.name }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content [formGroupName]="j">
+            <div class="container" *ngIf="progression.repetition.metrics.length > 0">
+              <div class="row">
+                <div class="col-4 col-md-2 d-flex align-items-center">
+                  <app-tri-state-checkbox formControlName="repetitionStatus" class="ml-5 ml-md-3 ml-lg-5">
+                  </app-tri-state-checkbox>
+                </div>
+                <!-- TO DO add forms for metrics value -->
+                <div *ngFor="let metricValue of progression.repetition.metrics; let k = index"
+                  formArrayName="metricValues" class="col-6 col-md-5 col-lg-4 mr-3">
+                  <mat-form-field [formGroupName]="k" appearance="outline" class="suffixAlignment no-wrapper-padding">
+                    <mat-label>{{ metricValue.metricName }}</mat-label>
+                    <input matInput formControlName="value">
+                    <span matSuffix>{{ metricValue.metricUnit }}</span>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="my-3" *ngIf="progression.repetition.metrics.length == 0">
+              <app-tri-state-checkbox formControlName="repetitionStatus" class="ml-5">
+              </app-tri-state-checkbox>
+            </div>
+
+            <div class="mb-3" *ngIf="progression.repetition.publicationPictures.length > 0">
+              <app-publication-carousel
+                [pictures]="pictureDisplayingService.pictureListToPictures(progression.repetition.publicationPictures)">
+              </app-publication-carousel>
+            </div>
+
+            <div class="mb-3">
+              <app-publication-pictures-upload [publicationId]="progression.repetition.id"
+                [headlinePicture]="pictureDisplayingService.getHeadlinePicture(progression.repetition.publicationPictures)">
+              </app-publication-pictures-upload>
+            </div>
+
+            <div class="mb-3 text-center p-3 rounded w-75 biography mx-auto">
+              <pre>{{ repetition(i,j).get('repetitionStatus').value | json }}</pre>
+              <mat-form-field floatLabel="Commentaire" class="w-100 mx-auto" appearance="outline"
+                [ngClass]="{'d-none': !repetition(i,j).get('repetitionStatus').value}">
+                <textarea matInput formControlName="content"></textarea>
+              </mat-form-field>
+              <div class="d-flex justify-content-center align-item-center">
+                <button type="submit" (click)="submitRepetition(i, j)" mat-raised-button
+                  [disabled]="((!repetition(i,j).valid && repetition(i,j).get('repetitionStatus').value) || repetition(i,j).untouched) ? true : null"
+                  [ngClass]="{'mat-color-primary text-white': (repetition(i,j).valid || !repetition(i,j).get('repetitionStatus').value) && repetition(i,j).touched, 'color-grey': !repetition(i,j).valid || repetition(i,j).untouched}">
+                  METTRE À JOUR
+                </button>
+              </div>
+            </div>
+
+            <mat-accordion multi>
+
+              <mat-expansion-panel *ngIf="progression.conditioningStep" class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon class="mr-2">search</mat-icon>
+                    <span class="align-with-icon"></span>{{ progression.conditioningStep.description }}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                {{ progression.conditioningStep.location.name }}
+              </mat-expansion-panel>
+
+              <mat-expansion-panel *ngIf="progression.identities && progression.identityCategories"
+                class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon class="mr-2">local_fire_department</mat-icon>
+                    <span *ngFor="let identity of progression.identities; let lastIdentity = last;"
+                      class="align-with-icon">
+                      {{ identity }}<span *ngIf="!lastIdentity && progression.identities.length > 1"> ,</span>
+                    </span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <span *ngFor="let identityCategory of progression.identityCategories; let lastCategory = last;">
+                  {{ identityCategory }}<span *ngIf="!lastCategory && progression.identityCategories.length > 1">
+                    ,</span>
+                </span>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel *ngIf="progression.reward" class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon class="mr-2">emoji_events</mat-icon>
+                    <span class="align-with-icon">{{ progression.reward.description }}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                {{ progression.reward.location.name }}
+              </mat-expansion-panel>
+
+              <mat-expansion-panel *ngIf="progression.habitContract" class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon class="mr-2">visibility</mat-icon>
+                    <span class="align-with-icon">{{ progression.habitContract.accountablePartnerName }}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list>
+                  <mat-list-item>
+                    <mat-icon mat-list-icon>done</mat-icon>
+                    <div mat-line>{{ progression.habitContract.commitment }}</div>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-icon mat-list-icon>close</mat-icon>
+                    <div mat-line>{{ progression.habitContract.punishment }}</div>
+                  </mat-list-item>
+                  <!-- <mat-list-item>{{ progression.habitContract.signedAt }}</mat-list-item> -->
+                </mat-list>
+
+              </mat-expansion-panel>
+
+            </mat-accordion>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+    <mat-divider *ngIf="!lastHabitStack"></mat-divider>
+  </div>
+</form>

@@ -1,0 +1,10 @@
+<form [formGroup]="picturesForm">
+  <div class="button-icon-wrapper-sm rounded-circle d-flex justify-content-center align-items-center"
+    (click)="button.focus(); fileInput.open()">
+    <button mat-icon-button #button (click)="fileInput.open()">
+      <mat-icon class="icon-display-sm">add_photo_alternate</mat-icon>
+      <ngx-mat-file-input #fileInput (change)="openDialog()" formControlName="pictures" [accept]="'image/*'"
+        class="d-none" multiple></ngx-mat-file-input>
+    </button>
+  </div>
+</form>

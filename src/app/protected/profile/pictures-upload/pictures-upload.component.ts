@@ -37,7 +37,7 @@ export class PicturesUploadComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
+  public openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     this.profilePicturesService.setPicturesForm(this.picturesForm);
     dialogConfig.data = { profileId: this.profileId, profilePicture: this.profilePicture };

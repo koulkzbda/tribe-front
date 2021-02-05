@@ -13,6 +13,10 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
       },
+      {
+        path: 'feedbuzz',
+        loadChildren: () => import('./feedbuzz/feedbuzz.module').then(m => m.FeedbuzzModule)
+      },
     ]
   }
 ];

@@ -22,3 +22,10 @@ export class Picture {
     this.isHeadlinePicture = isHeadlinePicture || false;
   }
 }
+
+export class Pictures {
+  constructor(
+    public headlinePicture?: Picture,
+    public otherPictures?: Picture[]
+  ) { }
+}

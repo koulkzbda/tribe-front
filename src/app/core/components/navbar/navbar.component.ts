@@ -14,6 +14,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public homePath = 'home';
   public loginPath = 'login';
   public registerPath = 'register';
+  public rootPath = 'user';
+  public feedbuzzPath = `${this.rootPath}/feedbuzz`;
   public user: User;
   private userSub: Subscription;
   public isSidenavOpened$: Observable<boolean>;

@@ -18,6 +18,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { NgModule } from '@angular/core';
 
@@ -43,6 +45,8 @@ import { NgModule } from '@angular/core';
     MatSelectModule,
     MatFormFieldModule,
     MaterialFileInputModule,
+    MatCheckboxModule,
+    MatExpansionModule,
   ],
   exports: [
     MatButtonModule,
@@ -65,6 +69,8 @@ import { NgModule } from '@angular/core';
     MatSelectModule,
     MatFormFieldModule,
     MaterialFileInputModule,
+    MatCheckboxModule,
+    MatExpansionModule,
   ]
 })
 

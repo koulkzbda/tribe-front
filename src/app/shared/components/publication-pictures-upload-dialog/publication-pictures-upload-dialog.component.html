@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Mettre à jour mes photos</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="picturesForm">
+    <div class="button-icon-wrapper-sm rounded-circle d-flex justify-content-center align-items-center m-auto"
+      (click)="button.focus(); fileInput.open();">
+      <button mat-icon-button #button (click)="fileInput.open()">
+        <mat-icon class="icon-display-sm">add_photo_alternate</mat-icon>
+        <ngx-mat-file-input #fileInput (change)="updateImgURL($event.value.files)" formControlName="pictures"
+          [accept]="'image/*'" class="d-none" multiple></ngx-mat-file-input>
+      </button>
+    </div>
+    <div class="my-3 text-center">
+      <mat-error *ngIf="pictures.hasError('required') && pictures.touched">
+        Ajoutez une photo
+      </mat-error>
+      <mat-error *ngIf="pictures.hasError('maxContentSize')">
+        La taille totale ne doit pas exéceder {{pictures?.getError('maxContentSize').maxSize | byteFormat}}
+        ({{pictures?.getError('maxContentSize').actualSize
+        | byteFormat}}).
+      </mat-error>
+    </div>
+  </form>
+  <div *ngIf="data.profilePicture" class="d-inline picture-wrapper">
+    <mat-icon *ngIf="headlineIndex.value === null" class="legend text-primary rounded">
+      photo_camera
+    </mat-icon>
+    <img (click)="setAsHeadlinePicture(null)" class="picture-thumbnail ml-2 mt-2"
+      src="{{ pictureDisplayingService.srcPrefix }}{{ data.profilePicture.imageFile }}"
+      [ngClass]="{'headline-picture-selected bg-primary': headlineIndex.value === null }">
+  </div>
+  <div class="d-inline picture-wrapper" *ngFor="let imgURL of imgURLs; let i = index">
+    <mat-icon *ngIf="i === headlineIndex.value" class="legend text-primary rounded">
+      photo_camera
+    </mat-icon>
+    <img class="picture-thumbnail ml-2 mt-2" (click)="setAsHeadlinePicture(i)" [src]="imgURL"
+      [ngClass]="{'headline-picture-selected bg-primary': i === headlineIndex.value }">
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="color-grey text-white">RETOUR</button>
+  <button (click)="savePictures()" [disabled]="pictures.invalid" mat-button [mat-dialog-close]="true"
+    color="primary">ENVOYER</button>
+</mat-dialog-actions>
