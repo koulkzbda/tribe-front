@@ -1,3 +1,4 @@
+import { HabitStackService } from './../../../core/services/habit-stack.service';
 import { PublicationPicturesService } from '../../../core/services/publication-pictures.service';
 import { PictureDisplayingService } from '../../../core/services/picture-displaying.service';
 import { SwiperComponent } from 'ngx-useful-swiper';
@@ -13,6 +14,12 @@ import { SwiperOptions } from 'swiper';
 })
 export class PublicationCarouselComponent implements OnInit, OnDestroy {
 
+  //  For repetition only
+  @Input() habitIndex: number;
+  @Input() repetitionIndex: number;
+
+  @Input() publicationId: string;
+  @Input() isRepetitionType = false;
   @Input() pictures: Pictures
   public imgs: Picture[] = [];
   private pictureSub: Subscription;
@@ -22,11 +29,6 @@ export class PublicationCarouselComponent implements OnInit, OnDestroy {
     autoHeight: true,
     allowTouchMove: true,
     autoplay: false,
-    breakpoints: {
-      300: {
-        slidesPerView: 1
-      }
-    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
@@ -36,7 +38,8 @@ export class PublicationCarouselComponent implements OnInit, OnDestroy {
 
   constructor(
     private publicationPicturesService: PublicationPicturesService,
-    public pictureDisplayingService: PictureDisplayingService
+    public pictureDisplayingService: PictureDisplayingService,
+    private habitStackService: HabitStackService
   ) { }
 
   ngOnInit(): void {
@@ -50,13 +53,25 @@ export class PublicationCarouselComponent implements OnInit, OnDestroy {
   }
 
   public setPincipalPicture(picture: Picture): void {
-    this.pictureSub = this.publicationPicturesService.setHeadlinePicture(picture).subscribe();
+    this.pictureSub = this.publicationPicturesService.setHeadlinePicture(picture, this.publicationId, this.isRepetitionType).subscribe(
+      pictures => {
+        if (this.habitIndex != null && this.repetitionIndex != null && this.isRepetitionType) {
+          this.habitStackService.updateHabitStacksFeedbuzz(pictures, this.habitIndex, this.repetitionIndex);
+        }
+      }
+    );
   }
 
   public deletePicture(picture: Picture, index: number): void {
     this.usefulSwiper.swiper.removeSlide(index);
-    this.pictureSub = this.publicationPicturesService.deletePicture(picture)
-      .subscribe();
+    this.pictureSub = this.publicationPicturesService.deletePicture(picture, this.publicationId, this.isRepetitionType)
+      .subscribe(
+        pictures => {
+          if (this.habitIndex && this.repetitionIndex && this.isRepetitionType) {
+            this.habitStackService.updateHabitStacksFeedbuzz(pictures, this.habitIndex, this.repetitionIndex);
+          }
+        }
+      );
   }
 
   private initImgs(): void {

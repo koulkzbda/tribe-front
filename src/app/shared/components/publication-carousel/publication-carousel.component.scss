@@ -2,22 +2,42 @@
   padding: 0.25rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  width: 100vw;
-  height: 100vw;
+  width: 90vw;
+  height: 62vw;
   object-fit: cover;
-  @media screen and (min-width: 840px) {
-    width: 40vw;
-    height: 70vh;
+  @media screen and (min-width: 540px) {
+    width: 510px;
+    height: 350px;
   }
 }
 
-.pp-button {
-  position: absolute;
-  top: 1rem;
-  right: 0.5rem;
-  @media screen and (min-width: 840px) {
-    right: 5rem;
+.dimension {
+  width: 90vw;
+  height: 62vw;
+  @media screen and (min-width: 540px) {
+    width: 510px;
+    height: 350px;
   }
+}
+
+.swiper-slide {
+  left: 1rem !important;
+}
+
+.swiper-button-prev {
+  left: 2rem !important;
+}
+
+.pp-button {
+  position: relative;
+  top: 1rem;
+  left: -3rem;
   z-index: 10;
   background-color: #f5f5f58c;
+}
+
+.right-swiper::after {
+  position: relative;
+  left: -1rem;
+  z-index: 10;
 }

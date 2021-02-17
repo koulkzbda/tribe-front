@@ -1,6 +1,6 @@
+import { HabitStackService } from './../../../core/services/habit-stack.service';
 import { PublicationPicturesService } from './../../../core/services/publication-pictures.service';
 import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
-import { ProfilePicturesService } from './../../../core/services/profile-pictures.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { FormGroup, AbstractControl } from '@angular/forms';
@@ -22,7 +22,8 @@ export class PublicationPicturesUploadDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private publicationPicturesService: PublicationPicturesService,
-    public pictureDisplayingService: PictureDisplayingService
+    public pictureDisplayingService: PictureDisplayingService,
+    private habitStackService: HabitStackService
   ) { }
 
   get pictures(): AbstractControl { return this.picturesForm.get('pictures'); }
@@ -42,13 +43,19 @@ export class PublicationPicturesUploadDialogComponent implements OnInit {
   }
 
   savePictures(): void {
-    console.log(this.headlineIndex.value);
-
     this.publicationPicturesService.addPublicationPictures(
       this.pictures.value.files,
-      this.data.profileId,
-      this.headlineIndex.value ? this.imgNames[this.headlineIndex.value] : null)
-      .subscribe(_ => console.log('ok'));
+      this.data.publicationId,
+      this.headlineIndex.value ? this.imgNames[this.headlineIndex.value] : null,
+      this.data.isRepetitionType
+    )
+      .subscribe(
+        pictures => {
+          if (this.data.habitIndex != null && this.data.repetitionIndex != null && this.data.isRepetitionType) {
+            this.habitStackService.updateHabitStacksFeedbuzz(pictures, this.data.habitIndex, this.data.repetitionIndex);
+          }
+        }
+      );
   }
 
   public updateImgURL(pictures: File[]): void {

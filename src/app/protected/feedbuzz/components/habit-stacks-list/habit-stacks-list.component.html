@@ -1,7 +1,4 @@
-<form [formGroup]="habitsForm" *ngIf="habitStacks && habitsForm && isPrefilled">
-  <pre>
-    {{ habitsForm.value | json }}
-  </pre>
+<form [formGroup]="habitsForm" *ngIf="habitStacks && habitsForm && isPrefilled && editContentPrefilled">
   <div *ngFor="let habitStack of habitStacks; let lastHabitStack = last; let i = index" class="mb-3"
     formArrayName="habits">
 
@@ -33,50 +30,79 @@
             <mat-card-subtitle>{{ progression.location.name }}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content [formGroupName]="j">
-            <div class="container" *ngIf="progression.repetition.metrics.length > 0">
+            <button *ngIf="progression.repetition.content" mat-icon-button [matMenuTriggerFor]="menu"
+              class="float-right align-with-pre">
+              <mat-icon class="text-muted">more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="setContentAsEditable(i, j)">
+                <mat-icon>edit</mat-icon>
+                <span>Éditer</span>
+              </button>
+              <button mat-menu-item (click)="deleteContent(i,j)">
+                <mat-icon>delete</mat-icon>
+                <span>Supprimer</span>
+              </button>
+            </mat-menu>
+            <pre class="mx-3 mb-4 roboto without-tab font-size-6" [ngClass]="{'d-none': editContent[i][j]}"
+              *ngIf="progression.repetition.content as content">
+              {{ content }}
+            </pre>
+            <div class="container mt-3" *ngIf="progression.repetition.metrics.length > 0">
               <div class="row">
                 <div class="col-4 col-md-2 d-flex align-items-center">
                   <app-tri-state-checkbox formControlName="repetitionStatus" class="ml-5 ml-md-3 ml-lg-5">
                   </app-tri-state-checkbox>
                 </div>
-                <!-- TO DO add forms for metrics value -->
                 <div *ngFor="let metricValue of progression.repetition.metrics; let k = index"
                   formArrayName="metricValues" class="col-6 col-md-5 col-lg-4 mr-3">
                   <mat-form-field [formGroupName]="k" appearance="outline" class="suffixAlignment no-wrapper-padding">
                     <mat-label>{{ metricValue.metricName }}</mat-label>
                     <input matInput formControlName="value">
                     <span matSuffix>{{ metricValue.metricUnit }}</span>
+                    <mat-error *ngIf="metricValueValue(i,j,k).errors?.required">{{ metricValue.metricName }} requis(e)
+                    </mat-error>
+                    <mat-error *ngIf="metricValueValue(i,j,k).errors?.notNumerical">Veuillez saisir un nombre
+                    </mat-error>
                   </mat-form-field>
                 </div>
               </div>
             </div>
-            <div class="my-3" *ngIf="progression.repetition.metrics.length == 0">
+            <div class="mb-3" *ngIf="progression.repetition.metrics.length == 0" [ngClass]="{'mt-5': !editContent[i][j] && progression.repetition.content,
+            'mt-3': editContent[i][j] || !progression.repetition.content}">
               <app-tri-state-checkbox formControlName="repetitionStatus" class="ml-5">
               </app-tri-state-checkbox>
             </div>
 
-            <div class="mb-3" *ngIf="progression.repetition.publicationPictures.length > 0">
-              <app-publication-carousel
-                [pictures]="pictureDisplayingService.pictureListToPictures(progression.repetition.publicationPictures)">
+            <div class="my-3" *ngIf="repetitionPictures(i,j) as pictures">
+              <app-publication-carousel *ngIf="pictures.length > 0"
+                [pictures]="pictureDisplayingService.pictureListToPictures(pictures)"
+                [publicationId]="progression.repetition.id" [isRepetitionType]="true" [habitIndex]="i"
+                [repetitionIndex]="j">
               </app-publication-carousel>
             </div>
 
-            <div class="mb-3">
+            <div class="my-3 d-flex justify-content-center align-items-center"
+              *ngIf="repetitionPictures(i,j) as pictures">
               <app-publication-pictures-upload [publicationId]="progression.repetition.id"
-                [headlinePicture]="pictureDisplayingService.getHeadlinePicture(progression.repetition.publicationPictures)">
+                [headlinePicture]="pictureDisplayingService.getHeadlinePicture(pictures)" [isRepetitionType]="true"
+                [habitIndex]="i" [repetitionIndex]="j">
               </app-publication-pictures-upload>
             </div>
 
-            <div class="mb-3 text-center p-3 rounded w-75 biography mx-auto">
-              <pre>{{ repetition(i,j).get('repetitionStatus').value | json }}</pre>
+            <div class="mb-3 text-center rounded w-100 mx-auto">
               <mat-form-field floatLabel="Commentaire" class="w-100 mx-auto" appearance="outline"
-                [ngClass]="{'d-none': !repetition(i,j).get('repetitionStatus').value}">
+                [ngClass]="{'d-none': !repetitionStatus(i,j) || (progression.repetition.content && !editContent[i][j])}">
+                <mat-label>Commentaire</mat-label>
                 <textarea matInput formControlName="content"></textarea>
               </mat-form-field>
               <div class="d-flex justify-content-center align-item-center">
                 <button type="submit" (click)="submitRepetition(i, j)" mat-raised-button
-                  [disabled]="((!repetition(i,j).valid && repetition(i,j).get('repetitionStatus').value) || repetition(i,j).untouched) ? true : null"
-                  [ngClass]="{'mat-color-primary text-white': (repetition(i,j).valid || !repetition(i,j).get('repetitionStatus').value) && repetition(i,j).touched, 'color-grey': !repetition(i,j).valid || repetition(i,j).untouched}">
+                  [disabled]="(!repetition(i,j).valid || repetition(i,j).untouched) ? true : null" [ngClass]="{
+                    'mat-color-primary text-white': repetition(i,j).valid && repetition(i,j).touched,
+                    'color-grey': !repetition(i,j).valid || repetition(i,j).untouched,
+                    'd-none':  repetition(i,j).untouched
+                  }">
                   METTRE À JOUR
                 </button>
               </div>

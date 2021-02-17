@@ -1,32 +1,38 @@
-<swiper [config]="config" #usefulSwiper>
+<div class="d-flex justify-content-center">
+  <div class="dimension">
+    <swiper [config]="config" #usefulSwiper>
 
-  <div class="swiper-wrapper">
-    <div class="swiper-slide d-flex justify-content-center"
-      *ngFor="let img of imgs; let isFirst = first; let i = index">
-      <img class="img-fluid ml-2 mt-2 img-centered" src="{{ pictureDisplayingService.srcPrefix }}{{ img.imageFile }}">
-      <button mat-icon-button [matMenuTriggerFor]="menu" class="pp-button">
-        <mat-icon class="text-primary">more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="setPincipalPicture(img)" *ngIf="!isFirst">
-          <mat-icon>photo_camera</mat-icon>
-          <span>Définir comme photo principale</span>
-        </button>
-        <button mat-menu-item *ngIf="isFirst">
-          <span>Photo principale</span>
-        </button>
-        <button mat-menu-item (click)="deletePicture(img, i)">
-          <mat-icon>delete</mat-icon>
-          <span>Supprimer</span>
-        </button>
-      </mat-menu>
-    </div>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide d-flex justify-content-center"
+          *ngFor="let img of imgs; let isFirst = first; let i = index">
+          <img class="img-fluid ml-2 mt-2 img-centered"
+            src="{{ pictureDisplayingService.srcPrefix }}{{ img.imageFile }}">
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="pp-button">
+            <mat-icon class="text-primary">more_vert</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="setPincipalPicture(img)" *ngIf="!isFirst">
+              <mat-icon>photo_camera</mat-icon>
+              <span>Définir comme photo principale</span>
+            </button>
+            <button mat-menu-item *ngIf="isFirst">
+              <span>Photo principale</span>
+            </button>
+            <button mat-menu-item (click)="deletePicture(img, i)">
+              <mat-icon>delete</mat-icon>
+              <span>Supprimer</span>
+            </button>
+          </mat-menu>
+        </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev left-swiper"></div>
+      <div class="swiper-button-next right-swiper"></div>
+    </swiper>
 
   </div>
 
-  <div class="swiper-pagination"></div>
-
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-
-</swiper>
+</div>

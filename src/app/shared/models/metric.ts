@@ -8,3 +8,12 @@ export class Metric {
     public value: number,
   ) { }
 }
+
+export class MetricFeedbuzz {
+  constructor(
+    public readonly metricId: string,
+    public metricName: string,
+    public metricUnit: string,
+    public value: number,
+  ) { }
+}

@@ -18,8 +18,9 @@ export class PublicationPicturesService {
     private http: HttpClient
   ) { }
 
-  public setHeadlinePicture(picture: Picture): Observable<Picture[]> {
-    const url = `${environment.backend.baseURL}/publication/headline-picture`;
+  public setHeadlinePicture(picture: Picture, publicationId: string, isRepetitionType?: boolean): Observable<Picture[]> {
+    const controllerName = isRepetitionType ? 'habit-stack-feedbuzz/repetition' : 'publication';
+    const url = `${environment.backend.baseURL}/${controllerName}/headline-picture?publicationId=${publicationId}`;
 
     return this.http.patch<Picture[]>(url, picture)
       // .pipe(tap(pictures => {
@@ -30,8 +31,9 @@ export class PublicationPicturesService {
       ;
   }
 
-  public deletePicture(picture: Picture): Observable<Picture[]> {
-    const url = `${environment.backend.baseURL}/publication/picture/${picture.id}`;
+  public deletePicture(picture: Picture, publicationId: string, isRepetitionType?: boolean): Observable<Picture[]> {
+    const controllerName = isRepetitionType ? 'habit-stack-feedbuzz/repetition' : 'publication';
+    const url = `${environment.backend.baseURL}/${controllerName}/picture?publicationId=${publicationId}&pictureId=${picture.id}`;
 
     return this.http.delete<Picture[]>(url)
       // .pipe(tap(pictures => {
@@ -42,8 +44,9 @@ export class PublicationPicturesService {
       ;
   }
 
-  public addPublicationPictures(pictures: File[], publicationId: string, headlinePictureName?: string): Observable<Picture[]> {
-    const url = `${environment.backend.baseURL}/publication/pictures`;
+  public addPublicationPictures(pictures: File[], publicationId: string, headlinePictureName?: string, isRepetitionType?: boolean): Observable<Picture[]> {
+    const controllerName = isRepetitionType ? 'habit-stack-feedbuzz/repetition' : 'publication';
+    const url = `${environment.backend.baseURL}/${controllerName}/pictures`;
     const formData = new FormData();
     formData.append('publicationId', publicationId);
 

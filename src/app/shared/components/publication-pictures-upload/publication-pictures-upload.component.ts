@@ -13,6 +13,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PublicationPicturesUploadComponent implements OnInit {
 
+  //  For repetition only
+  @Input() habitIndex: number;
+  @Input() repetitionIndex: number;
+
+  @Input() isRepetitionType = false;
   @Input() publicationId: string;
   @Input() headlinePicture: Picture;
   public picturesForm: FormGroup;
@@ -34,7 +39,14 @@ export class PublicationPicturesUploadComponent implements OnInit {
   public openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     this.publicationPicturesService.setPicturesForm(this.picturesForm);
-    dialogConfig.data = { publicationId: this.publicationId, headlinePicture: this.headlinePicture };
+    console.log(this.habitIndex, this.repetitionIndex)
+    dialogConfig.data = {
+      publicationId: this.publicationId,
+      headlinePicture: this.headlinePicture,
+      isRepetitionType: this.isRepetitionType,
+      habitIndex: this.habitIndex,
+      repetitionIndex: this.repetitionIndex
+    };
     dialogConfig.minWidth = 600;
     dialogConfig.width = '60wv';
     const dialogRef = this.dialog.open(PublicationPicturesUploadDialogComponent, dialogConfig);

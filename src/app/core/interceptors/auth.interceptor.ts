@@ -48,7 +48,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private withoutHeaders(url: string): boolean {
-    return (url.includes('profile/pictures'));
+    return (url.includes('profile/pictures') || url.includes('repetition/pictures') || url.includes('publication/pictures'));
   }
 
   private isAuthRequest(url: string): boolean {

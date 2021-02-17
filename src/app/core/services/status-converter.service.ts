@@ -8,7 +8,7 @@ export class StatusConverterService {
 
   constructor() { }
 
-  public repetitionStatusToBoolean(status: string): boolean {
+  public repetitionStatusToBoolean(status: string): boolean | string {
     switch (status) {
       case RepetitionStatus.canceled:
         return false;
@@ -18,10 +18,12 @@ export class StatusConverterService {
         return true;
       case RepetitionStatus.notDone:
         return false;
+      default:
+        return status;
     }
   }
 
-  public booleanToRepetitionStatus(bool: boolean): RepetitionStatus {
+  public booleanToRepetitionStatus(bool: boolean): RepetitionStatus | boolean {
     switch (bool) {
       case false:
         return RepetitionStatus.canceled;
@@ -29,6 +31,8 @@ export class StatusConverterService {
         return RepetitionStatus.toDo;
       case true:
         return RepetitionStatus.done;
+      default:
+        return bool;
     }
   }
 }
