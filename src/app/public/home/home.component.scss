@@ -67,8 +67,8 @@ $base-parallax-perspective: 8px;
   }
 }
 
-$start: 0;
-$end: 100;
+$start: 20;
+$end: 50;
 @for $i from $start through $end {
   .clouds__image--#{$i} {
     @extend .image;
