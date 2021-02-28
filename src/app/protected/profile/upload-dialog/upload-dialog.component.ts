@@ -1,3 +1,5 @@
+import { TranslationService } from './../../../core/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { Subscription } from 'rxjs';
 import { ProfilePicturesService } from './../../../core/services/profile-pictures.service';
@@ -17,37 +19,35 @@ export class UploadDialogComponent implements OnInit, OnDestroy {
   public imgNames = [];
   public picturesForm: FormGroup;
   private formSub: Subscription;
+  private langSub: Subscription;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private profilePicturesService: ProfilePicturesService,
-    public pictureDisplayingService: PictureDisplayingService
+    public pictureDisplayingService: PictureDisplayingService,
+    private translationService: TranslationService,
+    private translate: TranslateService
   ) { }
 
   get pictures(): AbstractControl { return this.picturesForm.get('pictures'); }
   get headlineIndex(): AbstractControl { return this.picturesForm.get('headlineIndex'); }
 
   ngOnInit(): void {
-    this.formSub = this.profilePicturesService.picturesForm$
-      .subscribe(pictures => {
-        this.picturesForm = pictures;
-        this.updateImgURL(this.pictures.value.files);
-      }
-      );
+    this.getForm();
+    this.updateLang();
   }
 
   ngOnDestroy(): void {
     this.formSub.unsubscribe();
+    this.langSub.unsubscribe();
   }
 
-  savePictures(): void {
-    console.log(this.headlineIndex.value);
-
+  public savePictures(): void {
     this.profilePicturesService.addProfilePictures(
       this.pictures.value.files,
       this.data.profileId,
       this.headlineIndex.value ? this.imgNames[this.headlineIndex.value] : null)
-      .subscribe(_ => console.log('ok'));
+      .subscribe();
   }
 
   public updateImgURL(pictures: File[]): void {
@@ -60,6 +60,21 @@ export class UploadDialogComponent implements OnInit, OnDestroy {
     this.picturesForm.patchValue(
       { headlineIndex: index }
     );
+  }
+
+  private getForm(): void {
+    this.formSub = this.profilePicturesService.picturesForm$
+      .subscribe(pictures => {
+        this.picturesForm = pictures;
+        this.updateImgURL(this.pictures.value.files);
+      }
+      );
+  }
+
+  private updateLang(): void {
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
   }
 
 }

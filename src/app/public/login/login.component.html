@@ -9,18 +9,20 @@
             <mat-label>Email</mat-label>
             <input matInput (keydown.enter)="triggerSubmit($event)" placeholder="victor.hugo@tribe.com"
               [formControl]="email">
-            <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+            <mat-error *ngIf="email.errors?.required">{{'public.login.error.email.required' | translate}}</mat-error>
+            <mat-error *ngIf="email.errors?.email">{{'public.login.error.email.invalid' | translate}}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="w-100 mb-3">
-            <mat-label>Mot de passe</mat-label>
+            <mat-label>{{'public.login.password' | translate}}</mat-label>
             <input matInput (keydown.enter)="triggerSubmit($event)" [formControl]="password"
               [type]="hidePass ? 'password' : 'text'">
             <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'hide password'"
               [attr.aria-pressed]="hidePass">
               <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
-            <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+            <mat-error *ngIf="password.errors?.required">{{'public.login.error.password.required' | translate}}
+            </mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>
@@ -28,7 +30,7 @@
         <p class="text-center">
           <button type="submit" (click)="submit()" mat-raised-button [disabled]="!loginForm.valid"
             [ngClass]="{'mat-color-primary text-white': loginForm.valid, 'color-grey': !loginForm.valid}">
-            SE CONNECTER <mat-icon>arrow_right_alt</mat-icon>
+            {{'public.login.logIn' | translate}} <mat-icon>arrow_right_alt</mat-icon>
           </button>
         </p>
       </mat-card-actions>

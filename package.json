@@ -24,6 +24,8 @@
     "@angular/platform-browser-dynamic": "~11.1.2",
     "@angular/router": "~11.1.2",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "@types/swiper": "^5.4.1",
     "bootstrap": "^4.5.0",
     "ngx-material-file-input": "^2.1.1",

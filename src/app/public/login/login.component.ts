@@ -1,6 +1,9 @@
+import { Subscription } from 'rxjs';
+import { TranslationService } from './../../core/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './../../core/services/auth.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,17 +11,34 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+
+  langSub: Subscription;
   loginForm: FormGroup;
   hidePass = true;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private translationService: TranslationService,
+    private translate: TranslateService
+  ) {
+  }
+
+  get email(): AbstractControl { return this.loginForm.get('email'); }
+  get password(): AbstractControl { return this.loginForm.get('password'); }
 
   ngOnInit(): void {
+    this.initForm();
+    this.updateLang();
+  }
+
+  ngOnDestroy(): void {
+    this.langSub.unsubscribe();
+  }
+
+  private initForm(): void {
     this.loginForm = this.fb.group({
       email: ['', [
         Validators.required,
@@ -26,28 +46,15 @@ export class LoginComponent implements OnInit {
       ]],
       password: ['', [
         Validators.required,
-        Validators.minLength(6),
+        // Validators.minLength(6),
       ]]
     });
   }
 
-  get email(): AbstractControl { return this.loginForm.get('email'); }
-  get password(): AbstractControl { return this.loginForm.get('password'); }
-
-  getEmailErrorMessage(): string {
-    if (this.email.hasError('required')) {
-      return 'Veuillez entrer votre email';
-    }
-
-    return this.email.hasError('email') ? 'Email invalide' : '';
-  }
-
-  getPasswordErrorMessage(): string {
-    if (this.email.hasError('required')) {
-      return 'Veuillez saisir votre mot de passe';
-    }
-
-    return '';
+  private updateLang(): void {
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
   }
 
   submit(): void {

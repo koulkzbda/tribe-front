@@ -1,3 +1,5 @@
+import { TranslateService } from '@ngx-translate/core';
+import { TranslationService } from './../../../core/services/translation.service';
 import { HabitStackService } from './../../../core/services/habit-stack.service';
 import { PublicationPicturesService } from '../../../core/services/publication-pictures.service';
 import { PictureDisplayingService } from '../../../core/services/picture-displaying.service';
@@ -35,21 +37,27 @@ export class PublicationCarouselComponent implements OnInit, OnDestroy {
     },
     loop: true
   };
+  private langSub: Subscription;
 
   constructor(
     private publicationPicturesService: PublicationPicturesService,
     public pictureDisplayingService: PictureDisplayingService,
-    private habitStackService: HabitStackService
-  ) { }
+    private habitStackService: HabitStackService,
+    private translationService: TranslationService,
+    private translate: TranslateService
+  ) {
+  }
 
   ngOnInit(): void {
     this.initImgs();
+    this.updateLang();
   }
 
   ngOnDestroy(): void {
     if (this.pictureSub) {
       this.pictureSub.unsubscribe();
     }
+    this.langSub.unsubscribe();
   }
 
   public setPincipalPicture(picture: Picture): void {
@@ -77,6 +85,12 @@ export class PublicationCarouselComponent implements OnInit, OnDestroy {
   private initImgs(): void {
     this.imgs.push(this.pictures.headlinePicture);
     this.imgs.push(...this.pictures.otherPictures);
+  }
+
+  private updateLang(): void {
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
   }
 
 }

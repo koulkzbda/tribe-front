@@ -19,10 +19,8 @@ export class HabitStacksListComponent implements OnInit, OnDestroy {
 
   public editContentPrefilled = false;
   public editContent: boolean[][] = [];
-  // public habitStacksPictures: HabitStackFeedbuzz[];
   public habitStacks: HabitStackFeedbuzz[];
   private stackSub: Subscription;
-  private picturesSub: Subscription;
   public habitsForm: FormGroup;
   public isPrefilled = false;
   private repetitionSub: Subscription;
@@ -107,7 +105,6 @@ export class HabitStacksListComponent implements OnInit, OnDestroy {
     this.repetition(habitIndex, repetitionIndex).patchValue({
       content: ''
     });
-    // this.repetition(habitIndex, repetitionIndex).markAsUntouched();
     this.submitRepetition(habitIndex, repetitionIndex);
   }
 
@@ -129,19 +126,10 @@ export class HabitStacksListComponent implements OnInit, OnDestroy {
       hs => {
         this.habitStacks = hs;
         this.prefillForm(hs);
-        // this.habitStackService.setHabitStacksFeedbuzz(this.habitStacks);
         this.initEditContent();
       }
     );
   }
-
-  // private getHabitStackPictures(): void {
-  //   this.picturesSub = this.habitStackService.habitStacksFeedbuzz$.subscribe(
-  //     hs => {
-  //       this.habitStacksPictures = hs;
-  //     }
-  //   );
-  // }
 
   private initForm(): void {
     this.habitsForm = this.fb.group({

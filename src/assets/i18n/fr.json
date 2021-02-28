@@ -1,0 +1,80 @@
+{
+	"actions": {
+		"BACK": "RETOUR",
+		"Delete": "Supprimer",
+		"Edit": "Éditer",
+		"LIKE": "AIMER",
+		"SEND": "ENVOYER",
+		"SHARE": "PARTAGER",
+		"UPDATE": "METTRE À JOUR"
+	},
+	"core": {
+		"components": {
+			"navbar": {
+				"feedbuzzButton": "Actualités",
+				"loginButton": "SE CONNECTER"
+			}
+		}
+	},
+	"protected": {
+		"profile": {
+			"profile-pictures-carousel-dialog": {
+				"profile-picture": "Photo de profil actuelle",
+				"set-profile-picture": "Définir comme photo de profil"
+			},
+			"upload-dialog": {
+				"error": {
+					"max-content-size": "La taille totale ne doit pas exéceder",
+					"required": "Ajoutez une photo"
+				},
+				"title": "Mettre à jour mes photos"
+			}
+		}
+	},
+	"public": {
+		"home": {
+			"SignUp": "COMMENCER MA PROGRESSION",
+			"list": {
+				"goals": "Définis tes objectifs.",
+				"progress": "Partage tes progrès.",
+				"tribe": "Rejoins ta tribu."
+			}
+		},
+		"login": {
+			"error": {
+				"email": {
+					"invalid": "Email invalide",
+					"required": "Veuillez entrer votre email"
+				},
+				"password": {
+					"required": "Veuillez entrer votre mot de passe"
+				}
+			},
+			"logIn": "SE CONNECTER",
+			"password": "Mot de passe"
+		}
+	},
+	"shared": {
+		"components": {
+			"publication-carousel": {
+				"menu": {
+					"headlinePicture": "Photo principale",
+					"setHeadlinePicture": "Définir comme photo principale"
+				}
+			},
+			"publication-picture-upload-dialog": {
+				"error": {
+					"maxContentSize": "La taille totale ne doit pas exéceder",
+					"required": "Ajoutez une photo"
+				},
+				"title": "Mettre à jour mes photos"
+			},
+			"sidenav": {
+				"settings": {
+					"header": "MES PARAMÈTRES",
+					"languages": "Langues"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,125 @@
+$base-parallax-perspective: 8px;
+
+@function parallax-scale-factor($z-distance) {
+  @return ($base-parallax-perspective - $z-distance) / $base-parallax-perspective;
+}
+
+.parallax-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 4rem);
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  perspective: $base-parallax-perspective;
+  perspective-origin: 0%;
+  @media screen and (max-width: 840px) {
+    height: calc(100vh - 3rem);
+  }
+}
+
+.image {
+  position: absolute;
+  transform-origin: top left;
+  height: calc(1241/1612 * 100vw);
+  object-fit: contain;
+  @media screen and (max-width: 840px) {
+    height: calc(2800/1200 * 100vw);
+  }
+}
+
+.bg__image {
+  @extend .image;
+  transform: translateZ(0px) scale(1);
+  @media screen and (max-width: 840px) {
+    background-color: #e1e2e2ff;
+  }
+}
+.rocket__image {
+  @extend .image;
+  top: calc(1241*29/(100*1612) * 100vw);
+  left: 23vw;
+  transform: translateZ(2.5px) scale(parallax-scale-factor(5));
+  @media screen and (max-width: 840px) {
+    transform: translateZ(3px) scale(parallax-scale-factor(3));
+    left: 1vw;
+    top: calc((2800/1200 * 100vw) * 27/100);
+  }
+}
+.rocket__image-landscape {
+  @extend .image;
+  top: calc(1241*29/(100*1612) * 100vw);
+  left: 23vw;
+  transform: translateZ(2.5px) scale(parallax-scale-factor(5));
+  @media screen and (max-width: 840px) {
+    transform: translateZ(3px) scale(parallax-scale-factor(3));
+    left: 1vw;
+    top: calc((2800/1200 * 100vw) * 32/100);
+  }
+}
+
+.clouds__image {
+  @extend .image;
+  top: calc(1241*45/(100*1612) * 100vw);
+  transform: translateZ(3px) scale(parallax-scale-factor(3));
+  @media screen and (max-width: 840px) {
+    top: calc((2800/1200 * 100vw) * 29/100);
+  }
+}
+
+$start: 0;
+$end: 100;
+@for $i from $start through $end {
+  .clouds__image--#{$i} {
+    @extend .image;
+    top: calc(1241*45/(100*1612) * 100vw);
+    transform: translateZ(3px) scale(parallax-scale-factor(3));
+    @media screen and (max-width: 840px) {
+      top: calc((2800/1200 * 100vw) * #{$i}/100);
+    }
+  }
+}
+
+.stars__image {
+  @extend .image;
+  top: 125px;
+  transform: translateZ(1px) scale(parallax-scale-factor(1));
+}
+
+.content {
+  transform-origin: 0;
+  transform: translateZ(0px) scale(parallax-scale-factor(0));
+  @media screen and (max-width: 840px) {
+    position: relative;
+    top: calc((2800/1200 * 100vw) * 9/100);
+  }
+}
+
+.positioning {
+  position: absolute;
+  top: calc(1241/1612 * 100vw);
+  @media screen and (max-width: 840px) {
+    top: calc(2800/1200 * 100vw);
+  }
+}
+
+.positioning-height {
+  position: absolute;
+  top: calc(100% - 3rem);
+}
+
+.font-weight-450 {
+  font-weight: 450 !important;
+}
+
+.line-height-2 {
+  line-height: 2rem;
+}
+
+.btn-display-4 {
+  height: 4.5rem !important;
+}
+
+.btn-font-size-1 {
+  height: 3.5rem !important;
+}

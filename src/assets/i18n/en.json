@@ -1,0 +1,80 @@
+{
+	"actions": {
+		"BACK": "BACK",
+		"Delete": "Delete",
+		"Edit": "Edit",
+		"LIKE": "LIKE",
+		"SEND": "SEND",
+		"SHARE": "SHARE",
+		"UPDATE": "UPDATE"
+	},
+	"core": {
+		"components": {
+			"navbar": {
+				"feedbuzzButton": "Feedbuzz",
+				"loginButton": "LOG IN"
+			}
+		}
+	},
+	"protected": {
+		"profile": {
+			"profile-pictures-carousel-dialog": {
+				"profile-picture": "Current profile picture",
+				"set-profile-picture": "Set as profile picture"
+			},
+			"upload-dialog": {
+				"error": {
+					"max-content-size": "The total size must not exceed",
+					"required": "Add a picture"
+				},
+				"title": "Update my pictures"
+			}
+		}
+	},
+	"public": {
+		"home": {
+			"SignUp": "START MY PROGRESSION",
+			"list": {
+				"goals": "Define your goals.",
+				"progress": "Share your progress.",
+				"tribe": "Join your tribe."
+			}
+		},
+		"login": {
+			"error": {
+				"email": {
+					"invalid": "Invalid Email",
+					"required": "Please enter your email"
+				},
+				"password": {
+					"required": "Please enter your password"
+				}
+			},
+			"logIn": "LOG IN",
+			"password": "Password"
+		}
+	},
+	"shared": {
+		"components": {
+			"publication-carousel": {
+				"menu": {
+					"headlinePicture": "Main picture",
+					"setHeadlinePicture": "Set as main picture"
+				}
+			},
+			"publication-picture-upload-dialog": {
+				"error": {
+					"maxContentSize": "The total size must not exceed",
+					"required": "Add a picture"
+				},
+				"title": "Update my pictures"
+			},
+			"sidenav": {
+				"settings": {
+					"header": "MY SETTINGS",
+					"languages": "Languages"
+				}
+			}
+		}
+	}
+}

@@ -1,17 +1,20 @@
+import { Subscription } from 'rxjs';
+import { TranslationService } from './../../../core/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 import { PublicationPicturesUploadDialogComponent } from './../publication-pictures-upload-dialog/publication-pictures-upload-dialog.component';
 import { FileValidator } from 'ngx-material-file-input';
 import { PublicationPicturesService } from './../../../core/services/publication-pictures.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { Picture } from './../../models/picture';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-publication-pictures-upload',
   templateUrl: './publication-pictures-upload.component.html',
   styleUrls: ['./publication-pictures-upload.component.scss']
 })
-export class PublicationPicturesUploadComponent implements OnInit {
+export class PublicationPicturesUploadComponent implements OnInit, OnDestroy {
 
   //  For repetition only
   @Input() habitIndex: number;
@@ -23,17 +26,25 @@ export class PublicationPicturesUploadComponent implements OnInit {
   public picturesForm: FormGroup;
   readonly maxSize = 104857600; // 100 MB
   public imgURLs = [];
+  private langSub: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private publicationPicturesService: PublicationPicturesService,
     public dialog: MatDialog,
+    private translationService: TranslationService,
+    private translate: TranslateService
   ) { }
 
   get pictures(): AbstractControl { return this.picturesForm.get('pictures'); }
 
   ngOnInit(): void {
     this.initForm();
+    this.updateLang();
+  }
+
+  ngOnDestroy(): void {
+    this.langSub.unsubscribe();
   }
 
   public openDialog(): void {
@@ -62,6 +73,12 @@ export class PublicationPicturesUploadComponent implements OnInit {
       ]],
       headlineIndex: [null, []]
     });
+  }
+
+  private updateLang(): void {
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
   }
 
 }

@@ -1,3 +1,5 @@
+import { TranslationService } from './../../../core/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 import { environment } from './../../../../environments/environment';
 import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { Picture } from './../../models/picture';
@@ -16,6 +18,10 @@ import { Profile } from '../../models/profile';
 })
 export class SidenavComponent implements OnInit, OnDestroy {
 
+  public languages = [
+    { value: 'en', name: 'English' },
+    { value: 'fr', name: 'Français' },
+  ];
   public prefix = 'user';
   public profilePath = `${this.prefix}/profile`;
   public userSub: Subscription;
@@ -29,6 +35,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private profileService: ProfileService,
     private router: Router,
+    private translate: TranslateService,
+    private translationService: TranslationService,
   ) { }
 
   get profilePicture(): Picture | null {
@@ -51,5 +59,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   public navigate(page: string): void {
     this.router.navigate([page]);
+  }
+
+  public useLanguage(language: string): void {
+    this.translate.use(language);
+    this.translationService.setCurrentLang(language);
   }
 }

@@ -10,14 +10,14 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="setProfilePicture(img)" *ngIf="!isFirst">
           <mat-icon>photo_camera</mat-icon>
-          <span>Définir comme photo de profil</span>
+          <span>{{'protected.profile.profile-pictures-carousel-dialog.set-profile-picture' | translate}}</span>
         </button>
         <button mat-menu-item *ngIf="isFirst">
-          <span>Photo de profil actuelle</span>
+          <span>{{'protected.profile.profile-pictures-carousel-dialog.profile-picture' | translate}}</span>
         </button>
         <button mat-menu-item (click)="deleteProfilePicture(img, i)">
           <mat-icon>delete</mat-icon>
-          <span>Supprimer</span>
+          <span>{{'actions.Delete' | translate}}</span>
         </button>
       </mat-menu>
     </div>

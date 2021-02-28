@@ -1,6 +1,6 @@
 <mat-toolbar color="accent" *ngIf="!user">
   <button mat-raised-button color="primary" (click)="navigate(loginPath)" class="ml-auto">
-    SE CONNECTER
+    {{'core.components.navbar.loginButton' | translate}}
   </button>
 </mat-toolbar>
 
@@ -13,7 +13,7 @@
   </button>
   <button mat-icon-button (click)="navigate(feedbuzzPath)">
     <mat-icon class="ml-0 ml-md-3">fact_check</mat-icon><span
-      class="d-none d-md-inline ml-md-3 text-white">Feedbuzz</span>
+      class="d-none d-md-inline ml-md-3 text-white">{{'core.components.navbar.feedbuzzButton' | translate}}</span>
   </button>
   <button mat-icon-button (click)="logout()" class="ml-auto">
     <mat-icon>power_settings_new</mat-icon>

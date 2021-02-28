@@ -1,3 +1,6 @@
+import { Subscription } from 'rxjs';
+import { TranslationService } from './core/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +9,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tribe-front';
+
+  private langSub: Subscription;
+
+  constructor(
+    private translationService: TranslationService,
+    private translate: TranslateService) {
+  }
+
+  ngOnInit(): void {
+    this.updateLang();
+  }
+
+  ngOnDestroy(): void {
+    this.langSub.unsubscribe();
+  }
+
+  private updateLang(): void {
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
+  }
+
 }

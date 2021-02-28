@@ -12,11 +12,11 @@
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="editHabitStack(habitStack)">
               <mat-icon>edit</mat-icon>
-              <span>Éditer</span>
+              <span>{{'actions.Edit' | translate}}</span>
             </button>
             <button mat-menu-item (click)="deleteHabitStack(habitStack)">
               <mat-icon>delete</mat-icon>
-              <span>Supprimer</span>
+              <span>{{'actions.Delete' | translate}}</span>
             </button>
           </mat-menu>
         </mat-card-title>
@@ -37,11 +37,11 @@
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="setContentAsEditable(i, j)">
                 <mat-icon>edit</mat-icon>
-                <span>Éditer</span>
+                <span>{{'actions.Edit' | translate}}</span>
               </button>
               <button mat-menu-item (click)="deleteContent(i,j)">
                 <mat-icon>delete</mat-icon>
-                <span>Supprimer</span>
+                <span>{{'actions.Delete' | translate}}</span>
               </button>
             </mat-menu>
             <pre class="mx-3 mb-4 roboto without-tab font-size-6" [ngClass]="{'d-none': editContent[i][j]}"
@@ -103,7 +103,7 @@
                     'color-grey': !repetition(i,j).valid || repetition(i,j).untouched,
                     'd-none':  repetition(i,j).untouched
                   }">
-                  METTRE À JOUR
+                  {{'actions.UPDATE' | translate}}
                 </button>
               </div>
             </div>
@@ -171,8 +171,8 @@
             </mat-accordion>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
+            <button mat-button>{{'actions.LIKE' | translate}}</button>
+            <button mat-button>{{'actions.SHARE' | translate}}</button>
           </mat-card-actions>
         </mat-card>
       </mat-card-content>

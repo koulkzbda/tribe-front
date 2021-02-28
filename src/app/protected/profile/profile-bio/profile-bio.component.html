@@ -13,7 +13,7 @@
     <button type="submit" (click)="submit()" mat-raised-button
       [disabled]="(!profileForm.valid || profileForm.untouched) ? true : null"
       [ngClass]="{'mat-color-primary text-white': profileForm.valid && profileForm.touched, 'color-grey': !profileForm.valid || profileForm.untouched}">
-      METTRE À JOUR
+      {{'actions.UPDATE' | translate}}
     </button>
   </div>
 </form>

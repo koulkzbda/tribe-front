@@ -1,3 +1,5 @@
+import { TranslationService } from './../../../core/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ProfilePicturesService } from '../../../core/services/profile-pictures.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -33,21 +35,26 @@ export class ProfilePicturesCarouselDialogComponent implements OnInit, OnDestroy
     },
     loop: true
   };
+  private langSub: Subscription;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Pictures,
     private profilePicturesService: ProfilePicturesService,
-    public pictureDisplayingService: PictureDisplayingService
+    public pictureDisplayingService: PictureDisplayingService,
+    private translationService: TranslationService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
     this.initImgs();
+    this.updateLang();
   }
 
   ngOnDestroy(): void {
     if (this.pictureSub) {
       this.pictureSub.unsubscribe();
     }
+    this.langSub.unsubscribe();
   }
 
   public setProfilePicture(picture: Picture): void {
@@ -63,6 +70,12 @@ export class ProfilePicturesCarouselDialogComponent implements OnInit, OnDestroy
   private initImgs(): void {
     this.imgs.push(this.data.headlinePicture);
     this.imgs.push(...this.data.otherPictures);
+  }
+
+  private updateLang(): void {
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
   }
 
 }

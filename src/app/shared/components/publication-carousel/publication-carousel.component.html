@@ -14,14 +14,14 @@
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="setPincipalPicture(img)" *ngIf="!isFirst">
               <mat-icon>photo_camera</mat-icon>
-              <span>Définir comme photo principale</span>
+              <span>{{'shared.components.publication-carousel.menu.setHeadlinePicture' | translate}}</span>
             </button>
             <button mat-menu-item *ngIf="isFirst">
-              <span>Photo principale</span>
+              <span>{{'shared.components.publication-carousel.menu.headlinePicture' | translate}}</span>
             </button>
             <button mat-menu-item (click)="deletePicture(img, i)">
               <mat-icon>delete</mat-icon>
-              <span>Supprimer</span>
+              <span>{{'actions.Delete' | translate}}</span>
             </button>
           </mat-menu>
         </div>

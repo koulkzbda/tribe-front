@@ -1,0 +1,57 @@
+<div class="parallax-container" *ngIf="!isLargerScreen && cloudOffset">
+  <div class="wrapper">
+    <img class="bg__image" src="{{assetPath}}assets/img/rocket-bg-height/bg.png">
+    <img class="rocket__image"
+      [ngClass]="{'rocket__image': isPortraitOrientation, 'rocket__image-landscape': !isPortraitOrientation}"
+      src="{{assetPath}}assets/img/rocket-bg-height/rocket.png">
+    <img class="clouds__image--{{cloudOffset}}" src="{{assetPath}}assets/img/rocket-bg-height/clouds.png">
+    <div class="content ml-5">
+      <img src="{{assetPath}}assets/img/logo175.png" alt="Tribe" class="my-5">
+
+      <p class="montserrat font-weight-450 font-size-4 text-white">
+        {{'public.home.list.goals' | translate}}</p>
+      <p class="montserrat font-weight-450 font-size-4 text-white">
+        {{'public.home.list.tribe' | translate}}</p>
+      <p class="montserrat font-weight-450 font-size-4 text-white">
+        {{'public.home.list.progress' | translate}}</p>
+
+    </div>
+    <div class="w-100 d-flex justify-content-center">
+      <button mat-raised-button color="warn" class="text-white positioning"
+        [ngClass]="{'display-4 btn-display-4': isLargerScreen, 'font-size-4': !isLargerScreen && !isPortraitOrientation}">
+        {{'public.home.SignUp' | translate}}
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div class="parallax-container" *ngIf="isLargerScreen">
+  <div class="wrapper">
+    <img class="bg__image" src="{{assetPath}}assets/img/rocket-bg-wide/bg.png">
+    <img class="stars__image" src="{{assetPath}}assets/img/rocket-bg-wide/stars.png">
+    <img class="rocket__image" src="{{assetPath}}assets/img/rocket-bg-wide/rocket.png">
+    <img class="clouds__image" src="{{assetPath}}assets/img/rocket-bg-wide/clouds.png">
+    <div class="content ml-5">
+      <img src="{{assetPath}}assets/img/logo175.png" alt="Tribe" class="my-5">
+
+      <p class="montserrat font-weight-450"
+        [ngClass]="{'display-4': isLargerScreen, 'font-size-4': !isLargerScreen && !isPortraitOrientation}">
+        {{'public.home.list.goals' | translate}}</p>
+      <p class="montserrat font-weight-450"
+        [ngClass]="{'display-4': isLargerScreen, 'font-size-4': !isLargerScreen && !isPortraitOrientation}">
+        {{'public.home.list.tribe' | translate}}</p>
+      <p class="montserrat font-weight-450"
+        [ngClass]="{'display-4': isLargerScreen, 'font-size-4': !isLargerScreen && !isPortraitOrientation}">
+        {{'public.home.list.progress' | translate}}</p>
+
+    </div>
+    <div class="w-100 d-flex justify-content-center">
+      <button mat-raised-button color="warn" class="text-white positioning"
+        [ngClass]="{'display-4 btn-display-4': innerWidth >= 940, 'font-size-1 btn-font-size-1': isLargerScreen && innerWidth < 940, 'font-size-4': !isLargerScreen && !isPortraitOrientation}">
+        {{'public.home.SignUp' | translate}}
+      </button>
+    </div>
+
+  </div>
+</div>

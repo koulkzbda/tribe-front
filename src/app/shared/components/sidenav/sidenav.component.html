@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="mat-elevation-z0">
   <mat-card-header (click)="navigate(profilePath)" class="navigable">
     <div mat-card-avatar>
       <img *ngIf="profilePicture; else defaultPicture" class="rounded-circle" width="40px" height="40px"
@@ -10,3 +10,20 @@
     <mat-card-title>{{user?.firstName}} {{user?.lastName}}</mat-card-title>
   </mat-card-header>
 </mat-card>
+<mat-list>
+  <mat-divider></mat-divider>
+  <div mat-subheader>{{'shared.components.sidenav.settings.header' | translate}}</div>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <mat-icon mat-list-icon>language</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      {{'shared.components.sidenav.settings.languages' | translate}}
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button *ngFor="let language of languages" mat-menu-item (click)="useLanguage(language.value)">
+        {{ language.name }}
+      </button>
+    </mat-menu>
+  </mat-list-item>
+</mat-list>

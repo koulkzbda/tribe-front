@@ -4,12 +4,14 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PublicModule } from '../public/public.module';
 import { ProtectedModule } from '../protected/protected.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpLoaderFactory } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,12 +21,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CommonModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     NgbModule,
     MaterialModule,
     PublicModule,
     ProtectedModule
   ],
-  exports: [NavbarComponent,],
+  exports: [NavbarComponent, TranslateModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
