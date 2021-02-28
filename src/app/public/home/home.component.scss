@@ -13,9 +13,6 @@ $base-parallax-perspective: 8px;
   overflow-y: scroll;
   perspective: $base-parallax-perspective;
   perspective-origin: 0%;
-  @media screen and (max-width: 840px) {
-    height: calc(100vh - 3rem);
-  }
 }
 
 .image {
