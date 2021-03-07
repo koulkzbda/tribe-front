@@ -26,10 +26,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.screenSub = this.layoutService.onLargerScreen$
-      .subscribe(isLargerScreen => this.isLargerScreen = isLargerScreen);
-    this.orientationSub = this.layoutService.isPortraitOrientation$
-      .subscribe(isPortraitOrientation => this.isPortraitOrientation = isPortraitOrientation);
+    this.getLargerScreen();
+    this.getOrientationScreen();
     this.updateOffsets();
   }
 
@@ -63,6 +61,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     return Math.round(37 + (width - height) / 50);
+  }
+
+  private getLargerScreen(): void {
+    this.screenSub = this.layoutService.onLargerScreen$
+      .subscribe(isLargerScreen => this.isLargerScreen = isLargerScreen);
+  }
+
+  private getOrientationScreen(): void {
+    this.orientationSub = this.layoutService.isPortraitOrientation$
+      .subscribe(isPortraitOrientation => this.isPortraitOrientation = isPortraitOrientation);
   }
 
 }

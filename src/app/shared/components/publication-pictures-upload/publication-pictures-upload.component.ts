@@ -1,3 +1,4 @@
+import { LayoutService } from './../../../core/services/layout.service';
 import { Subscription } from 'rxjs';
 import { TranslationService } from './../../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -27,13 +28,16 @@ export class PublicationPicturesUploadComponent implements OnInit, OnDestroy {
   readonly maxSize = 104857600; // 100 MB
   public imgURLs = [];
   private langSub: Subscription;
+  public isLargerScreen: boolean;
+  private screenSub: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private publicationPicturesService: PublicationPicturesService,
     public dialog: MatDialog,
     private translationService: TranslationService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private layoutService: LayoutService
   ) { }
 
   get pictures(): AbstractControl { return this.picturesForm.get('pictures'); }
@@ -41,10 +45,12 @@ export class PublicationPicturesUploadComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initForm();
     this.updateLang();
+    this.getLargerScreen();
   }
 
   ngOnDestroy(): void {
     this.langSub.unsubscribe();
+    this.screenSub.unsubscribe();
   }
 
   public openDialog(): void {
@@ -58,8 +64,14 @@ export class PublicationPicturesUploadComponent implements OnInit, OnDestroy {
       habitIndex: this.habitIndex,
       repetitionIndex: this.repetitionIndex
     };
-    dialogConfig.minWidth = 600;
-    dialogConfig.width = '60wv';
+    if (this.isLargerScreen) {
+      dialogConfig.minWidth = 600;
+      dialogConfig.width = '60vw';
+    } else {
+      dialogConfig.maxWidth = '95vw';
+      dialogConfig.width = '95vw';
+    }
+
     const dialogRef = this.dialog.open(PublicationPicturesUploadDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => { });
@@ -76,9 +88,15 @@ export class PublicationPicturesUploadComponent implements OnInit, OnDestroy {
   }
 
   private updateLang(): void {
+    this.translate.setDefaultLang(this.translationService.defaultLang);
     this.langSub = this.translationService.currentLang$.subscribe(
       lang => this.translate.use(lang)
     )
+  }
+
+  private getLargerScreen(): void {
+    this.screenSub = this.layoutService.onLargerScreen$
+      .subscribe(isLargerScreen => this.isLargerScreen = isLargerScreen);
   }
 
 }

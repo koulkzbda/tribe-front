@@ -88,6 +88,7 @@ export class PublicationCarouselComponent implements OnInit, OnDestroy {
   }
 
   private updateLang(): void {
+    this.translate.setDefaultLang(this.translationService.defaultLang);
     this.langSub = this.translationService.currentLang$.subscribe(
       lang => this.translate.use(lang)
     )

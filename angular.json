@@ -61,6 +61,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "mobile": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.mobile.ts"
+                }
+              ]
             }
           }
         },
@@ -72,6 +80,9 @@
           "configurations": {
             "production": {
               "browserTarget": "tribe-front:build:production"
+            },
+            "mobile": {
+              "browserTarget": "tribe-front:build:mobile"
             }
           }
         },

@@ -17,6 +17,13 @@
 		}
 	},
 	"protected": {
+		"feedbuzz": {
+			"habit-stack-list": {
+				"condition-step": "Aucun indice défini",
+				"identities": "Aucune identité associée",
+				"reward": "Aucune récompense définie"
+			}
+		},
 		"profile": {
 			"profile-pictures-carousel-dialog": {
 				"profile-picture": "Photo de profil actuelle",

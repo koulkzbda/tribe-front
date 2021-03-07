@@ -9,16 +9,19 @@ export class TranslationService {
 
   private currentLang: BehaviorSubject<string> = new BehaviorSubject(null);
   public readonly currentLang$: Observable<string> = this.currentLang.asObservable();
+  public defaultLang = 'en';
 
   constructor(public translate: TranslateService) {
     const currentLanguage = this.translate.getBrowserLang();
-    // this.translate.setDefaultLang(currentLanguage);
-    // this.translate.use(currentLanguage);
     this.setCurrentLang(currentLanguage);
 
   }
 
   public setCurrentLang(lang: string): void {
     this.currentLang.next(lang);
+  }
+
+  public isEnglish(): boolean {
+    return this.currentLang.value == 'en';
   }
 }

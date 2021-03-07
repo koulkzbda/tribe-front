@@ -1,8 +1,8 @@
+import { TranslationService } from './../../../../core/services/translation.service';
 import { RepetitionService } from './../../../../core/services/repetition.service';
 import { repetitionValidator } from './../../../../shared/validators/repetition-validator';
 import { PictureDisplayingService } from './../../../../core/services/picture-displaying.service';
 import { StatusConverterService } from './../../../../core/services/status-converter.service';
-import { RepetitionStatus } from './../../../../shared/models/enums';
 import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { HabitStackFeedbuzz } from './../../../../shared/models/habit-stack-feedbuzz';
@@ -30,7 +30,8 @@ export class HabitStacksListComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private statusConverterService: StatusConverterService,
     public pictureDisplayingService: PictureDisplayingService,
-    private repetitionService: RepetitionService
+    private repetitionService: RepetitionService,
+    public translationService: TranslationService
   ) { }
 
   get habits(): FormArray { return this.habitsForm.get('habits') as FormArray; }

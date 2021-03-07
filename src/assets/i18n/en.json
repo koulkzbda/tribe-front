@@ -17,6 +17,13 @@
 		}
 	},
 	"protected": {
+		"feedbuzz": {
+			"habit-stack-list": {
+				"condition-step": "No cue defined",
+				"identities": "No associated identity",
+				"reward": "No reward defined"
+			}
+		},
 		"profile": {
 			"profile-pictures-carousel-dialog": {
 				"profile-picture": "Current profile picture",

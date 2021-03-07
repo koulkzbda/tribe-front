@@ -1,3 +1,4 @@
+import { LayoutService } from './../../../core/services/layout.service';
 import { Subscription } from 'rxjs';
 import { TranslationService } from './../../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -22,13 +23,16 @@ export class PicturesUploadComponent implements OnInit {
   readonly maxSize = 104857600; // 100 MB
   public imgURLs = [];
   private langSub: Subscription;
+  public isLargerScreen: boolean;
+  private screenSub: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private profilePicturesService: ProfilePicturesService,
     public dialog: MatDialog,
     private translationService: TranslationService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private layoutService: LayoutService
   ) { }
 
   get pictures(): AbstractControl { return this.picturesForm.get('pictures'); }
@@ -36,18 +40,25 @@ export class PicturesUploadComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.updateLang();
+    this.getLargerScreen();
   }
 
   ngOnDestroy(): void {
     this.langSub.unsubscribe();
+    this.screenSub.unsubscribe();
   }
 
   public openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     this.profilePicturesService.setPicturesForm(this.picturesForm);
     dialogConfig.data = { profileId: this.profileId, profilePicture: this.profilePicture };
-    dialogConfig.minWidth = 600;
-    dialogConfig.width = '60wv';
+    if (this.isLargerScreen) {
+      dialogConfig.minWidth = 600;
+      dialogConfig.width = '60vw';
+    } else {
+      dialogConfig.maxWidth = '95vw';
+      dialogConfig.width = '95vw';
+    }
     const dialogRef = this.dialog.open(UploadDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => { });
@@ -64,9 +75,15 @@ export class PicturesUploadComponent implements OnInit {
   }
 
   private updateLang(): void {
+    this.translate.setDefaultLang(this.translationService.defaultLang);
     this.langSub = this.translationService.currentLang$.subscribe(
       lang => this.translate.use(lang)
     )
+  }
+
+  private getLargerScreen(): void {
+    this.screenSub = this.layoutService.onLargerScreen$
+      .subscribe(isLargerScreen => this.isLargerScreen = isLargerScreen);
   }
 
 }

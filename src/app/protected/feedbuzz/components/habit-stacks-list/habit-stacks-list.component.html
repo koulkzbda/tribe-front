@@ -26,8 +26,19 @@
           class="mat-elevation-z0">
           <mat-card-header>
             <mat-card-title class="font-size-6">{{ progression.habitName }}</mat-card-title>
-            <mat-card-subtitle *ngIf="firstProgression">{{ habitStack.time }}</mat-card-subtitle>
-            <mat-card-subtitle>{{ progression.location.name }}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="firstProgression">
+              <mat-icon>schedule</mat-icon>
+              <span *ngIf="translationService.isEnglish()" class="align-with-icon-subtitle">
+                {{ habitStack.time | date: 'shortTime' }}
+              </span>
+              <span *ngIf="!translationService.isEnglish()" class="align-with-icon-subtitle">
+                {{ habitStack.time | date: 'HH:mm' }}
+              </span>
+              <span class="ml-2">
+                <mat-icon>place</mat-icon>
+                <span class="align-with-icon-subtitle">{{ progression.location.name }}</span>
+              </span>
+            </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content [formGroupName]="j">
             <button *ngIf="progression.repetition.content" mat-icon-button [matMenuTriggerFor]="menu"
@@ -50,12 +61,12 @@
             </pre>
             <div class="container mt-3" *ngIf="progression.repetition.metrics.length > 0">
               <div class="row">
-                <div class="col-4 col-md-2 d-flex align-items-center">
-                  <app-tri-state-checkbox formControlName="repetitionStatus" class="ml-5 ml-md-3 ml-lg-5">
+                <div class="col-4 col-md-2 mb-1 mb-sm-0 d-flex align-items-center">
+                  <app-tri-state-checkbox formControlName="repetitionStatus" class="ml-3 ml-sm-5 ml-md-3 ml-lg-5">
                   </app-tri-state-checkbox>
                 </div>
                 <div *ngFor="let metricValue of progression.repetition.metrics; let k = index"
-                  formArrayName="metricValues" class="col-6 col-md-5 col-lg-4 mr-3">
+                  formArrayName="metricValues" class="col-6 col-md-5 col-lg-4 mr-5 mr-sm-3">
                   <mat-form-field [formGroupName]="k" appearance="outline" class="suffixAlignment no-wrapper-padding">
                     <mat-label>{{ metricValue.metricName }}</mat-label>
                     <input matInput formControlName="value">
@@ -120,6 +131,16 @@
                 {{ progression.conditioningStep.location.name }}
               </mat-expansion-panel>
 
+              <mat-expansion-panel *ngIf="!progression.conditioningStep" class="mat-elevation-z0" disabled>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon class="mr-2">search</mat-icon>
+                    <span class="align-with-icon">{{'protected.feedbuzz.habit-stack-list.condition-step' |
+                      translate}}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+              </mat-expansion-panel>
+
               <mat-expansion-panel *ngIf="progression.identities && progression.identityCategories"
                 class="mat-elevation-z0">
                 <mat-expansion-panel-header>
@@ -137,6 +158,17 @@
                 </span>
               </mat-expansion-panel>
 
+              <mat-expansion-panel *ngIf="!progression.identities || !progression.identityCategories"
+                class="mat-elevation-z0" disabled>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon class="mr-2">local_fire_department</mat-icon>
+                    <span class="align-with-icon">{{'protected.feedbuzz.habit-stack-list.identities' | translate}}
+                    </span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+              </mat-expansion-panel>
+
               <mat-expansion-panel *ngIf="progression.reward" class="mat-elevation-z0">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
@@ -145,6 +177,15 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 {{ progression.reward.location.name }}
+              </mat-expansion-panel>
+
+              <mat-expansion-panel *ngIf="!progression.reward" class="mat-elevation-z0" disabled>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon class="mr-2">emoji_events</mat-icon>
+                    <span class="align-with-icon">{{'protected.feedbuzz.habit-stack-list.reward' | translate}}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
               </mat-expansion-panel>
 
               <mat-expansion-panel *ngIf="progression.habitContract" class="mat-elevation-z0">

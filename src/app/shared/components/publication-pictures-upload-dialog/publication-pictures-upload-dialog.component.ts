@@ -82,6 +82,7 @@ export class PublicationPicturesUploadDialogComponent implements OnInit, OnDestr
   }
 
   private updateLang(): void {
+    this.translate.setDefaultLang(this.translationService.defaultLang);
     this.langSub = this.translationService.currentLang$.subscribe(
       lang => this.translate.use(lang)
     )
