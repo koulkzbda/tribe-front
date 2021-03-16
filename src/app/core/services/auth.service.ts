@@ -26,8 +26,24 @@ export class AuthService {
     const data = new HttpParams().set('username', email).set('password', pass);
 
     return this.http.post<User | null>(url, data).pipe(
-      tap(user => this.user.next(user)),
+      tap(user => {
+        this.user.next(user);
+        this.saveAuthData(user.token);
+      }),
       tap(_ => this.profileService.getProfile().subscribe())
+    );
+  }
+
+  public autoLogin(): Observable<User | null> {
+    const url = `${environment.backend.baseURL}/auto-login`;
+
+    return this.http.get<User | null>(url).pipe(
+      tap(user => {
+        this.user.next(user);
+        this.saveAuthData(user.token);
+      }),
+      tap(_ => this.profileService.getProfile().subscribe()),
+      tap(_ => this.router.navigate(['/user']))
     );
   }
 
@@ -35,12 +51,23 @@ export class AuthService {
     const url = `${environment.backend.baseURL}/logout`;
 
     return this.http.post<User | null>(url, null).pipe(
-      tap(_ => this.user.next(null))
+      tap(_ => this.user.next(null)),
+      tap(_ => {
+        localStorage.removeItem('expirationDate');
+        localStorage.removeItem('token');
+      }),
     );
   }
 
   get currentUser(): User {
     return this.user.getValue();
+  }
+
+  private saveAuthData(token: string): void {
+    const now = new Date();
+    const expirationDate = (now.getTime() + 3600 * 1000).toString();
+    localStorage.setItem('expirationDate', expirationDate);
+    localStorage.setItem('token', token);
   }
 
 }

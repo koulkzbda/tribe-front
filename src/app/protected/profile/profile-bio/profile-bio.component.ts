@@ -27,7 +27,7 @@ export class ProfileBioComponent implements OnInit {
 
   public submit(): void {
     const profile = new Profile(this.profile.id, this.bio.value);
-    this.profileService.editBio(profile).subscribe(profile => { console.log(profile); this.editBio = false; });
+    this.profileService.editBio(profile).subscribe(_ => this.editBio = false);
   }
 
   private initForm(): void {

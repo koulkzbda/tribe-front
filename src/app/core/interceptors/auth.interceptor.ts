@@ -11,12 +11,15 @@ import { Observable } from 'rxjs';
 export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (!this.isPublicRequest(request.url) && !this.withoutHeaders(request.url)) {
-      request = this.addContentType(request);
+    if (!this.isPublicRequest(request.url)) {
+      request = this.addToken(request, localStorage.getItem('token'));
+      if (!this.withoutHeaders(request.url)) {
+        request = this.addContentType(request);
+      }
     } else if (this.isAuthRequest(request.url)) {
       request = this.addContentTypeForAuth(request);
+      request = this.addCredentials(request);
     }
-    request = this.addCredentials(request);
 
     return next.handle(request);
   }
@@ -43,8 +46,16 @@ export class AuthInterceptor implements HttpInterceptor {
     });
   }
 
+  private addToken(request: HttpRequest<any>, token: string): HttpRequest<any> {
+    return request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
   private isPublicRequest(url: string): boolean {
-    return (url.includes('forgot-passowrd') || url.includes('login') || url.includes('logout') || url.includes('password-reset'));
+    return ((url.includes('forgot-passowrd') || url.includes('login') || url.includes('logout') || url.includes('password-reset')) && !url.includes('auto-login'));
   }
 
   private withoutHeaders(url: string): boolean {
