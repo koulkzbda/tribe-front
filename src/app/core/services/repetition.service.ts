@@ -38,7 +38,6 @@ export class RepetitionService {
       repetition.metrics[index].value = repetitionUpdate.metricValues[index].value;
     }
 
-    console.log(repetition)
     return repetition;
   }
 }

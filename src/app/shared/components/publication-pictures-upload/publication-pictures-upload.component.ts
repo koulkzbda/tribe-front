@@ -56,7 +56,6 @@ export class PublicationPicturesUploadComponent implements OnInit, OnDestroy {
   public openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     this.publicationPicturesService.setPicturesForm(this.picturesForm);
-    console.log(this.habitIndex, this.repetitionIndex)
     dialogConfig.data = {
       publicationId: this.publicationId,
       headlinePicture: this.headlinePicture,

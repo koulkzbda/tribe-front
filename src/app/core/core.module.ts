@@ -12,10 +12,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpLoaderFactory } from '../shared/shared.module';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     CommonModule,

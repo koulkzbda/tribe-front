@@ -13,6 +13,10 @@
 			"navbar": {
 				"feedbuzzButton": "Actualités",
 				"loginButton": "SE CONNECTER"
+			},
+			"page-not-found": {
+				"pageNotFound": "Page non trouvée",
+				"previousPage": "Page précédente"
 			}
 		}
 	},

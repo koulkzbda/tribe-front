@@ -13,6 +13,10 @@
 			"navbar": {
 				"feedbuzzButton": "Feedbuzz",
 				"loginButton": "LOG IN"
+			},
+			"page-not-found": {
+				"pageNotFound": "Page not found",
+				"previousPage": "Previous page"
 			}
 		}
 	},
