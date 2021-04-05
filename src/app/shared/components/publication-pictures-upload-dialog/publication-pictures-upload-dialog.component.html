@@ -5,7 +5,7 @@
       (click)="button.focus(); fileInput.open();">
       <button mat-icon-button #button (click)="fileInput.open()">
         <mat-icon class="icon-display-sm">add_photo_alternate</mat-icon>
-        <ngx-mat-file-input #fileInput (change)="updateImgURL($event.value.files)" formControlName="pictures"
+        <ngx-mat-file-input #fileInput (change)="updateImgURL($event?.target?.files)" formControlName="pictures"
           [accept]="'image/*'" class="d-none" multiple></ngx-mat-file-input>
       </button>
     </div>

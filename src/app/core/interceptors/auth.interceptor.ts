@@ -1,3 +1,4 @@
+import { TranslationService } from './../services/translation.service';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -10,9 +11,12 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  constructor(private translationService: TranslationService) { }
+
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (!this.isPublicRequest(request.url)) {
       request = this.addToken(request, localStorage.getItem('token'));
+      request = this.addAccept(request);
       if (!this.withoutHeaders(request.url)) {
         request = this.addContentType(request);
       }
@@ -20,6 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
       request = this.addContentTypeForAuth(request);
       request = this.addCredentials(request);
     }
+    request = this.addAcceptLanguage(request);
 
     return next.handle(request);
   }
@@ -43,6 +48,22 @@ export class AuthInterceptor implements HttpInterceptor {
   private addCredentials(request: HttpRequest<any>): HttpRequest<any> {
     return request.clone({
       withCredentials: true
+    });
+  }
+
+  private addAccept(request: HttpRequest<any>): HttpRequest<any> {
+    return request.clone({
+      setHeaders: {
+        Accept: 'application/tribe-back-v1+json'
+      }
+    });
+  }
+
+  private addAcceptLanguage(request: HttpRequest<any>): HttpRequest<any> {
+    return request.clone({
+      setHeaders: {
+        'Accept-Language': `${this.translationService.getCurrentLang()}`
+      }
     });
   }
 

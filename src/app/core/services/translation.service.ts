@@ -24,4 +24,8 @@ export class TranslationService {
   public isEnglish(): boolean {
     return this.currentLang.value == 'en';
   }
+
+  public getCurrentLang(): string {
+    return this.currentLang.value;
+  }
 }
