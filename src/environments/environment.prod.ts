@@ -3,5 +3,8 @@ export const environment = {
   backend: {
     baseURL: 'https://tribe-back.herokuapp.com'
   },
-  assetsPath: ''
+  assetsPath: '',
+  frontend: {
+    baseURL: 'https://koulkzbda.github.io/tribe-front'
+  },
 };

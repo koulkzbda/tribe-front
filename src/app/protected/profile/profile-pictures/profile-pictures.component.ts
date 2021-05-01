@@ -15,6 +15,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 })
 export class ProfilePicturesComponent implements OnInit, OnDestroy {
 
+  @Input() currentUserId: string;
   @Input() profile: Profile;
   public isLargerScreen: boolean;
   public screenSub: Subscription;
@@ -50,7 +51,7 @@ export class ProfilePicturesComponent implements OnInit, OnDestroy {
     dialogConfig.width = this.isLargerScreen ? '55vw' : '100vw';
     dialogConfig.height = '80vh';
     dialogConfig.maxHeight = '115vw';
-    dialogConfig.data = new Pictures(this.profilePicture, this.otherPictures);
+    dialogConfig.data = new Pictures(this.profilePicture, this.otherPictures, this.currentUserId == this.profile.userId);
     const dialogRef = this.dialog.open(ProfilePicturesCarouselDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => { });

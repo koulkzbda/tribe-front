@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LayoutService } from './../../core/services/layout.service';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public innerHeight: number;
 
   constructor(
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.orientationSub.unsubscribe();
     this.widthSub.unsubscribe();
     this.heightSub.unsubscribe();
+  }
+
+  public goToRegister(): void {
+    this.router.navigate(['register']);
   }
 
   private updateOffsets(): void {

@@ -29,6 +29,9 @@
 			}
 		},
 		"profile": {
+			"profile-bio": {
+				"noBio": "Bonjour !\nJ'me présente, je m'appelle {{firstName}}.\nJ'voudrais bien réussir ma vie...\nD'ailleurs c'est l'endroit où je la raconte un peu.\nAlors c'est parti pour rédiger la petite bio de mon profil. :)"
+			},
 			"profile-pictures-carousel-dialog": {
 				"profile-picture": "Photo de profil actuelle",
 				"set-profile-picture": "Définir comme photo de profil"
@@ -43,6 +46,16 @@
 		}
 	},
 	"public": {
+		"emailConfirmation": {
+			"confirmationMessage": "Votre compte a été activé avec succès",
+			"conformationEmailHasBeenSent": "Un email de confirmation vous a été envoyé à l'adresse {{email}}.\n\nVeuillez ouvrir le lien dans l'email pour activer votre compte.",
+			"yourAccountHasBeenCreated": "Votre compte a été créé"
+		},
+		"forgot-password": {
+			"SENDEMAIL": "ENVOYER L'EMAIL",
+			"resetPassword": "Réinitialiser le mot de passe",
+			"success": "Un email a été envoyé à {{email}}. Merci de cliquer sur le lien de l'email pour réinitialiser le mot de passe."
+		},
 		"home": {
 			"SignUp": "COMMENCER MA PROGRESSION",
 			"list": {
@@ -62,7 +75,26 @@
 				}
 			},
 			"logIn": "SE CONNECTER",
-			"password": "Mot de passe"
+			"password": "Mot de passe",
+			"passwordForgotten": "Mot de passe oublié"
+		},
+		"register": {
+			"CreateAccount": "Créer un compte",
+			"SIGNUP": "S'INSCRIRE",
+			"firstName": "Prénom",
+			"firstName2chars": "Votre beau petit prénom doit contenir au moins deux lettres",
+			"firstNamePattern": "Un prénom ne contient que des lettres et des tirets",
+			"firstNameRequired": "Le prénom est requis, je suis sûr que vous en avez un",
+			"lastName": "Nom",
+			"lastName2chars": "Votre beau petit nom de famille doit contenir au moins deux lettres",
+			"lastNamePattern": "Un nom ne contient que des lettres et des tirets",
+			"lastNameRequired": "Le nom est requis",
+			"passwordConfirm": "Confirmez le mot de passe",
+			"passwordMinLength": "Le mot de passe doit contenir au moins {{minPw}} caractères",
+			"passwordsNoMatch": "Les mots de passe ne correspondent pas"
+		},
+		"reset-password": {
+			"success": "Votre mot de passe a été mis à jour avec succès"
 		}
 	},
 	"shared": {

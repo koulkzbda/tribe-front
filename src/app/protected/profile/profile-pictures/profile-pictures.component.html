@@ -6,7 +6,7 @@
       src="{{ assetPath }}assets/img/Unknown-person.png">
   </ng-template>
 
-  <div class="float-icon">
+  <div class="float-icon" *ngIf="currentUserId == profile?.userId">
     <app-pictures-upload [profileId]="profile?.id" [profilePicture]="profilePicture"></app-pictures-upload>
   </div>
 </div>

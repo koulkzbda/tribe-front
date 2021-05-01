@@ -1,6 +1,12 @@
 <p class="mt-3 text-center p-3 rounded w-75 biography mx-auto" *ngIf="!editBio">
-  {{profile?.bio}}
-  <button mat-icon-button (click)="editBio = true" class="float-right align-with-text">
+  <ng-container *ngIf="profile?.bio">{{profile?.bio}}</ng-container>
+
+  <ng-container *ngIf="!profile?.bio && currentUserId == profile?.userId">{{'protected.profile.profile-bio.noBio' |
+    translate: {firstName: user?.firstName} }}</ng-container>
+
+
+  <button *ngIf="currentUserId == profile?.userId" mat-icon-button (click)="editBio = true"
+    class="float-right align-with-text">
     <mat-icon>edit</mat-icon>
   </button>
 </p>

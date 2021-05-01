@@ -27,13 +27,13 @@ export class PictureDisplayingService {
     return new PictureUrlInfo(imgURLs, imgNames);
   }
 
-  public pictureListToPictures(pictures: Picture[]): Pictures {
+  public pictureListToPictures(pictures: Picture[], isEditable?: boolean): Pictures {
     const headlinePicture = this.getHeadlinePicture(pictures);
 
     const otherPicturess = pictures.some(picture => picture.isHeadlinePicture) ?
       pictures.filter(picture => !picture.isHeadlinePicture) : pictures.slice(1);
 
-    return new Pictures(headlinePicture, otherPicturess);
+    return new Pictures(headlinePicture, otherPicturess, isEditable);
   }
 
   public getHeadlinePicture(pictures: Picture[]): Picture {

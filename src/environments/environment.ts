@@ -7,7 +7,10 @@ export const environment = {
   backend: {
     baseURL: 'http://localhost:8080'
   },
-  assetsPath: '../../../../'
+  assetsPath: '../../../../',
+  frontend: {
+    baseURL: 'http://localhost:4200'
+  },
 };
 
 /*

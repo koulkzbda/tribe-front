@@ -6,5 +6,6 @@ export class HabitStackFeedbuzz {
     public habitStackName: string,
     public time: Date,
     public progressions: Progression[],
+    public readonly userId: string
   ) { }
 }

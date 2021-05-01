@@ -76,7 +76,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private isPublicRequest(url: string): boolean {
-    return ((url.includes('forgot-passowrd') || url.includes('login') || url.includes('logout') || url.includes('password-reset')) && !url.includes('auto-login'));
+    return ((url.includes('forgot-password') || url.includes('login') || url.includes('logout') || url.includes('reset-password') || url.includes('register') || url.includes('confirmation')) && !url.includes('auto-login'));
   }
 
   private withoutHeaders(url: string): boolean {

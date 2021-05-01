@@ -1,3 +1,5 @@
+import { FormGroup } from '@angular/forms';
+import { UserCreation } from './../../shared/models/user-creation';
 import { ProfileService } from './profile.service';
 import { User } from './../../shared/models/user';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -14,6 +16,9 @@ export class AuthService {
 
   private user: BehaviorSubject<User | null> = new BehaviorSubject(null);
   public readonly user$: Observable<User | null> = this.user.asObservable();
+
+  private userEmail: BehaviorSubject<string | null> = new BehaviorSubject(null);
+  public readonly userEmail$: Observable<string | null> = this.userEmail.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -57,6 +62,37 @@ export class AuthService {
         localStorage.removeItem('token');
       }),
     );
+  }
+
+  public register(user: UserCreation): Observable<UserCreation | null> {
+    const url = `${environment.backend.baseURL}/register`;
+    user.emailConfirmationUrlTemplate = `${environment.frontend.baseURL}/email-confirmation`;
+
+    return this.http.post<UserCreation | null>(url, user);
+  }
+
+  public confirmEmail(token: string, id: string): Observable<User | null> {
+    const url = `${environment.backend.baseURL}/confirmation?id=${id}&token=${token}`;
+
+    return this.http.get<User | null>(url);
+  }
+
+  public setUserEmail(email: string): void {
+    this.userEmail.next(email);
+  }
+
+  public sendResetPaswordEmail(emailUser: string): Observable<User> {
+    const resetPasswordUrl = `${environment.frontend.baseURL}/reset-password`;
+    const url = `${environment.backend.baseURL}/forgot-password?email=${emailUser}&resetPasswordUrl=${resetPasswordUrl}`;
+
+    return this.http.get<User>(url);
+  }
+
+  public resetPassword(passwordForm: FormGroup): Observable<User> {
+    const params = `?id=${passwordForm.value.id}&token=${passwordForm.value.token}&password=${passwordForm.value.password1}`;
+    const url = `${environment.backend.baseURL}/reset-password${params}`;
+
+    return this.http.get<User>(url);
   }
 
   get currentUser(): User {

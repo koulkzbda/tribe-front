@@ -26,6 +26,7 @@ export class Picture {
 export class Pictures {
   constructor(
     public headlinePicture?: Picture,
-    public otherPictures?: Picture[]
+    public otherPictures?: Picture[],
+    public isEditable?: boolean
   ) { }
 }

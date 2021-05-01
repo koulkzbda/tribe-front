@@ -1,4 +1,5 @@
 <mat-toolbar color="accent" *ngIf="!user">
+  <img src="{{assetPath}}assets/img/logo175.png" class="logo p-2" alt="Tribe" (click)="navigate(homePath)">
   <button mat-raised-button color="primary" (click)="navigate(loginPath)" class="ml-auto">
     {{'core.components.navbar.loginButton' | translate}}
   </button>

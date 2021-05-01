@@ -79,7 +79,8 @@
                 </div>
               </div>
             </div>
-            <div class="mb-3" *ngIf="progression.repetition.metrics.length == 0" [ngClass]="{'mt-5': !editContent[i][j] && progression.repetition.content,
+            <div class="mb-3" *ngIf="progression.repetition.metrics.length == 0 && habitStack.userId == user?.id"
+              [ngClass]="{'mt-5': !editContent[i][j] && progression.repetition.content,
             'mt-3': editContent[i][j] || !progression.repetition.content}">
               <app-tri-state-checkbox formControlName="repetitionStatus" class="ml-5">
               </app-tri-state-checkbox>
@@ -87,21 +88,21 @@
 
             <div class="my-3" *ngIf="repetitionPictures(i,j) as pictures">
               <app-publication-carousel *ngIf="pictures.length > 0"
-                [pictures]="pictureDisplayingService.pictureListToPictures(pictures)"
+                [pictures]="pictureDisplayingService.pictureListToPictures(pictures, habitStack.userId == user?.id)"
                 [publicationId]="progression.repetition.id" [isRepetitionType]="true" [habitIndex]="i"
                 [repetitionIndex]="j">
               </app-publication-carousel>
             </div>
 
             <div class="my-3 d-flex justify-content-center align-items-center"
-              *ngIf="repetitionPictures(i,j) as pictures">
+              *ngIf="habitStack.userId == user?.id && repetitionPictures(i,j) as pictures">
               <app-publication-pictures-upload [publicationId]="progression.repetition.id"
                 [headlinePicture]="pictureDisplayingService.getHeadlinePicture(pictures)" [isRepetitionType]="true"
                 [habitIndex]="i" [repetitionIndex]="j">
               </app-publication-pictures-upload>
             </div>
 
-            <div class="mb-3 text-center rounded w-100 mx-auto">
+            <div *ngIf="habitStack.userId == user?.id" class="mb-3 text-center rounded w-100 mx-auto">
               <mat-form-field floatLabel="Commentaire" class="w-100 mx-auto" appearance="outline"
                 [ngClass]="{'d-none': !repetitionStatus(i,j) || (progression.repetition.content && !editContent[i][j])}">
                 <mat-label>Commentaire</mat-label>

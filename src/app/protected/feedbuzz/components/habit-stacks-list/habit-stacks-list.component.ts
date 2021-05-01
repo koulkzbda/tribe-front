@@ -1,3 +1,5 @@
+import { AuthService } from './../../../../core/services/auth.service';
+import { User } from './../../../../shared/models/user';
 import { TranslationService } from './../../../../core/services/translation.service';
 import { RepetitionService } from './../../../../core/services/repetition.service';
 import { repetitionValidator } from './../../../../shared/validators/repetition-validator';
@@ -17,6 +19,7 @@ import { Picture } from 'src/app/shared/models/picture';
 })
 export class HabitStacksListComponent implements OnInit, OnDestroy {
 
+  public user: User;
   public editContentPrefilled = false;
   public editContent: boolean[][] = [];
   public habitStacks: HabitStackFeedbuzz[];
@@ -26,6 +29,7 @@ export class HabitStacksListComponent implements OnInit, OnDestroy {
   private repetitionSub: Subscription;
 
   constructor(
+    private authService: AuthService,
     private habitStackService: HabitStackService,
     private fb: FormBuilder,
     private statusConverterService: StatusConverterService,
@@ -52,10 +56,6 @@ export class HabitStacksListComponent implements OnInit, OnDestroy {
     return this.repetition(habitIndex, repetitionIndex)?.get('repetitionStatus').value;
   }
 
-  // public repetitionContent(habitIndex: number, repetitionIndex: number): FormControl {
-  //   return this.repetition(habitIndex, repetitionIndex)?.get('content') as FormControl;
-  // }
-
   public metricValues(habitIndex: number, repetitionIndex: number): FormArray {
     return this.repetitions(habitIndex)?.at(repetitionIndex).get('metricValues') as FormArray
   }
@@ -65,6 +65,7 @@ export class HabitStacksListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.user = this.authService.currentUser;
     this.initForm();
     this.getHabitStackFeedbuzz();
   }

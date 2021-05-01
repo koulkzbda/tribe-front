@@ -29,6 +29,9 @@
 			}
 		},
 		"profile": {
+			"profile-bio": {
+				"noBio": "Hello !\nMy name is {{firstName}}, and I ...oh well.\nThat's a promise, I'm gonna write down my bio here. :)"
+			},
 			"profile-pictures-carousel-dialog": {
 				"profile-picture": "Current profile picture",
 				"set-profile-picture": "Set as profile picture"
@@ -43,6 +46,16 @@
 		}
 	},
 	"public": {
+		"emailConfirmation": {
+			"confirmationMessage": "Your account has been successfully activated",
+			"conformationEmailHasBeenSent": "A confirmation email has been sent to you at {{email}}.\n\nPlease open the link in the email to activate your account.",
+			"yourAccountHasBeenCreated": "Your account has been created"
+		},
+		"forgot-password": {
+			"SENDEMAIL": "SEND EMAIL",
+			"resetPassword": "Reset password",
+			"success": "An email has been sent at {{email}}. Please click on the link to reset your password."
+		},
 		"home": {
 			"SignUp": "START MY PROGRESSION",
 			"list": {
@@ -62,7 +75,26 @@
 				}
 			},
 			"logIn": "LOG IN",
-			"password": "Password"
+			"password": "Password",
+			"passwordForgotten": "Password forgotten"
+		},
+		"register": {
+			"CreateAccount": "Create an account",
+			"SIGNUP": "SIGN UP",
+			"firstName": "First name",
+			"firstName2chars": "You first name contains at least two letters, lol",
+			"firstNamePattern": "A first name only contains letters and dashes",
+			"firstNameRequired": "The first name is required, I'm pretty sure you have one",
+			"lastName": "Last name",
+			"lastName2chars": "You last name contains at least two letters, lol",
+			"lastNamePattern": "A last name only contains letters and dashes",
+			"lastNameRequired": "Last name is required",
+			"passwordConfirm": "Confirm password",
+			"passwordMinLength": "Password must have at least {{minPw}} characters",
+			"passwordsNoMatch": "Passwords don't match"
+		},
+		"reset-password": {
+			"success": "Your password has been successfully updated"
 		}
 	},
 	"shared": {

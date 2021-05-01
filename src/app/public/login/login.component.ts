@@ -13,9 +13,10 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  langSub: Subscription;
-  loginForm: FormGroup;
-  hidePass = true;
+  private langSub: Subscription;
+  private userEmailSub: Subscription;
+  public loginForm: FormGroup;
+  public hidePass = true;
 
   constructor(
     private fb: FormBuilder,
@@ -36,19 +37,29 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.langSub.unsubscribe();
+    this.userEmailSub.unsubscribe();
+  }
+
+  public goToForgetPassword(): void {
+    this.router.navigate(['/forgot-password']);
   }
 
   private initForm(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [
-        Validators.required,
-        Validators.email
-      ]],
-      password: ['', [
-        Validators.required,
-        // Validators.minLength(6),
-      ]]
-    });
+    this.userEmailSub = this.authService.userEmail$.subscribe(
+      userEmail => {
+        this.loginForm = this.fb.group({
+          email: [userEmail, [
+            Validators.required,
+            Validators.email
+          ]],
+          password: ['', [
+            Validators.required,
+          ]]
+        });
+      }
+    )
+
+
   }
 
   private updateLang(): void {

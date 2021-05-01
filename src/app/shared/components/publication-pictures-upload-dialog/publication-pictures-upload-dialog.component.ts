@@ -61,7 +61,6 @@ export class PublicationPicturesUploadDialogComponent implements OnInit, OnDestr
   }
 
   public updateImgURL(pictures: File[]): void {
-    console.log(pictures)
     const pictureUrlInfo = this.pictureDisplayingService.detectFiles(pictures);
     this.imgNames = pictureUrlInfo.imgNames;
     this.imgURLs = pictureUrlInfo.imgURLs;

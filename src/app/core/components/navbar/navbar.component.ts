@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from './../../../shared/models/user';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public loginPath = 'login';
   public registerPath = 'register';
   public rootPath = 'user';
+  public assetPath = environment.assetsPath;
   public feedbuzzPath = `${this.rootPath}/feedbuzz`;
   public user: User;
   private userSub: Subscription;

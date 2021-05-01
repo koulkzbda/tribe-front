@@ -7,7 +7,7 @@
           *ngFor="let img of imgs; let isFirst = first; let i = index">
           <img class="img-fluid ml-2 mt-2 img-centered"
             src="{{ pictureDisplayingService.srcPrefix }}{{ img.imageFile }}">
-          <button mat-icon-button [matMenuTriggerFor]="menu" class="pp-button">
+          <button *ngIf="pictures?.isEditable" mat-icon-button [matMenuTriggerFor]="menu" class="pp-button">
             <mat-icon class="text-primary">more_vert</mat-icon>
           </button>
 
