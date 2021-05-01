@@ -17,7 +17,7 @@
 
     </div>
     <div class="w-100 d-flex justify-content-center">
-      <button mat-raised-button color="warn" class="text-white positioning"
+      <button (click)="goToRegister()" mat-raised-button color="warn" class="text-white positioning"
         [ngClass]="{'display-4 btn-display-4': isLargerScreen, 'font-size-4': !isLargerScreen && !isPortraitOrientation}">
         {{'public.home.SignUp' | translate}}
       </button>
