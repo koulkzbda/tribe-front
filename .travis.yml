@@ -4,6 +4,8 @@ node_js:
 before_script:
   - npm install
 script: npm run prod
+before_deploy:
+  - cp dist/tribe-front/index.html dist/tribe-front/404.html
 deploy:
   local-dir: dist/tribe-front
   provider: pages
