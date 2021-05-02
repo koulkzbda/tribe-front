@@ -47,8 +47,8 @@
 	},
 	"public": {
 		"emailConfirmation": {
+			"confirmationEmailHasBeenSent": "Un email de confirmation vous a été envoyé à l'adresse {{email}}.\n\nVeuillez ouvrir le lien dans l'email pour activer votre compte.",
 			"confirmationMessage": "Votre compte a été activé avec succès",
-			"conformationEmailHasBeenSent": "Un email de confirmation vous a été envoyé à l'adresse {{email}}.\n\nVeuillez ouvrir le lien dans l'email pour activer votre compte.",
 			"yourAccountHasBeenCreated": "Votre compte a été créé"
 		},
 		"forgot-password": {

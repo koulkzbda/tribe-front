@@ -1,3 +1,4 @@
+import { TextParserService } from './../../core/services/text-parser.service';
 import { TranslationService } from './../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription, BehaviorSubject } from 'rxjs';
@@ -13,6 +14,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class EmailConfirmationComponent implements OnInit, OnDestroy {
 
+  public messageHTML: string[];
   public userEmail: string;
   public token: string;
   public userId: string;
@@ -21,6 +23,7 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
   private confirmationSub: Subscription;
   private langSub: Subscription;
   private messageTranslationSub: Subscription;
+  private messageHTMLSub: Subscription;
   private userEmailSub: Subscription;
 
   constructor(
@@ -28,19 +31,21 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
     private snackBar: MatSnackBar,
+    public textParserService: TextParserService,
     private translationService: TranslationService,
     private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    this.getUserEmail();
     this.isSubmitReady$ = new BehaviorSubject<boolean>(false);
     this.updateLang();
+    this.getUserEmail();
     this.readRouteParameters();
     this.autoSubmit();
   }
 
   ngOnDestroy(): void {
+    if (this.messageHTMLSub) this.messageHTMLSub.unsubscribe();
     if (this.confirmationSub) this.confirmationSub.unsubscribe();
     if (this.messageTranslationSub) this.messageTranslationSub.unsubscribe();
     if (this.isReadySub) this.isReadySub.unsubscribe();
@@ -88,8 +93,17 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
 
   private getUserEmail(): void {
     this.userEmailSub = this.authService.userEmail$.subscribe(
-      userEmail => this.userEmail = userEmail
+      userEmail => {
+        this.userEmail = userEmail;
+        this.getMessageHTML();
+      }
     );
+  }
+
+  private getMessageHTML(): void {
+    this.messageHTMLSub = this.translate.get('public.emailConfirmation.confirmationEmailHasBeenSent', { email: this.userEmail }).subscribe(
+      message => this.messageHTML = this.textParserService.separateParagraphs(message)
+    )
   }
 
   private updateLang(): void {

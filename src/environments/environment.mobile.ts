@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   backend: {
-    baseURL: 'http://192.168.1.3:8080'
+    baseURL: 'http://192.168.1.16:8080'
   },
   assetsPath: '../../../../',
   frontend: {

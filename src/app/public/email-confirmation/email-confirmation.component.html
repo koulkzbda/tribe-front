@@ -1,5 +1,4 @@
-<ng-container *ngIf="(!token || !userId) && userEmail">
+<ng-container *ngIf="(!token || !userId) && userEmail && messageHTML">
   <h2 class="text-center my-5">{{'public.emailConfirmation.yourAccountHasBeenCreated' | translate}}</h2>
-  <pre
-    class="ml-5 roboto font-size-14">{{'public.emailConfirmation.conformationEmailHasBeenSent' | translate:{'email':userEmail} }}</pre>
+  <p class="ml-5" *ngFor="let para of messageHTML">{{ para }}</p>
 </ng-container>
