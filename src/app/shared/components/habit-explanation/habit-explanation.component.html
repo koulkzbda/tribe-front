@@ -1,0 +1,246 @@
+<p [ngClass]="{'font-size-6': fontSizeBigger}">Habit is a 4 step process: Cue > Craving > Response > Reward.</p>
+<p [ngClass]="{'font-size-6': fontSizeBigger}">You can apply the <strong>Laws of Behavior Change</strong> for each step
+  to build a very strong habit.</p>
+<div class="w-100 my-3 d-flex justify-content-center" *ngIf="lang">
+  <table mat-table [dataSource]="content[lang]" class="w-425 border">
+    <ng-container matColumnDef="{{header.friendlyName}}" *ngFor="let header of headers[lang]">
+      <th mat-header-cell *matHeaderCellDef
+        class="text-center text-white font-weight-normal font-size-6 no-padding-table">
+        {{header.friendlyName}} </th>
+      <ng-container>
+        <td mat-cell *matCellDef="let text" class="text-center border no-padding-table">
+          {{ text[header.attribute] }}
+        </td>
+      </ng-container>
+
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="headersName" class="mat-color-primary"></tr>
+    <tr mat-row *matRowDef="let text; columns: headersName" class="element-row">
+    </tr>
+  </table>
+</div>
+<p class="mb-3" [ngClass]="{'font-size-6': fontSizeBigger}">The <strong>Laws of Behavior Change</strong> framework
+  provides step
+  level strategies that you can implement here.
+</p>
+<div class="step-container-{{sidenavOpen ? 1490 : 1200}}">
+  <div #cueCard class="step-item-{{sidenavOpen ? 1490 : 1200}}" id="cueCard-{{sidenavOpen ? 1490 : 1200}}">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar>search</mat-icon>
+        <mat-card-title>Cue</mat-card-title>
+        <mat-card-subtitle>Bit of information that predicts a reward</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center font-size-6">Make it obvious</p>
+        <mat-accordion multi>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">schedule</mat-icon>
+                <span class="align-with-icon">Time</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>The two most common cues are a time and location.</p>
+            <p>You can use the <strong>Implementation Intention</strong> strategy to pair a habit with a given time and
+              place.</p>
+            <p>A habit is like an appointment with yourself at a given time.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">location_on</mat-icon>
+                <span class="align-with-icon">Location</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>And at a given place. You may skip a habit, but you wouldn't miss an appointment.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">layers</mat-icon>
+                <span class="align-with-icon">Habit stack</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>A very strong cue is another habit you already perform.</p>
+            <p>You can use the <strong>Habit Stacking</strong> strategy to pair a new habit with a current habit.</p>
+            <p>A <strong>Habit Stack</strong> is a set of ordered habits that you perform one after another.</p>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #cravingCard id="cravingCard-{{sidenavOpen ? 1490 : 1200}}">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar>local_fire_department</mat-icon>
+        <mat-card-title>Craving</mat-card-title>
+        <mat-card-subtitle>Motivational force behind a habit, desire to act</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center font-size-6">Make it attractive</p>
+        <mat-accordion multi>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">local_fire_department</mat-icon>
+                <span class="align-with-icon">Temptation Building</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>To make a habit attractive you can use the <strong>Temptation Building</strong> strategy.</p>
+            <p>You pair a habit to want to achieve with a reward.</p>
+            <p>The anticipation of the reward will prompt you to action.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">psychology</mat-icon>
+                <span class="align-with-icon">Conditioning Step</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>You can also use a <strong>Conditioning Step</strong>, it's a motivational ritual, just before
+              a difficult habit.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">groups</mat-icon>
+                <span class="align-with-icon">Tribe</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>The culture you live in determines which behaviors are attractive to you.</p>
+            <p>You can share your <strong>System</strong> of habits with a tribe of people like you, who praise and
+              approve the same behavior you want to stick with.</p>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #rewardCard id="rewardCard-{{sidenavOpen ? 1490 : 1200}}">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar>emoji_events</mat-icon>
+        <mat-card-title>Reward</mat-card-title>
+        <mat-card-subtitle>End goal of every habit</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center font-size-6">Make it satisfying</p>
+        <mat-accordion multi>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">emoji_events</mat-icon>
+                <span class="align-with-icon">Reward</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Making a habit satisfying increases the odd that it will be repeated.</p>
+            <p>To make a habit satisfying you can pair it with an immediate reward.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">how_to_reg</mat-icon>
+                <span class="align-with-icon">Identities</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>To make a habit satisfying you can also pair it with a long-term reward.</p>
+            <p>Identity change is the real long-term reward for a repeated habit when your habit process focuses on who
+              you wish to become.</p>
+            <p>You can map a habit with a set of <strong>Identities</strong>. Everytime you perform this habit, it's a
+              vote in favour this type of person you want to become.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">trending_up</mat-icon>
+                <span class="align-with-icon">Progress</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>The other long-term reward is your progess.</p>
+            <p>You can track your progress by :</p>
+            <mat-list role="list">
+              <mat-list-item class="bg-white-smoke-hover" role="listitem">
+                <mat-icon mat-list-icon class="mr-2">how_to_reg</mat-icon>Mapping your habit with identities
+              </mat-list-item>
+              <mat-list-item class="bg-white-smoke-hover" role="listitem">
+                <mat-icon mat-list-icon class="mr-2">straighten</mat-icon>Defining optional metrics to measure your
+                progress
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #responseCard id="responseCard-{{sidenavOpen ? 1490 : 1200}}">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar>done</mat-icon>
+        <mat-card-title>Response</mat-card-title>
+        <mat-card-subtitle>Actual habit you perform</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="text-center font-size-6">Make it easy</p>
+        <mat-accordion multi>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">speed</mat-icon>
+                <span class="align-with-icon">Gateway Habit</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>To make a habit easy you have to reduce friction between you and your good habits.</p>
+            <p>To reduce willpower friction you can use the <strong>Two-Minute Rule</strong> tactic defining a
+              <strong>Gateway Habit</strong>.
+            </p>
+            <p>A Gateway Habit is the easiest action to do that makes sure your habit will be performed. This action
+              should take less than two minutes.</p>
+            <p>Ex : "Put running shoes" -> "Run 10 km"</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
+            (afterExpand)="setArrowPositions()">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="font-size-6">
+                <mat-icon class="mr-2">next_week</mat-icon>
+                <span class="align-with-icon">Preparation Habit</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>To reduce friction you can prepare your environment to make future actions easier.</p>
+            <p>A <strong>Preparation Habit</strong> is something you do just after finishing your habit to prepare your
+              next iteration.</p>
+            <p>You can even define the preparation habit as an independant habit if you don't do it right after.</p>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

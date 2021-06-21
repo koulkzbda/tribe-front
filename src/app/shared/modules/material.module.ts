@@ -20,8 +20,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
 
 import { NgModule } from '@angular/core';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   imports: [
@@ -47,6 +53,11 @@ import { NgModule } from '@angular/core';
     MaterialFileInputModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatStepperModule,
+    DragDropModule,
+    NgxMaterialTimepickerModule,
+    MatSlideToggleModule,
+    MatTableModule,
   ],
   exports: [
     MatButtonModule,
@@ -71,6 +82,17 @@ import { NgModule } from '@angular/core';
     MaterialFileInputModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatStepperModule,
+    DragDropModule,
+    NgxMaterialTimepickerModule,
+    MatSlideToggleModule,
+    MatTableModule,
+  ],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false }
+    }
   ]
 })
 

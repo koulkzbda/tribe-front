@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { User } from './../../models/user';
 import { AuthService } from './../../../core/services/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Profile } from '../../models/profile';
+import { MemberProfile } from '../../models/profile';
 
 @Component({
   selector: 'app-sidenav',
@@ -26,7 +26,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   public profilePath = `${this.prefix}/profile`;
   public userSub: Subscription;
   public user: User;
-  public profile: Profile;
+  public profile: MemberProfile;
   public profileSub: Subscription;
   public assetPath = environment.assetsPath;
 

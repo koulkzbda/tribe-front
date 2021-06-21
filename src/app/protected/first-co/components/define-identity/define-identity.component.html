@@ -1,0 +1,44 @@
+<h2 class="font-size-4">Decide the type of person you want to be</h2>
+<p>The more efficient way to stick to your habits on the long run and reach your goals is acutally not :</p>
+<mat-list role="list">
+  <mat-list-item class="bg-white-smoke-hover" role="listitem">1. Set your goal</mat-list-item>
+  <mat-list-item class="bg-white-smoke-hover" role="listitem">2. Define habits accordingly</mat-list-item>
+  <mat-list-item class="bg-white-smoke-hover" role="listitem">3. Change thanks to these habits</mat-list-item>
+  <mat-list-item class="bg-white-smoke-hover" role="listitem">4. Reach your goals</mat-list-item>
+</mat-list>
+<p class="mt-2">But rather :</p>
+<mat-accordion>
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        1. Decide the type of person you want to be
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list role="list">
+      <mat-list-item class="bg-white-smoke-hover" role="listitem">a. You believe</mat-list-item>
+      <mat-list-item class="bg-white-smoke-hover" role="listitem">b. You think</mat-list-item>
+      <mat-list-item class="bg-white-smoke-hover" role="listitem">c. You behave</mat-list-item>
+    </mat-list>
+    <p class="mt-2">Differently because you are this person by now.</p>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-list role="list">
+  <mat-list-item class="bg-white-smoke-hover" role="listitem">2. Define habits your habits accordingly</mat-list-item>
+  <mat-list-item class="bg-white-smoke-hover" role="listitem">3. Prove yourself you're this person everytime you
+    implement
+    a habit</mat-list-item>
+  <mat-list-item class="bg-white-smoke-hover" role="listitem">4. Observe long term results</mat-list-item>
+</mat-list>
+<p class="mt-2">So let's define the type of person you have decided to be.</p>
+<p class="mt-2">Basically a type of person or an <strong>Identity</strong> is a set of <strong>Categories</strong> to
+  which you can assign <strong>Importance</strong>.</p>
+<p class="mt-2">Let's say, you want to run a marathon, that's to say want want to be a marathonian. You can define an
+  <strong>Indentity</strong> called "Marathonian" and assign the <strong>Category</strong> "Athletic" with an
+  <strong>Importance</strong> of 100% and the <strong>Category</strong> "Relax" with an <strong>Importance</strong> of
+  30% because let's say that after running you feel more relaxed.
+</p>
+<p class="mt-2">The idea is to associate a <strong>Habit</strong> with a list of <strong>Identities</strong>.</p>
+<p class="mt-2">Everytime you achieve this <strong>Habit</strong> it's a vote for these <strong>Identities</strong> you
+  want to become.</p>
+<app-identity-list (isFormValid)="onIsFormValid($event)" (isFormSubmitted)="onIsFormSubmitted($event)">
+</app-identity-list>

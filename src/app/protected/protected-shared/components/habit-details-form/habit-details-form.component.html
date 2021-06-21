@@ -1,0 +1,18 @@
+<form [formGroup]="progression" *ngIf="progression">
+  <mat-accordion multi>
+
+    <app-step-from [step]="conditioningStep" [possibleSteps]="steps" [iconName]="'psychology'"
+      [label]="'Conditioning Step'" [hint]="conditioningStepHint"></app-step-from>
+
+    <app-identities-panel-form *ngIf="identities" [progression]="progression" [identitiesControl]="identities"
+      [identitiesPossible]="identitiesPossible" [iconName]="'how_to_reg'" [label]="'Identities'"
+      [hint]="identitiesHint"></app-identities-panel-form>
+
+    <app-step-from [step]="reward" [possibleSteps]="steps" [iconName]="'emoji_events'" [label]="'Reward'">
+    </app-step-from>
+
+    <app-step-from [step]="preparationHabit" [possibleSteps]="steps" [iconName]="'next_week'"
+      [label]="'Preparation Habit'" [hint]="preparationHabitHint"></app-step-from>
+
+  </mat-accordion>
+</form>

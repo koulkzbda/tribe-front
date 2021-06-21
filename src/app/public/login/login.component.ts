@@ -1,3 +1,4 @@
+import { LocationService } from './../../core/services/location.service';
 import { Subscription } from 'rxjs';
 import { TranslationService } from './../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
     private translationService: TranslationService,
-    private translate: TranslateService
+    private translate: TranslateService,
   ) {
   }
 
@@ -73,7 +74,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authService
       .login(this.email.value, this.password.value)
       .subscribe(
-        _ => this.router.navigate(['/user']),
+        // _ => this.router.navigate(['/user']),
+        _ => this.router.navigate(['/user/welcome']),
         _ => this.loginForm.reset()
       );
   }

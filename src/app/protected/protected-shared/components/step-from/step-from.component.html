@@ -1,0 +1,27 @@
+<form [formGroup]="step" *ngIf="step" class="min-w-298">
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header [collapsedHeight]="'8rem'" [expandedHeight]="'8rem'"
+      [ngClass]="{'align-expansion-indicator-without-hint': !hint, 'align-expansion-indicator-with-hint': !!hint}">
+      <mat-panel-title>
+        <mat-icon *ngIf="iconName" class="mr-2 align-icon">{{ iconName }}</mat-icon>
+        <mat-form-field appearance="outline" [floatLabel]="'auto'" class="w-100 ml-0 ml-sm-3"
+          [ngClass]="{'two-lines-hint': !!hint}" (click)="$event.stopPropagation()">
+          <mat-label *ngIf="label">{{ label }}</mat-label>
+          <input type="text" matInput formControlName="description" [matAutocomplete]="stepSuggestion"
+            (input)="onDescriptionInput()">
+          <mat-autocomplete #stepSuggestion="matAutocomplete">
+            <mat-option *ngFor="let step of filteredSteps | async" [value]="step.description"
+              (onSelectionChange)="updateStep(step)">
+              {{step.description}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+          <mat-error *ngIf="step?.invalid">{{ label }} is required
+          </mat-error>
+        </mat-form-field>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-location-form *ngIf="stepLocation" [locationForm]="stepLocation" (locationChanged)="onDescriptionInput()">
+    </app-location-form>
+  </mat-expansion-panel>
+</form>

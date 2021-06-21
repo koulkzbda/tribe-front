@@ -11,6 +11,11 @@ export const environment = {
   frontend: {
     baseURL: 'http://localhost:4200'
   },
+  hereDevelopper: {
+    key: 'sTxhYvXY1PlLocTkFo2xfVSB_wPE3dm8XW7GEgPE0tI',
+    suggestionAPIURL: 'https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json',
+    locationDetailsAPIURL: 'https://geocoder.ls.hereapi.com/6.2/geocode.json'
+  },
 };
 
 /*

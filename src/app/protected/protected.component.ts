@@ -27,4 +27,8 @@ export class ProtectedComponent implements OnInit, OnDestroy {
     this.openedSub.unsubscribe();
   }
 
+  public onOpenChanged(): void {
+    this.layoutService.setUpdateArrowsPosition();
+  }
+
 }

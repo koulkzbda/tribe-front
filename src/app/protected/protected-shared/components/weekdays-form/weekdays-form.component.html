@@ -1,0 +1,38 @@
+<form [formGroup]="habitForm" *ngIf="habitForm">
+  <div class="d-flex-754" formArrayName="weekdays">
+    <div *ngFor="let weekday of weekdays.controls; let i = index;">
+      <div class="d-flex flex-wrap responsive-flex-direction mr-3 align-items-start" [formGroupName]="i">
+
+        <mat-slide-toggle formControlName="isActive" (change)="updateValid(i)"><span *ngIf="day(i)"
+            [ngClass]="{'slicer-error': time(i).invalid && time(i).touched }">{{ day(i) }}</span></mat-slide-toggle>
+
+        <div class="d-flex">
+          <input #timeInput [format]="formatTimePicker" formControlName="time" [ngxTimepicker]="toggleTimepicker"
+            class="d-none" (input)="updateValid(i)" (click)="touchTime(i)">
+          <ngx-material-timepicker-toggle (mousedown)="isActive(i)?.value ? touchTime(i) : null" class="material-toggle"
+            [for]="toggleTimepicker" [disabled]="!isActive(i)?.value"
+            [ngClass]="{'disabled-icon': !isActive(i)?.value, 'time-error': time(i).invalid && time(i).touched}">
+          </ngx-material-timepicker-toggle>
+          <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+
+          <p *ngIf="time(i)" class="mr-3 align-time" (click)="isActive(i)?.value ? timeInput.click() : null"
+            [ngClass]="{'text-muted time-disabled': !isActive(i)?.value, 'time-enabled': isActive(i)?.value }">
+            <ng-container *ngIf="time(i)?.value?.length > 8; else alreadyFormatted">
+              <ng-container *ngIf="translationService.isEnglish()">
+                {{ time(i)?.value | date: 'shortTime'}}
+              </ng-container>
+              <ng-container *ngIf="!translationService.isEnglish()">
+                {{ time(i)?.value | date: 'HH:mm'}}
+              </ng-container>
+
+            </ng-container>
+            <ng-template #alreadyFormatted>
+              {{ time(i)?.value }}
+            </ng-template>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,27 @@
+.align-with-mat-form-field {
+  position: relative;
+  bottom: -4px;
+}
+
+.w-button {
+  width: calc(50% - 65px);
+  min-width: 90px;
+}
+
+.align-with-unit {
+  position: relative;
+  bottom: 6px;
+  right: -8px;
+}
+
+.w-half {
+  width: calc(calc(100% - 3rem)/2);
+  min-width: 90px;
+}
+
+.w-responsive {
+  width: 100%;
+  @media screen and (min-width: 992px) {
+    width: calc(calc(100% - 3rem)/2);
+  }
+}

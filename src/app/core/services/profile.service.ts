@@ -1,6 +1,6 @@
 import { tap } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
-import { Profile } from './../../shared/models/profile';
+import { MemberProfile } from './../../shared/models/profile';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,32 +10,32 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
 
-  private profile: BehaviorSubject<Profile | null> = new BehaviorSubject(null);
-  public readonly profile$: Observable<Profile | null> = this.profile.asObservable();
+  private profile: BehaviorSubject<MemberProfile | null> = new BehaviorSubject(null);
+  public readonly profile$: Observable<MemberProfile | null> = this.profile.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  public getProfile(): Observable<Profile> {
+  public getProfile(): Observable<MemberProfile> {
     const url = `${environment.backend.baseURL}/profile`;
 
-    return this.http.get<Profile>(url).pipe(tap(profile => this.setProfile(profile)));
+    return this.http.get<MemberProfile>(url).pipe(tap(profile => this.setProfile(profile)));
   }
 
-  public setProfile(profile: Profile): void {
+  public setProfile(profile: MemberProfile): void {
     this.profile.next(profile);
   }
 
-  public editBio(profile: Profile): Observable<Profile> {
+  public editBio(profile: MemberProfile): Observable<MemberProfile> {
     const url = `${environment.backend.baseURL}/profile/bio`;
 
-    return this.http.post<Profile>(url, profile).pipe(tap(profile => {
+    return this.http.post<MemberProfile>(url, profile).pipe(tap(profile => {
       const currentProfile = this.currentProfile;
       currentProfile.bio = profile.bio;
       this.setProfile(currentProfile);
     }));
   }
 
-  get currentProfile(): Profile {
+  get currentProfile(): MemberProfile {
     return this.profile.getValue();
   }
 }

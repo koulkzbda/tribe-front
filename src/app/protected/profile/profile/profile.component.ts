@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './../../../core/services/auth.service';
 import { User } from './../../../shared/models/user';
 import { Observable, Subscription } from 'rxjs';
-import { Profile } from './../../../shared/models/profile';
+import { MemberProfile } from './../../../shared/models/profile';
 import { ProfileService } from './../../../core/services/profile.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -14,7 +14,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
 
-  public profile$: Observable<Profile>;
+  public profile$: Observable<MemberProfile>;
   public user: User;
   private langSub: Subscription;
 

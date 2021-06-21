@@ -32,7 +32,9 @@
               "src/styles/main.scss",
               "./node_modules/swiper/swiper-bundle.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/leader-line/leader-line.min.js"
+            ]
           },
           "configurations": {
             "production": {

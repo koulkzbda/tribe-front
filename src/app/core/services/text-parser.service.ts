@@ -8,7 +8,6 @@ export class TextParserService {
   constructor() { }
 
   public separateParagraphs(text: string): string[] {
-    console.log(text)
     return text.split('\n');
   }
 }

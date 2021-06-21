@@ -1,0 +1,12 @@
+p, app-habit-explanation p {
+  font-size: 16px !important;
+}
+
+.accordion-centered {
+  @media screen and (max-width: 576px) {
+    display: inline-block;
+    min-width: 330px;
+    position: relative;
+    right: 20px;
+  }
+}

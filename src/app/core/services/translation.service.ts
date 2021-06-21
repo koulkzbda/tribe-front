@@ -1,3 +1,4 @@
+import { IdentityCategory } from './../../shared/models/identity';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
@@ -27,5 +28,9 @@ export class TranslationService {
 
   public getCurrentLang(): string {
     return this.currentLang.value;
+  }
+
+  public translateIdentityCategory(cat: IdentityCategory): string {
+    return cat[this.getCurrentLang()];
   }
 }

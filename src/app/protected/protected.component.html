@@ -1,5 +1,5 @@
 <mat-sidenav-container class="min-h-100">
-  <mat-sidenav [mode]="(isLargerScreen$ | async) ? 'side' : 'over'" [(opened)]="opened"
+  <mat-sidenav (openedChange)="onOpenChanged()" [mode]="(isLargerScreen$ | async) ? 'side' : 'over'" [(opened)]="opened"
     [ngClass]="{'w-25': (isLargerScreen$ | async)}">
     <app-sidenav></app-sidenav>
   </mat-sidenav>

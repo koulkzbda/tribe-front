@@ -1,3 +1,4 @@
+import { IdentityListComponent } from './components/identity/identity-list/identity-list.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MaterialModule } from './modules/material.module';
 import { NgModule } from '@angular/core';
@@ -13,19 +14,32 @@ import { PublicationCarouselComponent } from './components/publication-carousel/
 import { PublicationPicturesUploadComponent } from './components/publication-pictures-upload/publication-pictures-upload.component';
 import { PublicationPicturesUploadDialogComponent } from './components/publication-pictures-upload-dialog/publication-pictures-upload-dialog.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { CreateSystemComponent } from './components/create-system/create-system.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HabitExplanationComponent } from './components/habit-explanation/habit-explanation.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [SidenavComponent, TriStateCheckboxComponent, PublicationCarouselComponent, PublicationPicturesUploadComponent, PublicationPicturesUploadDialogComponent],
+  declarations: [
+    SidenavComponent,
+    TriStateCheckboxComponent,
+    PublicationCarouselComponent,
+    PublicationPicturesUploadComponent,
+    PublicationPicturesUploadDialogComponent,
+    IdentityListComponent,
+    CreateSystemComponent,
+    HabitExplanationComponent,
+  ],
   imports: [
     CommonModule,
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    FlexLayoutModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -45,11 +59,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     MaterialModule,
     SidenavComponent,
     NgxUsefulSwiperModule,
+    FlexLayoutModule,
     TriStateCheckboxComponent,
     PublicationCarouselComponent,
     PublicationPicturesUploadComponent,
     PublicationPicturesUploadDialogComponent,
-    TranslateModule
+    TranslateModule,
+    IdentityListComponent,
+    CreateSystemComponent,
+    HabitExplanationComponent,
   ]
 })
 export class SharedModule { }

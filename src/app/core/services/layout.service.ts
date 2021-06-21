@@ -17,6 +17,10 @@ export class LayoutService {
   public readonly innerWidth$: Observable<number> = this.innerWidth.asObservable();
   private innerHeight: BehaviorSubject<number> = new BehaviorSubject(null);
   public readonly innerHeight$: Observable<number> = this.innerHeight.asObservable();
+  private updateArrowsPosition: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  public readonly updateArrowsPosition$: Observable<boolean> = this.updateArrowsPosition.asObservable();
+  private hideArrows: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  public readonly hideArrows$: Observable<boolean> = this.hideArrows.asObservable();
 
   constructor() {
     this.innerHeight.next(window.innerHeight);
@@ -34,6 +38,9 @@ export class LayoutService {
   public toggleSidenav(): void {
     this.sidenavOpened.next(!this.sidenavOpened.value);
   }
+  public closeSidenav(): void {
+    this.sidenavOpened.next(false);
+  }
 
   private isScreenLarger(): boolean {
     return window.innerWidth >= this.widthBreakpoint;
@@ -42,5 +49,15 @@ export class LayoutService {
   private isPortraitMode(): boolean {
     return window.innerWidth < window.innerHeight;
   }
+
+  public setUpdateArrowsPosition(): void {
+    this.updateArrowsPosition.next(this.sidenavOpened.value);
+  }
+
+  public setHideArrows(hide: boolean): void {
+    this.hideArrows.next(hide);
+  }
+
+  get isCurrentlyLargerScreen(): boolean { return this.onLargerScreen.value; }
 
 }

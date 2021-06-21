@@ -1,5 +1,5 @@
 import { Picture } from './picture';
-import { Metric, MetricFeedbuzz } from './metric';
+import { MetricValue, MetricFeedbuzz } from './metric';
 
 export class Repetition {
   constructor(
@@ -10,7 +10,7 @@ export class Repetition {
     public publicationPictures: Picture[],
     public repetitionStatus: string,
     public repetitionStatusId: string,
-    public metrics: Metric[],
+    public metrics: MetricValue[],
   ) { }
 }
 

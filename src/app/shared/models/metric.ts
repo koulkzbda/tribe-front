@@ -1,4 +1,4 @@
-export class Metric {
+export class MetricValue {
   constructor(
     public readonly id: string,
     public readonly metricId: string,
@@ -15,5 +15,14 @@ export class MetricFeedbuzz {
     public metricName: string,
     public metricUnit: string,
     public value: number,
+  ) { }
+}
+
+export class Metric {
+  constructor(
+    public metricName: string,
+    public metricUnit: string,
+    public isPrincipal: boolean,
+    public readonly id?: string,
   ) { }
 }

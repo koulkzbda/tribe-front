@@ -1,9 +1,12 @@
+import { HabitStackCreation } from './../../shared/models/habit-stack';
+import { Progression } from './../../shared/models/progression';
 import { environment } from './../../../environments/environment';
-import { HabitStackFeedbuzz } from './../../shared/models/habit-stack-feedbuzz';
+import { HabitStackFeedbuzz } from '../../shared/models/habit-stack';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Picture } from 'src/app/shared/models/picture';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,20 @@ export class HabitStackService {
   public getHabitStackFeedbuzz(): Observable<HabitStackFeedbuzz[]> {
     const url = `${environment.backend.baseURL}/habit-stack-feedbuzz`
 
-    return this.http.get<HabitStackFeedbuzz[]>(url);
+    return this.http.get<HabitStackFeedbuzz[]>(url).pipe(
+      map(hss => hss.map(hs => {
+        hs.progressions.sort((a, b) => a.executionOrder - b.executionOrder);
+
+        return hs;
+      }))
+    );
+  }
+
+  public createHabit(hs: HabitStackCreation): Observable<HabitStackCreation> {
+    const url = `${environment.backend.baseURL}/members/habit-stacks/habits`
+    console.log(hs)
+
+    return this.http.post<HabitStackCreation>(url, hs);
   }
 
   public setHabitStacksFeedbuzz(hs?: HabitStackFeedbuzz[]): void {
@@ -37,6 +53,41 @@ export class HabitStackService {
     const currentHSF = this.getCurrentHabitStacksFeedbuzz();
     currentHSF[habitIndex].progressions[repetitionIndex].repetition.publicationPictures = pictures;
     this.setHabitStacksFeedbuzz(currentHSF);
+  }
+
+  public getReorderedProgressions(progressions: Progression[]): Progression[] {
+    progressions.forEach((progression, index) => progression.executionOrder = index);
+    return progressions;
+  }
+
+  public removeEmptyFields(progression: Progression): Progression {
+    progression.metrics = progression.metrics.filter(m => !!m.metricName);
+    if (!progression?.conditioningStep?.description) {
+      progression.conditioningStep = null;
+    } else {
+      if (!progression?.conditioningStep?.location?.name) {
+        progression.conditioningStep.location = null;
+      }
+    }
+
+    if (!progression?.preparationHabit?.description) {
+      progression.preparationHabit = null;
+    } else {
+      if (!progression?.preparationHabit?.location?.name) {
+        progression.preparationHabit.location = null;
+      }
+    }
+
+    if (!progression?.reward?.description) {
+      progression.reward = null;
+    } else {
+      if (!progression?.reward?.location?.name) {
+        progression.reward.location = null;
+      }
+    }
+    progression.progressionId = null;
+
+    return progression;
   }
 
   public getCurrentHabitStacksFeedbuzz(): HabitStackFeedbuzz[] {

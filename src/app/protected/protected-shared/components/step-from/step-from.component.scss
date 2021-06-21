@@ -1,0 +1,42 @@
+.align-icon {
+  position: relative;
+  top: 1rem;
+}
+
+.two-lines-hint {
+  height: 8rem;
+  @media screen and (min-width: 576px) {
+    height: 7rem;
+  }
+  @media screen and (min-width: 768px) {
+    height: 6rem;
+  }
+
+
+}
+
+::ng-deep.align-expansion-indicator-with-hint > ::ng-deep.mat-expansion-indicator {
+  position: relative;
+  top: -2rem;
+  @media screen and (min-width: 576px) {
+    top: -1.5rem;
+  }
+  @media screen and (min-width: 768px) {
+    top: -1rem;
+  }
+
+}
+
+::ng-deep.align-expansion-indicator-without-hint > ::ng-deep.mat-expansion-indicator {
+  position: relative;
+  top: -1rem;
+}
+
+.min-w-298 {
+  min-width: 298px;
+  @media screen and (max-width: 408px) {
+    position: relative;
+    left: calc(calc(100% - 298px)/2);
+  }
+}
+

@@ -1,0 +1,37 @@
+$mat-warn: #f55a73;
+
+.align-with-p {
+  position: relative;
+  top: -0.75rem;
+}
+
+.category-width {
+  width: calc(100% - 128px - 24px - 20px);
+  @media screen and (min-width: 576px) {
+    width: calc(100% - 128px - 24px - 40px);
+  }
+}
+
+::ng-deep .slider-error .mat-slider-track-background  {
+  background-color: $mat-warn; /*replace with your color*/
+}
+
+::ng-deep .slider-error .mat-slider-thumb {
+  background-color: $mat-warn !important;  /*replace with your color*/
+}
+
+.weight-error {
+  font-size: 75%;
+  flex: 0 0 100%;
+  position: relative;
+  top: -1.5rem;
+  left: 1rem;
+}
+
+.height-4rem {
+  height: 4rem;
+}
+
+.width-300 {
+  width: 300px;
+}

@@ -1,0 +1,82 @@
+$breakpoints-width: (1200: 1200px, 1490: 1490px);
+
+mat-icon.mat-card-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
+
+.align-with-icon {
+  position: relative;
+  bottom: -0.1rem !important;
+}
+
+.w-425 {
+  width: 425px;
+}
+
+@each $key, $breakpoint-width in $breakpoints-width {
+  .step-container-#{$key} {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    @media screen and (min-width: $breakpoint-width) {
+      display: grid;
+      grid-template-columns: repeat(2, 365px);
+      justify-content: center;
+      grid-gap: 300px 340px;
+      align-items: flex-start;
+    }
+
+
+  }
+
+  .step-item-#{$key} {
+    width: 365px;
+    @media screen and (max-width: $breakpoint-width) {
+      min-width: 260px;
+      max-width: 300px;
+      width: 75%
+    }
+  }
+
+  #cueCard-#{$key} {
+    @media screen and (max-width: $breakpoint-width) {
+      order: 1;
+      margin-bottom: 150px;
+    }
+    @media screen and (max-width: 436px) {
+      position: relative;
+      right: 10px;
+    }
+
+  }
+
+  #cravingCard-#{$key} {
+    @media screen and (max-width: $breakpoint-width) {
+      order: 2;
+      align-self: flex-end;
+      margin-bottom: 340px;
+    }
+  }
+
+  #rewardCard-#{$key} {
+    @media screen and (max-width: $breakpoint-width) {
+      order: 4;
+    }
+    @media screen and (max-width: 436px) {
+      position: relative;
+      right: 10px;
+    }
+  }
+  #responseCard-#{$key} {
+    @media screen and (max-width: $breakpoint-width) {
+      order: 3;
+      margin-bottom: 150px;
+      align-self: flex-end;
+    }
+  }
+}
+

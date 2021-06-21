@@ -47,3 +47,11 @@
     }
   }
 }
+
+@mixin min-w {
+  @each $w, $value in $min-w {
+    .min-w-#{$w} {
+      min-width: #{$value};
+    }
+  }
+}

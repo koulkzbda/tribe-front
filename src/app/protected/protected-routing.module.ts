@@ -18,6 +18,10 @@ const routes: Routes = [
         path: 'feedbuzz',
         loadChildren: () => import('./feedbuzz/feedbuzz.module').then(m => m.FeedbuzzModule)
       },
+      {
+        path: 'welcome',
+        loadChildren: () => import('./first-co/first-co.module').then(m => m.FirstCoModule)
+      },
     ]
   }
 ];

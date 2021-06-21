@@ -1,0 +1,44 @@
+<mat-card *ngIf="systemForm">
+
+  <form [formGroup]="systemForm" class="container">
+    <mat-card-content>
+      <div class="row">
+        <mat-form-field appearance="outline" [floatLabel]="'auto'" class="col-12 col-md-4">
+          <mat-label>System name</mat-label>
+          <input matInput [formControl]="name">
+          <mat-error *ngIf="name.errors?.required">{{'public.login.error.email.required' | translate}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-md-8">
+          <mat-label>Identities</mat-label>
+          <mat-select formControlName="identities" multiple>
+            <mat-option *ngFor="let id of possibleIdentities" [value]="id">
+              {{ id.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="identities.errors?.required">Let's associate at least one identity</mat-error>
+        </mat-form-field>
+      </div>
+
+      <h3 class="font-size-5" *ngIf="possibleCategories?.length > 0">
+        Types of person :
+      </h3>
+
+      <mat-list role="list">
+        <mat-list-item *ngFor="let cat of possibleCategories" class="bg-white-smoke-hover" role="listitem">
+          {{ cat }}
+        </mat-list-item>
+      </mat-list>
+
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-between">
+      <button mat-raised-button *ngIf="false">
+        CANCEL
+      </button>
+      <button mat-button color="primary" class="ml-auto mr-3" (click)="submit()"
+        [disabled]="systemForm.invalid || systemForm.untouched">
+        CREATE SYSTEM
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

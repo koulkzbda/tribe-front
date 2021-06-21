@@ -1,5 +1,5 @@
+import { ProtectedSharedModule } from './../protected-shared/protected-shared.module';
 import { ProfileRoutingModule } from './profile-routing.module';
-import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { ProfileComponent } from './profile/profile.component';
 import { PicturesUploadComponent } from './pictures-upload/pictures-upload.component';
@@ -13,7 +13,7 @@ import { ProfilePicturesCarouselDialogComponent } from './profile-pictures-carou
 @NgModule({
   declarations: [ProfileComponent, PicturesUploadComponent, ProfilePicturesComponent, ProfileBioComponent, UploadDialogComponent, ProfilePicturesCarouselDialogComponent],
   imports: [
-    SharedModule,
+    ProtectedSharedModule,
     ProfileRoutingModule,
   ]
 })

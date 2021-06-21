@@ -12,6 +12,23 @@
   background-color: whitesmoke !important;
 }
 
+.bg-white-smoke-hover:hover {
+  background-color: whitesmoke !important;
+}
+
 .roboto {
   font-family: 'Roboto';
+}
+
+.no-padding-table.mat-header-cell:first-of-type,
+.no-padding-table.mat-cell:first-of-type {
+  padding-left: 0px;
+}
+.no-padding-table.mat-header-cell:last-of-type,
+.no-padding-table.mat-cell:last-of-type {
+  padding-right: 0px;
+}
+
+svg.leader-line, svg#leader-line-defs {
+  z-index: 999;
 }

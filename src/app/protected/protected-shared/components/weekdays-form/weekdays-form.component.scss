@@ -1,0 +1,42 @@
+$muted: #6c757d !important;
+$mat-warn: #f55a73 !important;
+
+.disabled-icon ::ng-deep svg {
+  fill: $muted
+}
+
+.time-disabled {
+  cursor: auto;
+}
+
+.time-enabled {
+  cursor: pointer;
+}
+
+.material-toggle ::ng-deep svg {
+  position: relative;
+  top: -4px;
+}
+
+.time-error ::ng-deep svg {
+  fill: $mat-warn
+}
+
+.align-time {
+  position: relative;
+  top: 2px;
+  min-width: 60px;
+}
+
+.responsive-flex-direction {
+  @media screen and (min-width: 754px) {
+    flex-direction: column;
+  }
+}
+
+.d-flex-754 {
+  @media screen and (min-width: 754px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

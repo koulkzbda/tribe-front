@@ -1,7 +1,7 @@
 import { AuthService } from './../../../core/services/auth.service';
 import { ProfileService } from './../../../core/services/profile.service';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { Profile } from './../../../shared/models/profile';
+import { MemberProfile } from './../../../shared/models/profile';
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/shared/models/user';
 
@@ -13,7 +13,7 @@ import { User } from 'src/app/shared/models/user';
 export class ProfileBioComponent implements OnInit {
 
   @Input() currentUserId: string;
-  @Input() profile: Profile;
+  @Input() profile: MemberProfile;
   public user: User;
   public editBio = false;
   public profileForm: FormGroup;
@@ -32,7 +32,7 @@ export class ProfileBioComponent implements OnInit {
   }
 
   public submit(): void {
-    const profile = new Profile(this.profile.id, this.bio.value);
+    const profile = new MemberProfile(this.profile.id, this.bio.value);
     this.profileService.editBio(profile).subscribe(_ => this.editBio = false);
   }
 

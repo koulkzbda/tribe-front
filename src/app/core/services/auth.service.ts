@@ -1,3 +1,4 @@
+import { LayoutService } from './layout.service';
 import { FormGroup } from '@angular/forms';
 import { UserCreation } from './../../shared/models/user-creation';
 import { ProfileService } from './profile.service';
@@ -23,6 +24,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private profileService: ProfileService,
+    private layoutService: LayoutService,
     private router: Router,
   ) { }
 
@@ -35,7 +37,12 @@ export class AuthService {
         this.user.next(user);
         this.saveAuthData(user.token);
       }),
-      tap(_ => this.profileService.getProfile().subscribe())
+      tap(_ => this.profileService.getProfile().subscribe()),
+      tap(_ => {
+        if (!this.layoutService.isCurrentlyLargerScreen) {
+          this.layoutService.closeSidenav();
+        }
+      })
     );
   }
 
@@ -48,7 +55,12 @@ export class AuthService {
         this.saveAuthData(user.token);
       }),
       tap(_ => this.profileService.getProfile().subscribe()),
-      tap(_ => this.router.navigate(['/user']))
+      tap(_ => this.router.navigate(['/user'])),
+      tap(_ => {
+        if (!this.layoutService.isCurrentlyLargerScreen) {
+          this.layoutService.closeSidenav();
+        }
+      })
     );
   }
 

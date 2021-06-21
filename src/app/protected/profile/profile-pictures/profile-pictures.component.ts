@@ -5,7 +5,7 @@ import { ProfilePicturesCarouselDialogComponent } from './../profile-pictures-ca
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { Picture, Pictures } from './../../../shared/models/picture';
-import { Profile } from './../../../shared/models/profile';
+import { MemberProfile } from './../../../shared/models/profile';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 @Component({
@@ -16,7 +16,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 export class ProfilePicturesComponent implements OnInit, OnDestroy {
 
   @Input() currentUserId: string;
-  @Input() profile: Profile;
+  @Input() profile: MemberProfile;
   public isLargerScreen: boolean;
   public screenSub: Subscription;
   public assetPath = environment.assetsPath;

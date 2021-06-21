@@ -1,4 +1,4 @@
-import { SharedModule } from './../../shared/shared.module';
+import { ProtectedSharedModule } from './../protected-shared/protected-shared.module';
 import { NgModule } from '@angular/core';
 
 import { FeedbuzzRoutingModule } from './feedbuzz-routing.module';
@@ -9,7 +9,7 @@ import { HabitStacksListComponent } from './components/habit-stacks-list/habit-s
 @NgModule({
   declarations: [FeedbuzzComponent, HabitStacksListComponent],
   imports: [
-    SharedModule,
+    ProtectedSharedModule,
     FeedbuzzRoutingModule
   ]
 })
