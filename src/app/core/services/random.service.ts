@@ -9,7 +9,7 @@ export class RandomService {
 
   public getRandomIndicesInArray(array: any[], nbIndices: number): any[] {
     var result = new Array(nbIndices),
-      len = array.length,
+      len = array?.length,
       taken = new Array(len);
     if (nbIndices > len)
       throw new RangeError("getRandom: more elements taken than available");

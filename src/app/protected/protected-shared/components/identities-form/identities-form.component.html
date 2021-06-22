@@ -1,10 +1,13 @@
 <div class="d-flex my-3">
   <button *ngIf="submittedIdentities && identitiesForm && identitiesForm.touched" mat-raised-button color="accent"
-    (click)="resetForm()" class="ml-auto">RESET</button>
+    (click)="formReset = true; resetForm()" class="ml-auto">RESET</button>
 </div>
 
 <form (change)="updateChanges()" [formGroup]="identitiesForm" *ngIf="identitiesForm && identities?.length"
   class="container">
+
+  <pre>{{ identities?.length | json }}</pre>
+
   <div class="d-flex flex-wrap mb-3" formArrayName="identities">
     <div *ngFor="let identityForm of identities.controls; let i = index" class="width-300 mt-3 ml-md-3 ml-sm-1">
       <mat-card [formGroupName]="i">

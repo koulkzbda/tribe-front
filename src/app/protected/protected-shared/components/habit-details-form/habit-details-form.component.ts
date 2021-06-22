@@ -1,5 +1,3 @@
-import { startWith, map } from 'rxjs/operators';
-import { LocationService } from './../../../../core/services/location.service';
 import { Observable } from 'rxjs';
 import { Identity } from './../../../../shared/models/identity';
 import { Step } from './../../../../shared/models/step';
@@ -16,6 +14,7 @@ export class HabitDetailsFormComponent implements OnInit {
   @Input() progression: FormGroup;
   @Input() steps: Step[];
   @Input() identitiesPossible: Identity[];
+  @Input() initialSelectedIdentities: Identity[];
 
   public filteredConditionings: Observable<Step[]>;
 

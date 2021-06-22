@@ -96,7 +96,8 @@
 
         <ng-container *ngIf="steps && systemSelected?.identities">
           <app-habit-details-form [progression]="progression" [steps]="steps"
-            [identitiesPossible]="systemSelected?.identities"></app-habit-details-form>
+            [identitiesPossible]="systemSelected?.identities" [initialSelectedIdentities]="habitSelected?.identities">
+          </app-habit-details-form>
         </ng-container>
 
         <mat-list cdkDropList role="list" *ngIf="selectedHabitStack?.progressions?.length && habitName.value"

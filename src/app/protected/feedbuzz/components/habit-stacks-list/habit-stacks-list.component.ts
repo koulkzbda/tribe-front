@@ -81,7 +81,6 @@ export class HabitStacksListComponent implements OnInit, OnDestroy, AfterViewIni
     }
     this.habitsForm.removeControl("habits");
     this.isPrefilled = false;
-    console.log(this.habitsForm.value)
   }
 
   ngAfterViewInit(): void {

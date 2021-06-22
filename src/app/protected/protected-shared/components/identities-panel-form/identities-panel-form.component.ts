@@ -13,10 +13,12 @@ export class IdentitiesPanelFormComponent implements OnInit {
   @Input() progression: FormGroup;
   @Input() identitiesControl: AbstractControl;
   @Input() identitiesPossible: Identity[];
+  @Input() initialSelectedIdentities: Identity[];
   @Input() iconName: string;
   @Input() label: string;
   @Input() hint: string;
   public initialIdentities: Identity[];
+
 
   constructor(
     private identityService: IdentityService
@@ -46,6 +48,15 @@ export class IdentitiesPanelFormComponent implements OnInit {
     });
     Array.prototype.push.apply(this.identitiesPossible, identities.slice(indexMapping.length));
     this.identities.setValue(identities);
+  }
+
+  public onResetIdentities(): void {
+    this.identitiesPossible = this.initialIdentities.slice();
+    this.identities.setValue(this.initialSelectedIdentities);
+  }
+
+  public compareByName(identity1: Identity, identity2: Identity): boolean {
+    return identity1 && identity2 && identity1.name == identity2.name;
   }
 
 }

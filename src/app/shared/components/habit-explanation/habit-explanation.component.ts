@@ -137,7 +137,6 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
     );
     const cueToCravingStartGravity = this.innerWidth <= 768 ? 'auto' : this.innerWidth > 990 ? [450, 0] : [300, 0];
     const cueToCravingEndity = this.innerWidth > 990 ? [0, 10] : 'auto';
-    console.log(this.innerWidth, cueToCravingStartGravity)
     this.cueToCraving?.setOptions({
       startSocket: 'right',
       startSocketGravity: cueToCravingStartGravity,

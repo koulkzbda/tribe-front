@@ -9,7 +9,7 @@
           [ngClass]="{'two-lines-hint': !!hint}" (click)="$event.stopPropagation()">
           <mat-label *ngIf="label">{{ label }}</mat-label>
 
-          <mat-select formControlName="identities" multiple>
+          <mat-select formControlName="identities" multiple [compareWith]="compareByName">
             <mat-option *ngFor="let identity of identitiesPossible" [value]="identity">
               {{identity.name}}
             </mat-option>
@@ -22,7 +22,8 @@
     </mat-expansion-panel-header>
 
     <app-identities-form *ngIf="identitiesArray && identitiesArray?.length" [identitiesArray]="identitiesArray"
-      [initialIdentities]="initialIdentities" (identitiesUpdated)="onIdentitiesUpdated($event)">
+      [initialIdentities]="initialIdentities" (identitiesUpdated)="onIdentitiesUpdated($event)"
+      (resetIdentities)="onResetIdentities($event)">
     </app-identities-form>
 
   </mat-expansion-panel>

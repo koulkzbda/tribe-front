@@ -34,7 +34,6 @@ export class HabitStackService {
 
   public createHabit(hs: HabitStackCreation): Observable<HabitStackCreation> {
     const url = `${environment.backend.baseURL}/members/habit-stacks/habits`
-    console.log(hs)
 
     return this.http.post<HabitStackCreation>(url, hs);
   }

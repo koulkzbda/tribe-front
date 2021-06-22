@@ -15,22 +15,26 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 export class IdentitiesFormComponent implements OnInit {
 
   @Input() initialIdentities: Identity[];
-  @Input()
-  set identitiesArray(identities: FormArray) {
-    if (identities.length > 1) {
+  @Input() set identitiesArray(identities: FormArray) {
+
+    if (identities.length <= 1) {
+      if (!this.identities) {
+        this.initForm(identities);
+      }
+    } else {
       identities?.value.filter(identity => !(this.identities?.value.some(id => id.id == identity.id || (!id.id && identity.name == id.name))))
         .forEach(ident => {
           this.identities?.push(this.identityService.createIdentityForm(ident));
         });
-    } else {
-      this.initForm(identities);
     }
   }
   @Output() identitiesUpdated = new EventEmitter<Identity[]>();
+  @Output() resetIdentities = new EventEmitter<null>();
   public identityCategories: IdentityCategory[];
   private categorySub: Subscription;
   public identitiesForm: FormGroup;
   public submittedIdentities: Identity[];
+  public formReset = false;
   private submittedIdSub: Subscription;
   private changeSub: Subscription;
 
@@ -114,7 +118,7 @@ export class IdentitiesFormComponent implements OnInit {
     initialState.map(id => this.identityService.createIdentityForm(id)).forEach(identityForm => this.identities.push(identityForm));
 
     this.identitiesForm.markAsUntouched();
-    this.identitiesUpdated.emit(initialState);
+    this.resetIdentities.emit(null);
   }
 
   public formatLabel(value: number): string {
@@ -153,14 +157,15 @@ export class IdentitiesFormComponent implements OnInit {
   }
 
   public updateChanges(): void {
-    if (JSON.stringify(this.initialIdentities) != JSON.stringify(this.identities.value)) {
+    if (JSON.stringify(this.initialIdentities) != JSON.stringify(this.identities.value) && !this.formReset) {
       this.identitiesUpdated.emit(this.identities.value);
     }
+    this.formReset = false;
   }
 
-  private initForm(identities: FormArray): void {
+  private initForm(identitiesArray: FormArray): void {
     this.identitiesForm = this.fb.group({
-      identities: identities
+      identities: identitiesArray
     });
   }
 

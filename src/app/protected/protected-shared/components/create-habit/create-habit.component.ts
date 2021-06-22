@@ -152,16 +152,11 @@ export class CreateHabitComponent implements OnInit {
     if (this.isIndependentHabitSelected()) {
       this.habitStackName.setValue(this.independantHabitNameTrans + ' - ' + e?.target?.value);
     }
-    // console.log(this.selectedHabitStack)
   }
 
   public deleteJustCreatedProgression(progression: Progression, event: any) {
     if (event.isUserInput) {
-      console.log("before delete", this.selectedHabitStack.progressions)
       this.selectedHabitStack.progressions.splice(this.selectedHabitStack.progressions.findIndex(prog => prog.justCreated == true), 1);
-      console.log("after delete", this.selectedHabitStack.progressions)
-      console.log(this.selectedHabitStack)
-
       this.isUpdatingExistingHabit = true;
       this.updateHabitInForm(progression);
     }
@@ -170,7 +165,6 @@ export class CreateHabitComponent implements OnInit {
   public submit(): void {
     let habitStackCreation = this.habitForm.value;
     habitStackCreation.weekdays = this.timeService.weekdaysWithActivityToWeekdays(habitStackCreation.weekdays);
-    // console.log(this.selectedHabitStack)
     if (!this.selectedHabitStack) {
       this.executionOrder.setValue(0);
       habitStackCreation.progressions = new Array();
@@ -180,7 +174,6 @@ export class CreateHabitComponent implements OnInit {
       habitStackCreation.progressions = this.selectedHSWithUpdatedCreatedProgression();
     }
     delete habitStackCreation.progression;
-    // console.log(habitStackCreation)
     this.submitSub = this.habitStackService.createHabit(habitStackCreation).subscribe(_ => this.habitFormSubmitted.emit(true));
   }
 
@@ -194,7 +187,6 @@ export class CreateHabitComponent implements OnInit {
   }
 
   private updateHabitInForm(progression: Progression): void {
-    // console.log("before update", progression)
     this.habitSelected = progression;
     this.progression.patchValue({
       habitName: progression.habitName,
@@ -211,7 +203,6 @@ export class CreateHabitComponent implements OnInit {
 
     this.updateIdentitiesForm(progression.identities);
     this.updateMetricsForm(progression.metrics);
-    // console.log("after update", this.progression.value)
   }
 
   private updateIdentitiesForm(identities: Identity[]): void {
@@ -228,11 +219,7 @@ export class CreateHabitComponent implements OnInit {
   }
 
   private selectedHSWithUpdatedCreatedProgression(): Progression[] {
-    // problem is here
-
     let createdProgression = this.progression.value;
-    console.log(this.selectedHabitStack?.progressions)
-    console.log("before", createdProgression.executionOrder, createdProgression)
     let order = this.selectedHabitStack?.progressions.find(progression => progression?.justCreated)?.executionOrder;
 
     order = order != undefined ? order : this.selectedHabitStack?.progressions.find(progression => progression?.habitId == createdProgression?.habitId)?.executionOrder;
@@ -240,8 +227,6 @@ export class CreateHabitComponent implements OnInit {
       createdProgression.executionOrder = order;
       this.selectedHabitStack.progressions[order] = this.habitStackService.removeEmptyFields(createdProgression);
     }
-
-    console.log("after", createdProgression.executionOrder, createdProgression)
 
     return this.selectedHabitStack.progressions;
   }

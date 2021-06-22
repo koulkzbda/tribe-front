@@ -5,8 +5,8 @@
       [label]="'Conditioning Step'" [hint]="conditioningStepHint"></app-step-from>
 
     <app-identities-panel-form *ngIf="identities" [progression]="progression" [identitiesControl]="identities"
-      [identitiesPossible]="identitiesPossible" [iconName]="'how_to_reg'" [label]="'Identities'"
-      [hint]="identitiesHint"></app-identities-panel-form>
+      [identitiesPossible]="identitiesPossible" [iconName]="'how_to_reg'" [label]="'Identities'" [hint]="identitiesHint"
+      [initialSelectedIdentities]="initialSelectedIdentities"></app-identities-panel-form>
 
     <app-step-from [step]="reward" [possibleSteps]="steps" [iconName]="'emoji_events'" [label]="'Reward'">
     </app-step-from>
