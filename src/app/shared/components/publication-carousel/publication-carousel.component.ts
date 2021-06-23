@@ -1,8 +1,8 @@
+import { PictureDisplayingService } from './../../utils/picture-displaying.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationService } from './../../../core/services/translation.service';
 import { HabitStackService } from './../../../core/services/habit-stack.service';
 import { PublicationPicturesService } from '../../../core/services/publication-pictures.service';
-import { PictureDisplayingService } from '../../../core/services/picture-displaying.service';
 import { SwiperComponent } from 'ngx-useful-swiper';
 import { Subscription } from 'rxjs';
 import { Picture, Pictures } from 'src/app/shared/models/picture';

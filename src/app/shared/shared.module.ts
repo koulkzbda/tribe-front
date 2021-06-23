@@ -1,4 +1,3 @@
-import { IdentityListComponent } from './components/identity/identity-list/identity-list.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MaterialModule } from './modules/material.module';
 import { NgModule } from '@angular/core';
@@ -14,7 +13,6 @@ import { PublicationCarouselComponent } from './components/publication-carousel/
 import { PublicationPicturesUploadComponent } from './components/publication-pictures-upload/publication-pictures-upload.component';
 import { PublicationPicturesUploadDialogComponent } from './components/publication-pictures-upload-dialog/publication-pictures-upload-dialog.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { CreateSystemComponent } from './components/create-system/create-system.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HabitExplanationComponent } from './components/habit-explanation/habit-explanation.component';
 
@@ -29,8 +27,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     PublicationCarouselComponent,
     PublicationPicturesUploadComponent,
     PublicationPicturesUploadDialogComponent,
-    IdentityListComponent,
-    CreateSystemComponent,
     HabitExplanationComponent,
   ],
   imports: [
@@ -65,8 +61,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     PublicationPicturesUploadComponent,
     PublicationPicturesUploadDialogComponent,
     TranslateModule,
-    IdentityListComponent,
-    CreateSystemComponent,
     HabitExplanationComponent,
   ]
 })

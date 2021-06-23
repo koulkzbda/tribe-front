@@ -1,3 +1,5 @@
+import { PictureDisplayingService } from './../../../../shared/utils/picture-displaying.service';
+import { StatusConverterService } from './../../../../shared/utils/status-converter.service';
 import { MetricValue } from './../../../../shared/models/metric';
 import { IdentityService } from './../../../../core/services/identity.service';
 import { AuthService } from './../../../../core/services/auth.service';
@@ -5,8 +7,6 @@ import { User } from './../../../../shared/models/user';
 import { TranslationService } from './../../../../core/services/translation.service';
 import { RepetitionService } from './../../../../core/services/repetition.service';
 import { repetitionValidator } from './../../../../shared/validators/repetition-validator';
-import { PictureDisplayingService } from './../../../../core/services/picture-displaying.service';
-import { StatusConverterService } from './../../../../core/services/status-converter.service';
 import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
 import { of, Subscription } from 'rxjs';
 import { HabitStackFeedbuzz } from '../../../../shared/models/habit-stack';

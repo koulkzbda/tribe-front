@@ -1,4 +1,4 @@
-import { TextParserService } from './../../core/services/text-parser.service';
+import { TextParserService } from './../../shared/utils/text-parser.service';
 import { TranslationService } from './../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription, BehaviorSubject } from 'rxjs';

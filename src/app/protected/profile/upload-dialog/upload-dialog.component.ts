@@ -1,6 +1,6 @@
+import { PictureDisplayingService } from './../../../shared/utils/picture-displaying.service';
 import { TranslationService } from './../../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
-import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { Subscription } from 'rxjs';
 import { ProfilePicturesService } from './../../../core/services/profile-pictures.service';
 import { AbstractControl, FormGroup } from '@angular/forms';

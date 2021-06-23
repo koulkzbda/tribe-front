@@ -1,4 +1,4 @@
-import { startWith, map, debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { startWith, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { LocationService } from './../../../../core/services/location.service';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { Position, Suggestion } from './../../../../shared/models/location';

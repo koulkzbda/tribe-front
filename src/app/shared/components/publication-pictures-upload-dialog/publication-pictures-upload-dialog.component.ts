@@ -1,8 +1,8 @@
+import { PictureDisplayingService } from './../../utils/picture-displaying.service';
 import { TranslationService } from './../../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HabitStackService } from './../../../core/services/habit-stack.service';
 import { PublicationPicturesService } from './../../../core/services/publication-pictures.service';
-import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { FormGroup, AbstractControl } from '@angular/forms';

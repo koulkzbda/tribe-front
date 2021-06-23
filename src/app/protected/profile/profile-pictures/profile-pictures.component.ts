@@ -1,9 +1,9 @@
+import { PictureDisplayingService } from './../../../shared/utils/picture-displaying.service';
 import { environment } from './../../../../environments/environment';
 import { Subscription } from 'rxjs';
 import { LayoutService } from './../../../core/services/layout.service';
 import { ProfilePicturesCarouselDialogComponent } from './../profile-pictures-carousel-dialog/profile-pictures-carousel-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { Picture, Pictures } from './../../../shared/models/picture';
 import { MemberProfile } from './../../../shared/models/profile';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';

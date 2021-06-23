@@ -1,9 +1,9 @@
-import { SystemService } from './../../../core/services/system.service';
-import { TranslationService } from './../../../core/services/translation.service';
+import { TranslationService } from './../../../../core/services/translation.service';
+import { SystemService } from './../../../../core/services/system.service';
+import { IdentityService } from './../../../../core/services/identity.service';
+import { Identity } from 'src/app/shared/models/identity';
 import { Subscription } from 'rxjs';
-import { Identity } from './../../models/identity';
 import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl, FormControl } from '@angular/forms';
-import { IdentityService } from './../../../core/services/identity.service';
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 @Component({

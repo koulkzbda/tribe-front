@@ -1,7 +1,7 @@
+import { PictureDisplayingService } from './../../utils/picture-displaying.service';
 import { TranslationService } from './../../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from './../../../../environments/environment';
-import { PictureDisplayingService } from './../../../core/services/picture-displaying.service';
 import { Picture } from './../../models/picture';
 import { ProfileService } from './../../../core/services/profile.service';
 import { Router } from '@angular/router';

@@ -1,9 +1,9 @@
+import { PictureDisplayingService } from './../../../shared/utils/picture-displaying.service';
 import { TranslationService } from './../../../core/services/translation.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ProfilePicturesService } from '../../../core/services/profile-pictures.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PictureDisplayingService } from '../../../core/services/picture-displaying.service';
 import { Component, OnInit, Inject, OnDestroy, ViewChild } from '@angular/core';
 import { Picture, Pictures } from '../../../shared/models/picture';
 import { SwiperOptions } from 'swiper';

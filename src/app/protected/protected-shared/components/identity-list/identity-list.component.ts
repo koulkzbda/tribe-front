@@ -1,8 +1,9 @@
-import { RandomService } from './../../../../core/services/random.service';
+import { RandomService } from './../../../../shared/utils/random.service';
+import { Identity } from 'src/app/shared/models/identity';
+import { IdentityCategory } from './../../../../shared/models/identity';
 import { FormGroup, FormBuilder, FormArray, Validators, AbstractControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { TranslationService } from './../../../../core/services/translation.service';
-import { Identity, IdentityCategory } from './../../../models/identity';
 import { IdentityService } from './../../../../core/services/identity.service';
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 

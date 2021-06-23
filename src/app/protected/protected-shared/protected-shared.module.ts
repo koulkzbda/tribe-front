@@ -1,3 +1,5 @@
+import { CreateSystemComponent } from './components/create-system/create-system.component';
+import { IdentityListComponent } from './components/identity-list/identity-list.component';
 import { CreateHabitComponent } from './components/create-habit/create-habit.component';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -12,10 +14,32 @@ import { WeekdaysFormComponent } from './components/weekdays-form/weekdays-form.
 
 
 @NgModule({
-  declarations: [LocationFormComponent, CreateHabitComponent, MetricsFormComponent, HabitDetailsFormComponent, StepFromComponent, IdentitiesFormComponent, IdentitiesPanelFormComponent, WeekdaysFormComponent],
+  declarations: [
+    LocationFormComponent,
+    CreateHabitComponent,
+    MetricsFormComponent,
+    HabitDetailsFormComponent,
+    StepFromComponent,
+    IdentitiesFormComponent,
+    IdentitiesPanelFormComponent,
+    WeekdaysFormComponent,
+    IdentityListComponent,
+    CreateSystemComponent,
+  ],
   imports: [
     SharedModule
   ],
-  exports: [SharedModule, LocationFormComponent, CreateHabitComponent, MetricsFormComponent, HabitDetailsFormComponent, StepFromComponent, IdentitiesFormComponent, IdentitiesPanelFormComponent, WeekdaysFormComponent]
+  exports: [SharedModule,
+    LocationFormComponent,
+    CreateHabitComponent,
+    MetricsFormComponent,
+    HabitDetailsFormComponent,
+    StepFromComponent,
+    IdentitiesFormComponent,
+    IdentitiesPanelFormComponent,
+    WeekdaysFormComponent,
+    IdentityListComponent,
+    CreateSystemComponent,
+  ]
 })
 export class ProtectedSharedModule { }
