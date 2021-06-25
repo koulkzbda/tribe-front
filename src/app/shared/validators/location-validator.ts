@@ -7,5 +7,5 @@ export const locationValidator: ValidatorFn = (
   const address = control.get("address")?.value;
   return name || !address
     ? null
-    : { nameRequired: true };
+    : { locationNameRequired: true };
 };

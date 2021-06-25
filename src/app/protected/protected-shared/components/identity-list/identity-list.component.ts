@@ -32,8 +32,12 @@ export class IdentityListComponent implements OnInit, OnDestroy {
 
   get identities(): FormArray { return this.identitiesForm.get('identities') as FormArray; }
 
+  public identityName(identityIndex: number): AbstractControl {
+    return this.identities?.at(identityIndex)?.get('name');
+  }
+
   public weightings(identityIndex: number): FormArray {
-    return this.identities?.at(identityIndex).get('weightings') as FormArray
+    return this.identities?.at(identityIndex).get('weightings') as FormArray;
   }
 
   public category(identityIndex: number, weightingIndex: number): string {

@@ -13,7 +13,9 @@ export class DefineIdentityComponent implements OnInit {
 
   public identityCategories: string[];
 
-  constructor() { }
+
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

@@ -55,8 +55,8 @@ export class LocationFormComponent implements OnInit, OnDestroy {
 
   public onLocationInput(): void {
     this.locationChanged.emit(true);
-    if (this.locationForm.hasError('metricNameRequired'))
-      this.name.setErrors([{ 'metricNameRequired': true }]);
+    if (this.locationForm.hasError('locationNameRequired'))
+      this.name.setErrors([{ 'locationNameRequired': true }]);
     else
       this.name.setErrors(null);
   }

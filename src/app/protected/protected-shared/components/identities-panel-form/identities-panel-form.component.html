@@ -14,7 +14,8 @@
               {{identity.name}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="identities.errors?.required">Let's associate at least one identity</mat-error>
+          <mat-error *ngIf="identities.errors?.required">{{'protected.protected-shared.create-system.oneIdentity' |
+            translate}}</mat-error>
 
           <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
         </mat-form-field>

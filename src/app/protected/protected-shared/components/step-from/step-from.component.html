@@ -16,7 +16,7 @@
             </mat-option>
           </mat-autocomplete>
           <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
-          <mat-error *ngIf="step?.invalid">{{ label }} is required
+          <mat-error *ngIf="step?.invalid">{{ label }} {{'protected.protected-shared.step-form.isRequired' | translate}}
           </mat-error>
         </mat-form-field>
       </mat-panel-title>

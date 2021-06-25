@@ -1,9 +1,13 @@
 {
 	"actions": {
 		"BACK": "RETOUR",
+		"CREATE_HABIT": "CRÉER L'HABITUDE",
+		"CREATE_SYSTEM": "CRÉER LE SYSTÈME",
 		"Delete": "Supprimer",
 		"Edit": "Éditer",
 		"LIKE": "AIMER",
+		"RESEND": "RENVOYER",
+		"RESET": "RÉINITIALISER",
 		"SEND": "ENVOYER",
 		"SHARE": "PARTAGER",
 		"UPDATE": "METTRE À JOUR"
@@ -23,10 +27,41 @@
 	"protected": {
 		"feedbuzz": {
 			"habit-stack-list": {
-				"condition-step": "Aucun indice défini",
+				"condition-step": "Aucune étape de conditionnement définie",
 				"identities": "Aucune identité associée",
 				"reward": "Aucune récompense définie"
 			}
+		},
+		"first-co": {
+			"define-identity": {
+				"1setYourGoals": "1. Fixez des objectifs",
+				"2defineHabits": "2. Définir des habitudes en conséquence",
+				"3ProuveYourself": "3. Prouvez que vous êtes cette personne chaque fois que vous réalisez cette habitude",
+				"3change": "3. Changer grâce à ces habitudes",
+				"4ObserveResult": "4. Obtenir des résultats à long terme",
+				"4reach": "4. Atteindre vos objectifs",
+				"aYouBelieve": "a. Vos croyances",
+				"bYouThink": "b. Vos pensées",
+				"baiscallyAType": "Fondamentalement, un type de personne ou une <strong>identité</strong> est un ensemble de <strong>Catégories</strong> auquel vous pouvez attribuer une <strong>Importance</strong>.",
+				"butRather": "Mais plutôt :",
+				"cYouBehave": "c. Votre comportement",
+				"decideTypePerson": "Décidez du type de personne que vous souhaitez devenir",
+				"differentlyNow": "Sont différentes parce que vous êtes désormais cette personne.",
+				"letsSayMarathon": "Disons que vous voulez courir un marathon, c'est-à-dire que vous voulez être un marathonien. Vous pouvez définir une <strong>Identité</strong> appelée « Marathonien » et attribuer la <strong>Catégorie</strong> « Athlétique » avec une <strong>Importance</strong> de 100 % et la <strong>Catégorie</strong> \"Relax\" avec une <strong>Importance</strong> de 30% car disons qu'après avoir couru, vous vous sentez plus détendu.",
+				"soLetsDefineIdentity": "Définissons donc le type de personne que vous avez décidé d'être.",
+				"theIdeaIs": "L'idée est d'associer une <strong>Habitude</strong> à une liste de <strong>Identités</strong>.",
+				"theMoreEfficientWay": "Le moyen le plus efficace de s'en tenir à ses habitudes sur le long terme et d'atteindre ses objectifs n'est pas :",
+				"wheneverYou": "Chaque fois que vous effectuez cette <strong>Habitude</strong> , c'est un vote en faveur de la personne que vous souhaitez devenir."
+			},
+			"defineYourIdentity": "Définir son identité",
+			"design-system": {
+				"aSystemIs": "Un système est un ensemble d'habitudes qui partagent le même socle d'identités.",
+				"designAccordingly": "Élaborez votre système d'habitudes en conséquence",
+				"letsCreateSystem": "Créons un premier système",
+				"letsDefineHabit": "Définissons une première habitude dans votre système",
+				"youCanDefine": "Un système est défini par ses identités. Vous pouvez créer autant de systèmes que vous avez de groupes d'identités qui sont sans rapport."
+			},
+			"designYourSystems": "Élaborer ses systèmes"
 		},
 		"profile": {
 			"profile-bio": {
@@ -42,6 +77,52 @@
 					"required": "Ajoutez une photo"
 				},
 				"title": "Mettre à jour mes photos"
+			}
+		},
+		"protected-shared": {
+			"create-habit": {
+				"CREATION_OF": "CRÉATION DE",
+				"System": "Système",
+				"UPDATE_OF": "MISE À JOUR DE",
+				"gatewayHint": "L'action la plus simple à faire qui garantit que votre habitude sera exécutée. Ex : \"Mettre des chaussures de course\" -> \"Courir 10 km\"",
+				"gatewayRequired": "L'habitude de passerelle est requise",
+				"habitName": "Nom de l'habitude",
+				"habitNameRequired": "Le nom de l'habitude est obligatoire",
+				"habitStackRequired": "Superposition d'habitude requise",
+				"previousVersion": "Version précédente :",
+				"versionRequired": "Le nom de la version est requis"
+			},
+			"create-system": {
+				"identities": "Identités",
+				"oneIdentity": "Associons au moins une identité",
+				"systemName": "Nom du système",
+				"systemRequired": "Le nom du système est requis",
+				"typesOfPerson": "Types de personne :"
+			},
+			"habit-details-form": {
+				"conditioningStepHint": "Un rituel de motivation est une action que vous réalisez juste avant une habitude difficile.",
+				"identitiesHint": "Chaque fois que vous effectuez cette habitude, c'est un vote en faveur de qui vous voulez devenir.",
+				"preparationHabitHint": "Une habitude de préparation est une tâche que vous accomplissez après votre habitude pour préparer votre prochaine itération de cette habitude."
+			},
+			"identities-form": {
+				"ADD_CATEGORY": "AJOUTER CATÉGORIE",
+				"DEFINE_IDENTITY": "DÉFINIR L'IDENTITÉ",
+				"IDENTITY": "IDENTITÉ",
+				"Identity": "Identité",
+				"SetOrDelete": "Attribuez une importance",
+				"identityRequired": "Le nom de l'identité est requis"
+			},
+			"location-form": {
+				"Address": "Adresse",
+				"Place": "Lieu",
+				"placeRequired": "Le nom du lieu est obligatoire"
+			},
+			"metrics-form": {
+				"Metric": "Métrique",
+				"metricRequired": "Le nom de la métrique est obligatoire"
+			},
+			"step-form": {
+				"isRequired": "est obligatoire"
 			}
 		}
 	},
@@ -65,6 +146,7 @@
 			}
 		},
 		"login": {
+			"confirmationEmailResent": "Un email de confirmation vous a été renvoyé à l'adresse {{email}}.\n\nVeuillez ouvrir le lien dans l'email pour activer votre compte.",
 			"error": {
 				"email": {
 					"invalid": "Email invalide",
@@ -99,6 +181,61 @@
 	},
 	"shared": {
 		"components": {
+			"habit-explanation": {
+				"4step": "Une Habitude est un processus en 4 phases : Déclencheur > Envie > Réponse > Récompense.",
+				"Cue": "Déclencheur",
+				"GatewayHabit": "Habitude passerelle",
+				"MakeItSatisfying": "La satisfaction",
+				"PreparationHabit": "Habitude de préparation",
+				"Progress": "Progression",
+				"Response": "Réponse",
+				"ResponseDef": "Habitude que vous effectuez",
+				"Reward": "Récompense",
+				"aGatewayHabitIs": "Une habitude passerelle est l'action la plus simple à réaliser pour s'assurer que votre habitude sera exécutée. Cette action devrait prendre moins de deux minutes.",
+				"aHabitStackIs": "Une <strong>Superposition d'habitudes</strong> est un ensemble d'habitudes ordonnées que vous exécutez les unes après les autres.",
+				"aPreparationHabitIs": "Une <strong>habitude de préparation</strong> est une action que vous faites juste après avoir terminé votre habitude afin de préparer votre prochaine itération.",
+				"applyLaw": "Vous pouvez appliquer les <strong>lois du changement de comportement</strong> à chaque phase pour créer une habitude très forte.",
+				"atAGivenPlace": "Et à un endroit donné. Vous pouvez sauter une habitude, mais vous ne manqueriez pas un rendez-vous.",
+				"conditioningStep": "Étape de conditionnement",
+				"craving": "Envie",
+				"cravingDef": "Force de motivation derrière chaque habitude, désir d'agir",
+				"cueAnOtherHabit": "Un déclencheur très fort est une autre habitude que vous pratiquez déjà.",
+				"cueDef": "Petit ensemble d’informations qui anticipe une récompense",
+				"definingMetrics": "Définir des métriques facultatives pour mesurer vos progrès",
+				"exPutRunning": "Ex : \"Mettre des chaussures de course\" -> \"Courir 10 km\"",
+				"habitAppointment": "Une habitude est comme un rendez-vous avec soi-même à un moment donné.",
+				"habitStack": "Superposition d’habitudes",
+				"identityChangeReward": "Le changement dans votre identité est la vraie récompense à long terme pour une habitude répétée lorsque votre processus d'habitude se concentre sur qui vous souhaitez devenir.",
+				"linkingHabit": "Relier votre habitude avec des identités",
+				"location": "Lieu",
+				"makeItAttractive": "L'attractivité",
+				"makeItEasy": "La facilité",
+				"makeItObv": "L'évidence",
+				"makingSatisfying": "Rendre une habitude satisfaisante augmente la probabilité qu'elle se répète.",
+				"rewardDef": "L'objectif final de toute habitude",
+				"temptationBuilding": "Regroupement des tentations",
+				"theAnticipation": "L'anticipation de la récompense vous incitera à l'action.",
+				"theCulture": "La culture dans laquelle vous vivez détermine les comportements qui vous attirent.",
+				"theLawsProvide": "Les <strong>Lois du changement de comportement</strong> fournissent des stratégies pour chacune des phases que vous pouvez mettre en œuvre en utilisant Atomic Tribe.",
+				"theOtherLongTerm": "L'autre récompense à long terme est votre progression.",
+				"time": "Temps",
+				"toMakeAHabitAttractive": "Pour rendre une habitude attrayante, vous pouvez utiliser la stratégie <strong>Regroupement de tentations</strong> .",
+				"toMakeEasy": "Pour rendre une habitude facile, vous devez réduire les frictions entre vous et la bonne habitude.",
+				"toMakeSatisfying": "Pour rendre une habitude satisfaisante, vous pouvez l'associer à une récompense immédiate.",
+				"toMakeSatisfyingYouCanAlso": "Pour rendre une habitude satisfaisante, vous pouvez également l'associer à une récompense à long terme.",
+				"toReduceFriction": "Pour réduire les frictions, vous pouvez préparer votre environnement pour faciliter les actions futures.",
+				"toReduceWillpower": "Pour réduire les frictions de volonté, vous pouvez utiliser la tactique <strong>Règle de deux minutes</strong> en définissant une <strong>Habitude passerelle</strong>.",
+				"tribe": "Tribu",
+				"twoMostCommonCues": "Les deux déclencheurs les plus courants sont l'heure et le lieu.",
+				"useImplementationIntention": "Vous pouvez utiliser la stratégie d'<strong>Intention de mise en place</strong> pour associer une habitude à un moment et à un lieu précis.",
+				"youCanEven": "Vous pouvez même définir l'habitude de préparation comme une habitude indépendante si vous ne le faites pas juste après.",
+				"youCanLinkHabit": "Vous pouvez relier une habitude avec un ensemble d'<strong>Identités</strong>. Chaque fois que vous effectuez cette habitude, c'est un vote en faveur de ce type de personne que vous voulez devenir.",
+				"youCanShare": "Vous pouvez partager votre <strong>Système</strong> d'habitudes avec une tribu de personnes comme vous, qui louent et approuvent le même comportement que vous souhaitez conserver.",
+				"youCanTrack": "Vous pouvez suivre vos progrès en :",
+				"youCanUseConditioning": "Vous pouvez également utiliser une <strong>Étape de Conditionnement</strong>, c'est un rituel de motivation, juste avant une habitude difficile.",
+				"youCanUseHabitStacking": "Vous pouvez utiliser la stratégie de la <strong>Superposition d'habitudes</strong> pour associer une nouvelle habitude à une ancienne.",
+				"youPairAHabit": "Vous associez une habitude avec une récompense."
+			},
 			"publication-carousel": {
 				"menu": {
 					"headlinePicture": "Photo principale",

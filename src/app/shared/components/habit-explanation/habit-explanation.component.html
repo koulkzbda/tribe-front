@@ -1,6 +1,6 @@
-<p [ngClass]="{'font-size-6': fontSizeBigger}">Habit is a 4 step process: Cue > Craving > Response > Reward.</p>
-<p [ngClass]="{'font-size-6': fontSizeBigger}">You can apply the <strong>Laws of Behavior Change</strong> for each step
-  to build a very strong habit.</p>
+<p [ngClass]="{'font-size-6': fontSizeBigger}">{{'shared.components.habit-explanation.4step' | translate}}</p>
+<p [ngClass]="{'font-size-6': fontSizeBigger}" [innerHtml]="'shared.components.habit-explanation.applyLaw' | translate">
+</p>
 <div class="w-100 my-3 d-flex justify-content-center" *ngIf="lang">
   <table mat-table [dataSource]="content[lang]" class="w-425 border">
     <ng-container matColumnDef="{{header.friendlyName}}" *ngFor="let header of headers[lang]">
@@ -19,20 +19,18 @@
     </tr>
   </table>
 </div>
-<p class="mb-3" [ngClass]="{'font-size-6': fontSizeBigger}">The <strong>Laws of Behavior Change</strong> framework
-  provides step
-  level strategies that you can implement here.
-</p>
+<p class="mb-3" [ngClass]="{'font-size-6': fontSizeBigger}"
+  [innerHtml]="'shared.components.habit-explanation.theLawsProvide' | translate"></p>
 <div class="step-container-{{sidenavOpen ? 1490 : 1200}}">
   <div #cueCard class="step-item-{{sidenavOpen ? 1490 : 1200}}" id="cueCard-{{sidenavOpen ? 1490 : 1200}}">
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>search</mat-icon>
-        <mat-card-title>Cue</mat-card-title>
-        <mat-card-subtitle>Bit of information that predicts a reward</mat-card-subtitle>
+        <mat-card-title>{{'shared.components.habit-explanation.Cue' | translate}}</mat-card-title>
+        <mat-card-subtitle>{{'shared.components.habit-explanation.cueDef' | translate}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p class="text-center font-size-6">Make it obvious</p>
+        <p class="text-center font-size-6">{{'shared.components.habit-explanation.makeItObv' | translate}}</p>
         <mat-accordion multi>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -40,13 +38,12 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">schedule</mat-icon>
-                <span class="align-with-icon">Time</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.time' | translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>The two most common cues are a time and location.</p>
-            <p>You can use the <strong>Implementation Intention</strong> strategy to pair a habit with a given time and
-              place.</p>
-            <p>A habit is like an appointment with yourself at a given time.</p>
+            <p>{{'shared.components.habit-explanation.twoMostCommonCues' | translate}}</p>
+            <p [innerHtml]="'shared.components.habit-explanation.useImplementationIntention' | translate"></p>
+            <p>{{'shared.components.habit-explanation.habitAppointment' | translate}}</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -54,10 +51,10 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">location_on</mat-icon>
-                <span class="align-with-icon">Location</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.location' | translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>And at a given place. You may skip a habit, but you wouldn't miss an appointment.</p>
+            <p>{{'shared.components.habit-explanation.atAGivenPlace' | translate}}</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -65,12 +62,12 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">layers</mat-icon>
-                <span class="align-with-icon">Habit stack</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.habitStack' | translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>A very strong cue is another habit you already perform.</p>
-            <p>You can use the <strong>Habit Stacking</strong> strategy to pair a new habit with a current habit.</p>
-            <p>A <strong>Habit Stack</strong> is a set of ordered habits that you perform one after another.</p>
+            <p>{{'shared.components.habit-explanation.cueAnOtherHabit' | translate}}</p>
+            <p [innerHtml]="'shared.components.habit-explanation.youCanUseHabitStacking' | translate"></p>
+            <p [innerHtml]="'shared.components.habit-explanation.aHabitStackIs' | translate"></p>
           </mat-expansion-panel>
 
         </mat-accordion>
@@ -82,11 +79,11 @@
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>local_fire_department</mat-icon>
-        <mat-card-title>Craving</mat-card-title>
-        <mat-card-subtitle>Motivational force behind a habit, desire to act</mat-card-subtitle>
+        <mat-card-title>{{'shared.components.habit-explanation.craving' | translate}}</mat-card-title>
+        <mat-card-subtitle>{{'shared.components.habit-explanation.cravingDef' | translate}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p class="text-center font-size-6">Make it attractive</p>
+        <p class="text-center font-size-6">{{'shared.components.habit-explanation.makeItAttractive' | translate}}</p>
         <mat-accordion multi>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -94,12 +91,13 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">local_fire_department</mat-icon>
-                <span class="align-with-icon">Temptation Building</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.temptationBuilding' |
+                  translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>To make a habit attractive you can use the <strong>Temptation Building</strong> strategy.</p>
-            <p>You pair a habit to want to achieve with a reward.</p>
-            <p>The anticipation of the reward will prompt you to action.</p>
+            <p [innerHtml]="'shared.components.habit-explanation.toMakeAHabitAttractive' | translate"></p>
+            <p>{{'shared.components.habit-explanation.youPairAHabit' | translate}}</p>
+            <p>{{'shared.components.habit-explanation.theAnticipation' | translate}}</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -107,11 +105,11 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">psychology</mat-icon>
-                <span class="align-with-icon">Conditioning Step</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.conditioningStep' |
+                  translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>You can also use a <strong>Conditioning Step</strong>, it's a motivational ritual, just before
-              a difficult habit.</p>
+            <p [innerHtml]="'shared.components.habit-explanation.youCanUseConditioning' | translate"></p>
           </mat-expansion-panel>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -119,12 +117,11 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">groups</mat-icon>
-                <span class="align-with-icon">Tribe</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.tribe' | translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>The culture you live in determines which behaviors are attractive to you.</p>
-            <p>You can share your <strong>System</strong> of habits with a tribe of people like you, who praise and
-              approve the same behavior you want to stick with.</p>
+            <p>{{'shared.components.habit-explanation.theCulture' | translate}}</p>
+            <p [innerHtml]="'shared.components.habit-explanation.youCanShare' | translate"></p>
           </mat-expansion-panel>
 
         </mat-accordion>
@@ -136,11 +133,11 @@
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>emoji_events</mat-icon>
-        <mat-card-title>Reward</mat-card-title>
-        <mat-card-subtitle>End goal of every habit</mat-card-subtitle>
+        <mat-card-title>{{'shared.components.habit-explanation.Reward' | translate}}</mat-card-title>
+        <mat-card-subtitle>{{'shared.components.habit-explanation.rewardDef' | translate}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p class="text-center font-size-6">Make it satisfying</p>
+        <p class="text-center font-size-6">{{'shared.components.habit-explanation.MakeItSatisfying' | translate}}</p>
         <mat-accordion multi>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -148,11 +145,11 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">emoji_events</mat-icon>
-                <span class="align-with-icon">Reward</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.Reward' | translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>Making a habit satisfying increases the odd that it will be repeated.</p>
-            <p>To make a habit satisfying you can pair it with an immediate reward.</p>
+            <p>{{'shared.components.habit-explanation.makingSatisfying' | translate}}</p>
+            <p>{{'shared.components.habit-explanation.toMakeSatisfying' | translate}}</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -163,11 +160,9 @@
                 <span class="align-with-icon">Identities</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>To make a habit satisfying you can also pair it with a long-term reward.</p>
-            <p>Identity change is the real long-term reward for a repeated habit when your habit process focuses on who
-              you wish to become.</p>
-            <p>You can map a habit with a set of <strong>Identities</strong>. Everytime you perform this habit, it's a
-              vote in favour this type of person you want to become.</p>
+            <p>{{'shared.components.habit-explanation.toMakeSatisfyingYouCanAlso' | translate}}</p>
+            <p>{{'shared.components.habit-explanation.identityChangeReward' | translate}}</p>
+            <p [innerHtml]="'shared.components.habit-explanation.youCanLinkHabit' | translate"></p>
           </mat-expansion-panel>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -175,18 +170,19 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">trending_up</mat-icon>
-                <span class="align-with-icon">Progress</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.Progress' | translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>The other long-term reward is your progess.</p>
-            <p>You can track your progress by :</p>
+            <p>{{'shared.components.habit-explanation.theOtherLongTerm' | translate}}</p>
+            <p>{{'shared.components.habit-explanation.youCanTrack' | translate}}</p>
             <mat-list role="list">
               <mat-list-item class="bg-white-smoke-hover" role="listitem">
-                <mat-icon mat-list-icon class="mr-2">how_to_reg</mat-icon>Mapping your habit with identities
+                <mat-icon mat-list-icon class="mr-2">how_to_reg</mat-icon>
+                {{'shared.components.habit-explanation.linkingHabit' | translate}}
               </mat-list-item>
               <mat-list-item class="bg-white-smoke-hover" role="listitem">
-                <mat-icon mat-list-icon class="mr-2">straighten</mat-icon>Defining optional metrics to measure your
-                progress
+                <mat-icon mat-list-icon class="mr-2">straighten</mat-icon>
+                {{'shared.components.habit-explanation.definingMetrics' | translate}}
               </mat-list-item>
             </mat-list>
           </mat-expansion-panel>
@@ -200,11 +196,11 @@
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>done</mat-icon>
-        <mat-card-title>Response</mat-card-title>
-        <mat-card-subtitle>Actual habit you perform</mat-card-subtitle>
+        <mat-card-title>{{'shared.components.habit-explanation.Response' | translate}}</mat-card-title>
+        <mat-card-subtitle>{{'shared.components.habit-explanation.ResponseDef' | translate}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p class="text-center font-size-6">Make it easy</p>
+        <p class="text-center font-size-6">{{'shared.components.habit-explanation.makeItEasy' | translate}}</p>
         <mat-accordion multi>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -212,16 +208,13 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">speed</mat-icon>
-                <span class="align-with-icon">Gateway Habit</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.GatewayHabit' | translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>To make a habit easy you have to reduce friction between you and your good habits.</p>
-            <p>To reduce willpower friction you can use the <strong>Two-Minute Rule</strong> tactic defining a
-              <strong>Gateway Habit</strong>.
-            </p>
-            <p>A Gateway Habit is the easiest action to do that makes sure your habit will be performed. This action
-              should take less than two minutes.</p>
-            <p>Ex : "Put running shoes" -> "Run 10 km"</p>
+            <p>{{'shared.components.habit-explanation.toMakeEasy' | translate}}</p>
+            <p [innerHtml]="'shared.components.habit-explanation.toReduceWillpower' | translate"></p>
+            <p>{{'shared.components.habit-explanation.aGatewayHabitIs' | translate}}</p>
+            <p>{{'shared.components.habit-explanation.exPutRunning' | translate}}</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel class="mat-elevation-z0" (afterCollapse)="setArrowPositions()"
@@ -229,13 +222,13 @@
             <mat-expansion-panel-header>
               <mat-panel-title class="font-size-6">
                 <mat-icon class="mr-2">next_week</mat-icon>
-                <span class="align-with-icon">Preparation Habit</span>
+                <span class="align-with-icon">{{'shared.components.habit-explanation.PreparationHabit' |
+                  translate}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>To reduce friction you can prepare your environment to make future actions easier.</p>
-            <p>A <strong>Preparation Habit</strong> is something you do just after finishing your habit to prepare your
-              next iteration.</p>
-            <p>You can even define the preparation habit as an independant habit if you don't do it right after.</p>
+            <p>{{'shared.components.habit-explanation.toReduceFriction' | translate}}</p>
+            <p [innerHtml]="'shared.components.habit-explanation.aPreparationHabitIs' | translate"></p>
+            <p>{{'shared.components.habit-explanation.youCanEven' | translate}}</p>
           </mat-expansion-panel>
 
         </mat-accordion>

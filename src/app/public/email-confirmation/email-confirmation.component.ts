@@ -62,7 +62,7 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
               this.messageTranslationSub = this.translate.get('public.emailConfirmation.confirmationMessage').subscribe(
                 message => {
                   this.snackBar.open(message, 'OK', {
-                    duration: 80000,
+                    duration: 8000,
                   });
                 }
               );

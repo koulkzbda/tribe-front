@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { stepValidator } from './../../../../shared/validators/step-validator';
 import { TimeService } from './../../../../shared/utils/time.service';
 import { metricValidator } from './../../../../shared/validators/metric-validator';
@@ -37,6 +38,7 @@ export class CreateHabitComponent implements OnInit {
   public steps: Step[];
   private stepSub: Subscription;
   private submitSub: Subscription;
+  private langSub: Subscription;
 
   public selectedTribeIndex: number;
   public selectedSystemIndex: number;
@@ -59,11 +61,14 @@ export class CreateHabitComponent implements OnInit {
     private stepService: StepService,
     private locationService: LocationService,
     private fb: FormBuilder,
-    public translationService: TranslationService
+    public translationService: TranslationService,
+    private translate: TranslateService
+
   ) { }
 
 
   get id(): AbstractControl { return this.habitForm.get('id'); }
+  get systemId(): AbstractControl { return this.habitForm.get('systemId'); }
   get habitStackName(): AbstractControl { return this.habitForm.get('habitStackName'); }
   get independantHabitNameTrans(): string { return this.independantHabitName[this.translationService.getCurrentLang()]; }
   get weekdays(): FormArray { return this.habitForm.get('weekdays') as FormArray; }
@@ -91,6 +96,7 @@ export class CreateHabitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.updateLang();
     this.getTribes();
     this.initForm();
     this.updateFilteredProgressions();
@@ -103,6 +109,7 @@ export class CreateHabitComponent implements OnInit {
     if (this.submitSub) this.submitSub.unsubscribe();
     if (this.tribeSub) this.tribeSub.unsubscribe();
     if (this.stepSub) this.stepSub.unsubscribe();
+    if (this.langSub) this.langSub.unsubscribe();
   }
 
   public selectTribe(tribeIndex: number, event: any) {
@@ -334,6 +341,13 @@ export class CreateHabitComponent implements OnInit {
 
   private getSteps(): void {
     this.stepSub = this.stepService.getSteps().subscribe(steps => this.steps = steps);
+  }
+
+  private updateLang(): void {
+    this.translate.setDefaultLang(this.translationService.defaultLang);
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
   }
 
 }

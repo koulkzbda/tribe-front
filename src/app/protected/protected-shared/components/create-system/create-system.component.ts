@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { TranslationService } from './../../../../core/services/translation.service';
 import { SystemService } from './../../../../core/services/system.service';
 import { IdentityService } from './../../../../core/services/identity.service';
@@ -19,12 +20,14 @@ export class CreateSystemComponent implements OnInit, OnDestroy {
   private idSub: Subscription;
   private submitSub: Subscription;
   private submittedIdSub: Subscription;
+  private langSub: Subscription;
 
   constructor(
     private identityService: IdentityService,
     private systemService: SystemService,
     private fb: FormBuilder,
-    public translationService: TranslationService
+    public translationService: TranslationService,
+    private translate: TranslateService
   ) { }
 
   get identities(): FormArray { return this.systemForm.get('identities') as FormArray; }
@@ -37,6 +40,7 @@ export class CreateSystemComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.updateLang();
     this.getIdentities();
     this.initForm();
   }
@@ -45,6 +49,7 @@ export class CreateSystemComponent implements OnInit, OnDestroy {
     if (this.idSub) this.idSub.unsubscribe();
     if (this.submitSub) this.submitSub.unsubscribe();
     if (this.submittedIdSub) this.submittedIdSub.unsubscribe();
+    if (this.langSub) this.langSub.unsubscribe();
   }
 
   public submit(): void {
@@ -67,6 +72,13 @@ export class CreateSystemComponent implements OnInit, OnDestroy {
       name: [null, [Validators.required]],
       identities: new FormControl(null, [Validators.required])
     });
+  }
+
+  private updateLang(): void {
+    this.translate.setDefaultLang(this.translationService.defaultLang);
+    this.langSub = this.translationService.currentLang$.subscribe(
+      lang => this.translate.use(lang)
+    )
   }
 
 }

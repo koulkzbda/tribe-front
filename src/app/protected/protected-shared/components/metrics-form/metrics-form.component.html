@@ -5,9 +5,10 @@
 
 
         <mat-form-field [floatLabel]="'auto'" appearance="outline" class="mr-4 w-half">
-          <mat-label>Metric</mat-label>
+          <mat-label>{{'protected.protected-shared.metrics-form.Metric' | translate}}</mat-label>
           <input matInput formControlName="metricName" (input)="onMetricInput(i)">
-          <mat-error *ngIf="metricName(i)?.invalid">The name of the metric is required
+          <mat-error *ngIf="metricName(i)?.invalid">{{'protected.protected-shared.metrics-form.metricRequired' |
+            translate}}
           </mat-error>
         </mat-form-field>
         <mat-form-field [floatLabel]="'auto'" appearance="outline"

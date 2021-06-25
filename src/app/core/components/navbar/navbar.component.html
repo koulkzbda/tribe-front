@@ -1,11 +1,11 @@
-<mat-toolbar color="accent" *ngIf="!user">
+<mat-toolbar color="accent" *ngIf="!user" class="mat-elevation-z2">
   <img src="{{assetPath}}assets/img/logo175.png" class="logo p-2" alt="Tribe" (click)="navigate(homePath)">
   <button mat-raised-button color="primary" (click)="navigate(loginPath)" class="ml-auto">
     {{'core.components.navbar.loginButton' | translate}}
   </button>
 </mat-toolbar>
 
-<mat-toolbar color="accent" *ngIf="user">
+<mat-toolbar color="accent" *ngIf="user" class="mat-elevation-z2">
   <button mat-icon-button (click)="toggleSidenav()" *ngIf="!(isSidenavOpened$ | async)">
     <mat-icon>menu</mat-icon>
   </button>

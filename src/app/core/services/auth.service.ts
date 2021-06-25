@@ -55,7 +55,13 @@ export class AuthService {
         this.saveAuthData(user.token);
       }),
       tap(_ => this.profileService.getProfile().subscribe()),
-      tap(_ => this.router.navigate(['/user'])),
+      tap(user => {
+        if (user.firstSystemCreated) {
+          this.router.navigate(['/user/feedbuzz'])
+        } else {
+          this.router.navigate(['/user/welcome']);
+        }
+      }),
       tap(_ => {
         if (!this.layoutService.isCurrentlyLargerScreen) {
           this.layoutService.closeSidenav();
@@ -89,10 +95,6 @@ export class AuthService {
     return this.http.get<User | null>(url);
   }
 
-  public setUserEmail(email: string): void {
-    this.userEmail.next(email);
-  }
-
   public sendResetPaswordEmail(emailUser: string): Observable<User> {
     const resetPasswordUrl = `${environment.frontend.baseURL}/reset-password`;
     const url = `${environment.backend.baseURL}/forgot-password?email=${emailUser}&resetPasswordUrl=${resetPasswordUrl}`;
@@ -105,6 +107,17 @@ export class AuthService {
     const url = `${environment.backend.baseURL}/reset-password${params}`;
 
     return this.http.get<User>(url);
+  }
+
+  public sendEmailConfirmation(user: UserCreation): Observable<UserCreation> {
+    const url = `${environment.backend.baseURL}/send-email-confirmation`;
+    user.emailConfirmationUrlTemplate = `${environment.frontend.baseURL}/email-confirmation`;
+
+    return this.http.post<UserCreation>(url, user);
+  }
+
+  public setUserEmail(email: string): void {
+    this.userEmail.next(email);
   }
 
   get currentUser(): User {

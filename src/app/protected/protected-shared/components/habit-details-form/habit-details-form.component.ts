@@ -18,10 +18,6 @@ export class HabitDetailsFormComponent implements OnInit {
 
   public filteredConditionings: Observable<Step[]>;
 
-  public conditioningStepHint = "A conditioning habit is something you're used to do, see, feel just before your habit. A cue that triggers your process.";
-  public identitiesHint = "Everytime you achieve this habit it's a vote for these identities you want to become.";
-  public preparationHabitHint = "A preparation habit is a task you accomplish after your habit to prepare your next repetition of this habit.";
-
   constructor() { }
 
   get conditioningStep(): FormGroup { return this.progression?.get('conditioningStep') as FormGroup; }

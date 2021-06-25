@@ -1,0 +1,20 @@
+<mat-toolbar class="banner mat-elevation-z1" [class.opened]="opened && !closed">
+  <ng-container *ngIf="onLargerScreen; else onSmallerScreen">
+    <mat-toolbar-row class="my-3 h-auto d-flex justify-content-center">
+      <div class="font-size-7 font-weight-normal text-wrap h-auto line-height-normal">{{message}}
+      </div>
+      <button mat-button color="accent" class="ml-auto-2" (click)="sendAction()">{{'actions.RESEND' |
+        translate}}</button>
+      <button mat-button color="primary" (click)="closeBanner()">OK</button>
+    </mat-toolbar-row>
+  </ng-container>
+  <ng-template #onSmallerScreen>
+    <mat-toolbar-row class="mt-3 h-auto">
+      <span class="font-size-7 font-weight-normal text-wrap h-auto line-height-normal">{{message}}</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <button mat-button color="accent" class="ml-auto" (click)="sendAction()">{{'actions.RESEND' | translate}}</button>
+      <button mat-button color="primary" (click)="closeBanner()">OK</button>
+    </mat-toolbar-row>
+  </ng-template>
+</mat-toolbar>

@@ -5,6 +5,7 @@ export class User {
   public email: string;
   public roles: string[];
   public token: string;
+  public firstSystemCreated: boolean;
 
   constructor(
     id: string,
@@ -13,6 +14,7 @@ export class User {
     email?: string,
     roles?: string[],
     token?: string,
+    firstSystemCreated?: boolean,
   ) {
     this.id = id;
     this.firstName = firstName || '';
@@ -20,5 +22,6 @@ export class User {
     this.email = email || '';
     this.roles = roles || ['ROLE_USER'];
     this.token = token;
+    this.firstSystemCreated = firstSystemCreated;
   }
 }

@@ -2,17 +2,23 @@
   <mat-accordion multi>
 
     <app-step-from [step]="conditioningStep" [possibleSteps]="steps" [iconName]="'psychology'"
-      [label]="'Conditioning Step'" [hint]="conditioningStepHint"></app-step-from>
+      label="{{'shared.components.habit-explanation.conditioningStep' | translate}}"
+      hint="{{'protected.protected-shared.habit-details-form.conditioningStepHint' | translate}}">
+    </app-step-from>
 
     <app-identities-panel-form *ngIf="identities" [progression]="progression" [identitiesControl]="identities"
-      [identitiesPossible]="identitiesPossible" [iconName]="'how_to_reg'" [label]="'Identities'" [hint]="identitiesHint"
+      [identitiesPossible]="identitiesPossible" [iconName]="'how_to_reg'"
+      label="{{'protected.protected-shared.create-system.identities' | translate}}"
+      hint="{{'protected.protected-shared.habit-details-form.identitiesHint' | translate}}"
       [initialSelectedIdentities]="initialSelectedIdentities"></app-identities-panel-form>
 
-    <app-step-from [step]="reward" [possibleSteps]="steps" [iconName]="'emoji_events'" [label]="'Reward'">
+    <app-step-from [step]="reward" [possibleSteps]="steps" [iconName]="'emoji_events'"
+      label="{{'shared.components.habit-explanation.Reward' | translate}}">
     </app-step-from>
 
     <app-step-from [step]="preparationHabit" [possibleSteps]="steps" [iconName]="'next_week'"
-      [label]="'Preparation Habit'" [hint]="preparationHabitHint"></app-step-from>
+      label="{{'shared.components.habit-explanation.PreparationHabit' | translate}}"
+      hint="{{'protected.protected-shared.habit-details-form.preparationHabitHint' | translate}}"></app-step-from>
 
   </mat-accordion>
 </form>

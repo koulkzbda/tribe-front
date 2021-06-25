@@ -15,6 +15,7 @@ import { PublicationPicturesUploadDialogComponent } from './components/publicati
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HabitExplanationComponent } from './components/habit-explanation/habit-explanation.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PublicationPicturesUploadComponent,
     PublicationPicturesUploadDialogComponent,
     HabitExplanationComponent,
+    BannerComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PublicationPicturesUploadDialogComponent,
     TranslateModule,
     HabitExplanationComponent,
+    BannerComponent,
   ]
 })
 export class SharedModule { }
