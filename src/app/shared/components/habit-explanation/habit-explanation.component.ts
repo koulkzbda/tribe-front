@@ -44,7 +44,7 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
       { step: 'Reward', law: 'Make it satisfying' },
     ],
     fr: [
-      { step: 'Déclancheur', law: "L'évidence" },
+      { step: 'Déclencheur', law: "L'évidence" },
       { step: 'Envie', law: "L'attractivité" },
       { step: 'Réponse', law: 'La facilité' },
       { step: 'Récompense', law: 'La satisfaction' },
@@ -213,7 +213,7 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
     this.cueToCraving?.setOptions({
       path: 'grid',
       startSocket: 'right',
-      middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang], { fontSize: '13.8px' })
+      middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang], { fontSize: '13.8px', lineOffset: '20' })
     });
 
     this.cravingToResponse = new LeaderLine(this.cravingCard?.nativeElement, this.responseCard?.nativeElement);
@@ -229,7 +229,7 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
     this.responseToReward?.setOptions({
       path: 'grid',
       endSocket: 'right',
-      middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang]),
+      middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang], { fontSize: '13.8px' }),
       startLabel: LeaderLine.captionLabel(this.responseToRewardStartLabel[this.lang], { offset: [-260, 0], fontSize: '13.8px' })
     });
 

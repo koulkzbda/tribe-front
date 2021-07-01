@@ -16,8 +16,8 @@
         {{'public.home.list.progress' | translate}}</p>
 
     </div>
-    <div class="w-100 d-flex justify-content-center">
-      <button (click)="goToRegister()" mat-raised-button color="warn" class="text-white positioning"
+    <div class="w-100 d-flex justify-content-center positioning">
+      <button (click)="goToRegister()" mat-raised-button color="warn" class="text-white"
         [ngClass]="{'display-4 btn-display-4': isLargerScreen, 'font-size-4': !isLargerScreen && !isPortraitOrientation}">
         {{'public.home.SignUp' | translate}}
       </button>
