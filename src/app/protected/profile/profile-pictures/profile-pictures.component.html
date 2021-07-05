@@ -1,9 +1,9 @@
 <div class="profile-picture-container d-flex justify-content-center align-items-center mx-auto">
   <img *ngIf="profilePicture; else defaultPicture" (click)="openDialog()" class="img-round ml-2 mt-2 rounded-circle"
-    src="{{ pictureDisplayingService.srcPrefix }}{{ profilePicture.imageFile }}">
+    src="{{ pictureDisplayingService.srcPrefix }}{{ profilePicture.imageFile }}" appClickStopPropagation>
   <ng-template #defaultPicture>
     <img class="img-round ml-2 mt-2 rounded-circle" width="400px" height="400px"
-      src="{{ assetPath }}assets/img/Unknown-person.png">
+      src="{{ assetPath }}assets/img/Unknown-person.png" appClickStopPropagation>
   </ng-template>
 
   <div class="float-icon" *ngIf="currentUserId == profile?.userId">

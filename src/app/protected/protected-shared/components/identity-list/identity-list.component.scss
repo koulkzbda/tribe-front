@@ -1,4 +1,5 @@
 $mat-warn: #f55a73;
+$mat-primary: #878dfd;
 
 .align-with-p {
   position: relative;
@@ -12,12 +13,23 @@ $mat-warn: #f55a73;
   }
 }
 
+::ng-deep .mat-slider-thumb-label  {
+  background-color: $mat-primary !important;
+}
+::ng-deep .mat-slider-track-fill  {
+  background-color: $mat-primary !important;
+}
+
+::ng-deep .mat-slider-thumb {
+  background-color: $mat-primary !important;
+}
+
 ::ng-deep .slider-error .mat-slider-track-background  {
-  background-color: $mat-warn; /*replace with your color*/
+  background-color: $mat-warn !important;
 }
 
 ::ng-deep .slider-error .mat-slider-thumb {
-  background-color: $mat-warn !important;  /*replace with your color*/
+  background-color: $mat-warn !important;
 }
 
 .weight-error {

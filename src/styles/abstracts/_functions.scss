@@ -1,0 +1,7 @@
+@function getTone($colorName){
+  @if ( $colorName == "primary" ) {
+      @return 200;
+  }@else{
+      @return 500;
+  }
+}

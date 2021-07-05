@@ -4,7 +4,7 @@
       <ng-container [formGroupName]="i">
 
 
-        <mat-form-field [floatLabel]="'auto'" appearance="outline" class="mr-4 w-half">
+        <mat-form-field [floatLabel]="'auto'" appearance="outline" class="mr-4 w-half" appClickStopPropagation>
           <mat-label>{{'protected.protected-shared.metrics-form.Metric' | translate}}</mat-label>
           <input matInput formControlName="metricName" (input)="onMetricInput(i)">
           <mat-error *ngIf="metricName(i)?.invalid">{{'protected.protected-shared.metrics-form.metricRequired' |
@@ -12,7 +12,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field [floatLabel]="'auto'" appearance="outline"
-          [ngClass]="{'w-half mr-4': !isLastMetric, 'w-button': isLastMetric}">
+          [ngClass]="{'w-half mr-4': !isLastMetric, 'w-button': isLastMetric}" appClickStopPropagation>
           <mat-label>Unit</mat-label>
           <input matInput formControlName="metricUnit" (input)="onMetricInput(i)">
           <button mat-icon-button matSuffix (click)="deleteMetric(i)" class="align-with-mat-form-field">
@@ -23,7 +23,8 @@
           </button>
         </mat-form-field>
 
-        <button mat-icon-button *ngIf="isLastMetric" (click)="addMetric()" class="align-with-unit">
+        <button mat-icon-button *ngIf="isLastMetric" (click)="addMetric()" class="align-with-unit"
+          appClickStopPropagation>
           <mat-icon>add</mat-icon>
         </button>
 

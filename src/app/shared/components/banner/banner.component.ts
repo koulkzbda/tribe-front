@@ -11,6 +11,7 @@ export class BannerComponent implements OnInit, OnDestroy {
 
   @Input() opened: boolean;
   @Input() message: string;
+  @Input() actionText: string;
   @Output() action = new EventEmitter<null>();
   public closed = false;
   private widthSub: Subscription;

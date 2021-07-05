@@ -93,7 +93,6 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
         },
         response => {
-          console.log(response)
           if (response?.error?.code == ErrorCode.NOT_CONFIRMED) {
             this.errorMessage = response.error;
             this.messageTranslationSub = this.messageTranslationSub = this.translate.get('public.emailConfirmation.confirmationEmailHasBeenSent', { email: this.errorMessage.message }).subscribe(
@@ -123,6 +122,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           message => {
             this.snackBar.open(message, 'OK', {
               duration: 80000,
+              panelClass: 'dark-snackbar'
             });
           }
         );

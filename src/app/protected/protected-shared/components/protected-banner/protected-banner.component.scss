@@ -1,0 +1,22 @@
+.banner {
+  min-height: 0px !important;
+  max-height: 0px;
+  overflow-y: hidden;
+  transition: ease-in-out 600ms max-height;
+  &.opened {
+    max-height: 128px;
+    transition: ease-in-out 800ms max-height;
+  }
+}
+
+.line-height-normal {
+  line-height: normal;
+}
+
+.ml-auto-2 {
+  margin-left: calc(calc(100% - 950px)/2);
+}
+
+.bg-z1-5 {
+  background: #292929 !important;
+}

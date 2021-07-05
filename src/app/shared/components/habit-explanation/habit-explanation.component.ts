@@ -31,6 +31,8 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
   private sidenavSub: Subscription;
   private deleteArrowSub: Subscription;
 
+  public arrowColor = '#40bcff';
+
   public headers = {
     en: [{ friendlyName: 'Step', attribute: 'step' }, { friendlyName: 'Law of Behavior Change', attribute: 'law' }],
     fr: [{ friendlyName: 'Phase', attribute: 'step' }, { friendlyName: 'Loi du changement de comportement', attribute: 'law' }]
@@ -129,23 +131,25 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
 
   private updateSocketsforLargerScreen(): void {
     this.cueToCraving = new LeaderLine(this.cueCard?.nativeElement, this.cravingCard?.nativeElement);
-    this.cueToCraving?.setOptions({ startSocket: 'right', endSocket: 'left', middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang]) });
+    this.cueToCraving?.setOptions({ color: this.arrowColor, startSocket: 'right', endSocket: 'left', middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang], { outlineColor: '' }) });
 
     this.cravingToResponse = new LeaderLine(this.cravingCard?.nativeElement, this.responseCard?.nativeElement);
     this.cravingToResponse.setOptions(
       {
+        color: this.arrowColor,
         path: 'arc',
-        middleLabel: LeaderLine.pathLabel(this.cravingToResponseLabel[this.lang]),
+        middleLabel: LeaderLine.pathLabel(this.cravingToResponseLabel[this.lang], { outlineColor: '' }),
       }
     );
 
     this.responseToReward = new LeaderLine(this.rewardCard?.nativeElement, this.responseCard?.nativeElement);
     this.responseToReward?.setOptions(
       {
+        color: this.arrowColor,
         startSocket: 'right',
         endSocket: 'left',
-        middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang]),
-        startLabel: LeaderLine.captionLabel(this.responseToRewardStartLabel[this.lang]),
+        middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang], { outlineColor: '' }),
+        startLabel: LeaderLine.captionLabel(this.responseToRewardStartLabel[this.lang], { outlineColor: '' }),
         startPlug: "arrow1",
         endPlug: "behind"
       }
@@ -153,11 +157,12 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
 
     this.rewardToCue = new LeaderLine(this.rewardCard?.nativeElement, this.cueCard?.nativeElement);
     this.rewardToCue?.setOptions({
+      color: this.arrowColor,
       path: 'arc',
       startSocket: 'top',
       endSocket: 'bottom',
-      middleLabel: LeaderLine.pathLabel(this.rewardToCueLabelStart[this.lang]),
-      endLabel: LeaderLine.captionLabel(this.rewardToCueLabelEnd[this.lang], { offset: [10, 0] })
+      middleLabel: LeaderLine.pathLabel(this.rewardToCueLabelStart[this.lang], { outlineColor: '' }),
+      endLabel: LeaderLine.captionLabel(this.rewardToCueLabelEnd[this.lang], { offset: [10, 0], outlineColor: '' })
     });
   }
 
@@ -170,16 +175,17 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
     const cueToCravingStartGravity = this.innerWidth <= 768 ? 'auto' : this.innerWidth > 990 ? [450, 0] : [300, 0];
     const cueToCravingEndity = this.innerWidth > 990 ? [0, 10] : 'auto';
     this.cueToCraving?.setOptions({
+      color: this.arrowColor,
       startSocket: 'right',
       startSocketGravity: cueToCravingStartGravity,
       endSocketGravity: cueToCravingEndity,
-      middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang], { fontSize: '14.7px' })
+      middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang], { fontSize: '14.7px', outlineColor: '' })
     });
 
     this.cravingToResponse = new LeaderLine(this.cravingCard?.nativeElement, this.responseCard?.nativeElement);
     this.cravingToResponse.setOptions(
       {
-        middleLabel: LeaderLine.pathLabel(this.cravingToResponseLabel[this.lang], { fontSize: '14.7px' }),
+        color: this.arrowColor, middleLabel: LeaderLine.pathLabel(this.cravingToResponseLabel[this.lang], { fontSize: '14.7px', outlineColor: '' }),
       }
     );
 
@@ -189,10 +195,11 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
     );
     const responseToRewardGravity = this.innerWidth > 750 ? [0, 100] : 'auto';
     this.responseToReward?.setOptions({
+      color: this.arrowColor,
       endSocketGravity: responseToRewardGravity,
       startSocket: 'right',
-      middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang], { fontSize: '14.7px' }),
-      endLabel: LeaderLine.captionLabel(this.responseToRewardStartLabel[this.lang], { offset: [-280, 0], fontSize: '14.7px' }),
+      middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang], { fontSize: '14.7px', outlineColor: '' }),
+      endLabel: LeaderLine.captionLabel(this.responseToRewardStartLabel[this.lang], { offset: [-280, 0], fontSize: '14.7px', outlineColor: '' }),
       startPlug: "arrow1",
       endPlug: "behind"
     });
@@ -201,7 +208,7 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
       LeaderLine.pointAnchor(this.rewardCard?.nativeElement, { x: 25, y: 0 }),
       LeaderLine.pointAnchor(this.cueCard?.nativeElement, { x: 25, y: '100%' })
     );
-    this.rewardToCue.setOptions({ middleLabel: LeaderLine.pathLabel(this.rewardToCueLabelFull[this.lang], { fontSize: '14.7px' }) });
+    this.rewardToCue.setOptions({ color: this.arrowColor, middleLabel: LeaderLine.pathLabel(this.rewardToCueLabelFull[this.lang], { fontSize: '14.7px', outlineColor: '' }) });
 
   }
 
@@ -211,15 +218,16 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
       LeaderLine.pointAnchor(this.cravingCard?.nativeElement, { x: '100%', y: 0 })
     );
     this.cueToCraving?.setOptions({
+      color: this.arrowColor,
       path: 'grid',
       startSocket: 'right',
-      middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang], { fontSize: '13.8px', lineOffset: '20' })
+      middleLabel: LeaderLine.pathLabel(this.cueToCravingLabel[this.lang], { fontSize: '13.8px', lineOffset: '20', outlineColor: '' })
     });
 
     this.cravingToResponse = new LeaderLine(this.cravingCard?.nativeElement, this.responseCard?.nativeElement);
     this.cravingToResponse.setOptions(
       {
-        middleLabel: LeaderLine.pathLabel(this.cravingToResponseLabel[this.lang], { fontSize: '13.8px' }),
+        color: this.arrowColor, middleLabel: LeaderLine.pathLabel(this.cravingToResponseLabel[this.lang], { fontSize: '13.8px', outlineColor: '' }),
       }
     );
 
@@ -227,17 +235,18 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
       LeaderLine.pointAnchor(this.responseCard?.nativeElement, { x: '100%', y: '100%' }),
       this.rewardCard?.nativeElement);
     this.responseToReward?.setOptions({
+      color: this.arrowColor,
       path: 'grid',
       endSocket: 'right',
-      middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang], { fontSize: '13.8px' }),
-      startLabel: LeaderLine.captionLabel(this.responseToRewardStartLabel[this.lang], { offset: [-260, 0], fontSize: '13.8px' })
+      middleLabel: LeaderLine.pathLabel(this.responseToRewardLabel[this.lang], { fontSize: '13.8px', outlineColor: '' }),
+      startLabel: LeaderLine.captionLabel(this.responseToRewardStartLabel[this.lang], { offset: [-260, 0], fontSize: '13.8px', outlineColor: '' })
     });
 
     this.rewardToCue = new LeaderLine(
       LeaderLine.pointAnchor(this.rewardCard?.nativeElement, { x: 20, y: 0 }),
       LeaderLine.pointAnchor(this.cueCard?.nativeElement, { x: 20, y: '100%' })
     );
-    this.rewardToCue.setOptions({ middleLabel: LeaderLine.pathLabel(this.rewardToCueLabelFull[this.lang], { fontSize: '13.8px' }) });
+    this.rewardToCue.setOptions({ color: this.arrowColor, middleLabel: LeaderLine.pathLabel(this.rewardToCueLabelFull[this.lang], { fontSize: '13.8px', outlineColor: '' }) });
 
   }
 
@@ -300,7 +309,6 @@ export class HabitExplanationComponent implements OnInit, AfterViewInit, OnDestr
       lang => {
         this.lang = lang;
         this.translate.use(lang);
-        console.log(lang)
         of(true).pipe(
           delay(1),
           tap(_ => this.setArrowPositions())

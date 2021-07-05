@@ -63,6 +63,7 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
                 message => {
                   this.snackBar.open(message, 'OK', {
                     duration: 8000,
+                    panelClass: 'dark-snackbar'
                   });
                 }
               );

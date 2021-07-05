@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public user: User;
   private userSub: Subscription;
   public isSidenavOpened$: Observable<boolean>;
+  public isOnHomePage$: Observable<boolean>;
 
   constructor(
     private router: Router,
@@ -32,6 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.userSub =
       this.authService.user$.subscribe(user => this.user = user);
     this.isSidenavOpened$ = this.layoutService.sidenavOpened$;
+    this.isOnHomePage$ = this.layoutService.isOnHomePage$;
   }
 
   ngOnDestroy(): void {

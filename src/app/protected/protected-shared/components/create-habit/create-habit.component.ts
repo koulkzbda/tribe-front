@@ -15,7 +15,7 @@ import { System } from './../../../../shared/models/system';
 import { Subscription, Observable } from 'rxjs';
 import { FormGroup, FormBuilder, AbstractControl, Validators, FormArray, FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { startWith, map } from 'rxjs/operators';
 import { Step } from '../../../../shared/models/step';
 import { HabitContract } from '../../../../shared/models/habit-contract';
@@ -29,7 +29,9 @@ import { Metric } from 'src/app/shared/models/metric';
 })
 export class CreateHabitComponent implements OnInit {
 
+  @Input() showBack: boolean;
   @Output() habitFormSubmitted = new EventEmitter<boolean>();
+  @Output() close = new EventEmitter<boolean>();
   public habitForm: FormGroup;
   public systems: System[];
   private sysSub: Subscription;
@@ -191,6 +193,10 @@ export class CreateHabitComponent implements OnInit {
 
   public isIndependentHabitSelected(): boolean {
     return this.habitStackName?.value?.startsWith(this.independantHabitNameTrans);
+  }
+
+  public closeCreateHabit(): void {
+    this.close.emit(true);
   }
 
   private updateHabitInForm(progression: Progression): void {

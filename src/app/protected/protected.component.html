@@ -4,7 +4,8 @@
     <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="container mt-5">
+    <app-protected-banner></app-protected-banner>
+    <div class="container mt-5 no-padding" matRipple>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

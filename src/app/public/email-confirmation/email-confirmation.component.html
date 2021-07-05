@@ -1,4 +1,6 @@
-<ng-container *ngIf="(!token || !userId) && userEmail && messageHTML">
-  <h2 class="text-center my-5">{{'public.emailConfirmation.yourAccountHasBeenCreated' | translate}}</h2>
-  <p class="ml-5" *ngFor="let para of messageHTML">{{ para }}</p>
-</ng-container>
+<div class="h-full mat-dark-elevation-z2">
+  <ng-container *ngIf="(!token || !userId) && userEmail && messageHTML">
+    <h2 class="text-center py-5 text-white">{{'public.emailConfirmation.yourAccountHasBeenCreated' | translate}}</h2>
+    <p class="ml-5 mat-emphasis-high" *ngFor="let para of messageHTML">{{ para }}</p>
+  </ng-container>
+</div>

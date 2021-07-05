@@ -27,6 +27,7 @@
 	"protected": {
 		"feedbuzz": {
 			"habit-stack-list": {
+				"NoHabit": "Vous n'avez aucune habitude prévue pour aujourd'hui. Pourquoi pas en créer une nouvelle ?",
 				"condition-step": "Aucune étape de conditionnement définie",
 				"identities": "Aucune identité associée",
 				"reward": "Aucune récompense définie"
@@ -123,6 +124,9 @@
 			},
 			"step-form": {
 				"isRequired": "est obligatoire"
+			},
+			"weekdays-form": {
+				"SET_TIME": "DÉFINIR"
 			}
 		}
 	},

@@ -30,7 +30,6 @@ export class DesignSystemComponent implements OnInit {
 
   public onHabitFormSubmitted(isFormSubmitted: boolean): void {
     this.goToNextStep.emit(new GoToNextStep(this.stepIndex, isFormSubmitted));
-
   }
 
 }

@@ -21,6 +21,8 @@ export class LayoutService {
   public readonly updateArrowsPosition$: Observable<boolean> = this.updateArrowsPosition.asObservable();
   private hideArrows: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public readonly hideArrows$: Observable<boolean> = this.hideArrows.asObservable();
+  private isOnHomePage: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  public readonly isOnHomePage$: Observable<boolean> = this.isOnHomePage.asObservable();
 
   constructor() {
     this.innerHeight.next(window.innerHeight);
@@ -56,6 +58,10 @@ export class LayoutService {
 
   public setHideArrows(hide: boolean): void {
     this.hideArrows.next(hide);
+  }
+
+  public setIsOnHomePage(isOnHomePage: boolean): void {
+    this.isOnHomePage.next(isOnHomePage);
   }
 
   get isCurrentlyLargerScreen(): boolean { return this.onLargerScreen.value; }

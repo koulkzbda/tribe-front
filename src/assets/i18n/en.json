@@ -27,6 +27,7 @@
 	"protected": {
 		"feedbuzz": {
 			"habit-stack-list": {
+				"NoHabit": "You don't have any habit planned for today. What about creating a new one ?",
 				"condition-step": "No conditioning step defined",
 				"identities": "No associated identity",
 				"reward": "No reward defined"
@@ -123,6 +124,9 @@
 			},
 			"step-form": {
 				"isRequired": "is required"
+			},
+			"weekdays-form": {
+				"SET_TIME": "SET TIME"
 			}
 		}
 	},

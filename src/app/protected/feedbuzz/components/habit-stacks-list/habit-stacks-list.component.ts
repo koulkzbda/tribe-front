@@ -1,3 +1,5 @@
+import { TranslateService } from '@ngx-translate/core';
+import { BannerContentService } from './../../../../core/services/banner-content.service';
 import { PictureDisplayingService } from './../../../../shared/utils/picture-displaying.service';
 import { StatusConverterService } from './../../../../shared/utils/status-converter.service';
 import { MetricValue } from './../../../../shared/models/metric';
@@ -15,6 +17,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Picture } from 'src/app/shared/models/picture';
 import { Identity } from 'src/app/shared/models/identity';
 import { delay, tap } from 'rxjs/operators';
+import { BannerContent } from 'src/app/shared/models/utils/banner-content';
 
 @Component({
   selector: 'app-habit-stacks-list',
@@ -28,10 +31,13 @@ export class HabitStacksListComponent implements OnInit, OnDestroy, AfterViewIni
   public editContent: boolean[][] = [];
   public habitStacks: HabitStackFeedbuzz[];
   private stackSub: Subscription;
+  private noHabitTransSub: Subscription;
+  private createHabitTransSub: Subscription;
   public habitsForm: FormGroup;
   public isPrefilled = false;
   public viewReady = false;
   private repetitionSub: Subscription;
+  public contentSent = false;
 
   constructor(
     private authService: AuthService,
@@ -41,7 +47,9 @@ export class HabitStacksListComponent implements OnInit, OnDestroy, AfterViewIni
     public pictureDisplayingService: PictureDisplayingService,
     private repetitionService: RepetitionService,
     private identityService: IdentityService,
-    public translationService: TranslationService
+    private bannerContentService: BannerContentService,
+    public translationService: TranslationService,
+    private translate: TranslateService
   ) { }
 
   get habits(): FormArray { return this.habitsForm?.get('habits') as FormArray; }
@@ -79,8 +87,12 @@ export class HabitStacksListComponent implements OnInit, OnDestroy, AfterViewIni
     if (this.repetitionSub) {
       this.repetitionSub.unsubscribe();
     }
-    this.habitsForm.removeControl("habits");
-    this.isPrefilled = false;
+    if (this.habitsForm) {
+      this.habitsForm.removeControl("habits");
+      this.isPrefilled = false;
+    }
+    if (this.noHabitTransSub) this.noHabitTransSub.unsubscribe();
+    if (this.createHabitTransSub) this.createHabitTransSub.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -160,6 +172,20 @@ export class HabitStacksListComponent implements OnInit, OnDestroy, AfterViewIni
         this.habitStacks = hs;
         this.prefillForm(hs);
         this.initEditContent();
+        if (hs.length == 0 && !this.contentSent) {
+          this.noHabitTransSub = this.translate.get('protected.feedbuzz.habit-stack-list.NoHabit').subscribe(
+            noHabitTrans => {
+              this.createHabitTransSub = this.translate.get('actions.CREATE_HABIT').subscribe(
+                createHabitTrans => {
+                  this.bannerContentService.setContent(new BannerContent(true, noHabitTrans, createHabitTrans, 'createHabit', false));
+                  this.contentSent = true;
+                }
+              );
+            }
+          );
+        } else if (hs.length > 0) {
+          this.bannerContentService.setContent(null);
+        }
       }
     );
   }

@@ -1,19 +1,15 @@
-@include angular-material-theme($default-theme);
+// @include angular-material-theme($default-theme);
+@include angular-material-theme($dark-theme);
 
-.color-grey {
-  background-color: map-get($mat-darkgray, 500) !important;
+.h-full {
+  min-height: calc(100vh - 2rem);
+  @media screen and (min-width: 768px) {
+    min-height: calc(100vh - 4rem);
+  }
 }
 
-.color-grey-transparent {
-  background-color: $grey-transparant-color !important;
-}
-
-.bg-white-smoke {
-  background-color: whitesmoke !important;
-}
-
-.bg-white-smoke-hover:hover {
-  background-color: whitesmoke !important;
+.bg-hover:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 .roboto {
@@ -31,4 +27,18 @@
 
 svg.leader-line, svg#leader-line-defs {
   z-index: 999;
+}
+
+.dark-snackbar {
+  .mat-simple-snackbar-action {
+    color: map-get($primary-color, 400) !important;
+  }
+}
+
+.timepicker-overlay {
+  z-index: 10000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 10000000 !important;
 }

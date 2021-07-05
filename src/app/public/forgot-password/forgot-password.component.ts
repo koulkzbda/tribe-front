@@ -46,6 +46,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
             message => {
               this.snackBar.open(message, 'OK', {
                 duration: 80000,
+                panelClass: 'dark-snackbar'
               });
             }
           );

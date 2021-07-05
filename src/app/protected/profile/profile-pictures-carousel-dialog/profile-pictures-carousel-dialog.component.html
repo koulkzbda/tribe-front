@@ -9,7 +9,7 @@
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="setProfilePicture(img)" *ngIf="!isFirst">
-          <mat-icon>photo_camera</mat-icon>
+          <mat-icon class="mat-text-primary">photo_camera</mat-icon>
           <span>{{'protected.profile.profile-pictures-carousel-dialog.set-profile-picture' | translate}}</span>
         </button>
         <button mat-menu-item *ngIf="isFirst">

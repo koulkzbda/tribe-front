@@ -1,6 +1,7 @@
 <form (change)="updateIsFormValid()" [formGroup]="identitiesForm" *ngIf="identitiesForm" class="container">
   <div class="d-flex flex-wrap mb-3" formArrayName="identities">
-    <div *ngFor="let identityForm of identities.controls; let i = index" class="width-300 mt-3 ml-md-3 ml-sm-1">
+    <div *ngFor="let identityForm of identities.controls; let i = index" class="width-300 mt-3 ml-md-3 ml-sm-1"
+      appClickStopPropagation>
       <mat-card [formGroupName]="i">
         <mat-form-field appearance="outline" class="no-wrapper-padding">
           <mat-label>{{'protected.protected-shared.identities-form.Identity' | translate}}</mat-label>
@@ -11,7 +12,8 @@
         <mat-card-content formArrayName="weightings">
           <div class="d-flex justify-content-center my-3">
             <button mat-button [matMenuTriggerFor]="menu">
-              <span class="text-muted">{{'protected.protected-shared.identities-form.ADD_CATEGORY' | translate}}</span>
+              <span class="mat-text-primary">{{'protected.protected-shared.identities-form.ADD_CATEGORY' |
+                translate}}</span>
             </button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item *ngFor="let ic of getRemainingCategories(i)" (click)="addCategory(i, ic)">
@@ -30,7 +32,7 @@
               <button mat-icon-button matSuffix (click)="deleteCategory(i, j)" [disabled]="!canDeleteCategory(i)"
                 class="align-with-p">
                 <mat-icon
-                  [ngClass]="{'mat-text-accent': canDeleteCategory(i), 'text-muted': !canDeleteCategory(i), 'mat-text-warn font-weight-bold': weight(i,j).invalid && weight(i,j).touched}">
+                  [ngClass]="{'mat-text-primary': canDeleteCategory(i), 'text-muted': !canDeleteCategory(i), 'mat-text-warn font-weight-bold': weight(i,j).invalid && weight(i,j).touched}">
                   clear</mat-icon>
               </button>
               <p *ngIf="weight(i,j).invalid && weight(i,j).touched" class="weight-error mat-text-warn text-center">
@@ -41,11 +43,11 @@
           </div>
         </mat-card-content>
         <mat-card-actions class="d-flex justify-content-between">
-          <button mat-raised-button (click)="addIdentity()">
-            <mat-icon>add</mat-icon> {{'protected.protected-shared.identities-form.IDENTITY' | translate}}
-          </button>
-          <button mat-raised-button (click)="deleteIdentity(i)" [disabled]="!canDeleteIdentity()">
+          <button mat-button color="primary" (click)="deleteIdentity(i)" [disabled]="!canDeleteIdentity()">
             <mat-icon>delete</mat-icon> {{'protected.protected-shared.identities-form.IDENTITY' | translate}}
+          </button>
+          <button mat-flat-button color="primary" (click)="addIdentity()">
+            <mat-icon>add</mat-icon> {{'protected.protected-shared.identities-form.IDENTITY' | translate}}
           </button>
         </mat-card-actions>
 
@@ -53,11 +55,11 @@
 
     </div>
   </div>
-  <div class="d-flex mb-3 mt-5">
-    <button *ngIf="submittedIdentities && identitiesForm.touched" mat-raised-button color="accent"
+  <div class="d-flex mb-3 mt-5" appClickStopPropagation>
+    <button *ngIf="submittedIdentities && identitiesForm.touched" mat-button color="accent"
       (click)="resetForm()">{{'actions.RESET' | translate}}</button>
 
-    <button mat-raised-button color="primary" (click)="submit()" class="ml-auto"
+    <button mat-raised-button color="accent" (click)="submit()" class="ml-auto"
       [disabled]="!identitiesForm.valid || identitiesForm.untouched">{{'protected.protected-shared.identities-form.DEFINE_IDENTITY'
       | translate}}</button>
   </div>

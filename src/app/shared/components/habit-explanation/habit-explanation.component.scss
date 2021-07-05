@@ -1,5 +1,9 @@
 $breakpoints-width: (1200: 1200px, 1490: 1490px);
 
+p {
+  color: rgba($color: #fff, $alpha: 0.87);
+}
+
 mat-icon.mat-card-avatar {
   width: 40px;
   height: 40px;

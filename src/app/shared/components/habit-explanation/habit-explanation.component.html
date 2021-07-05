@@ -2,7 +2,7 @@
 <p [ngClass]="{'font-size-6': fontSizeBigger}" [innerHtml]="'shared.components.habit-explanation.applyLaw' | translate">
 </p>
 <div class="w-100 my-3 d-flex justify-content-center" *ngIf="lang">
-  <table mat-table [dataSource]="content[lang]" class="w-425 border">
+  <table mat-table [dataSource]="content[lang]" class="w-425 border" appClickStopPropagation>
     <ng-container matColumnDef="{{header.friendlyName}}" *ngFor="let header of headers[lang]">
       <th mat-header-cell *matHeaderCellDef
         class="text-center text-white font-weight-normal font-size-6 no-padding-table">
@@ -23,7 +23,8 @@
 <p class="mb-3" [ngClass]="{'font-size-6': fontSizeBigger}"
   [innerHtml]="'shared.components.habit-explanation.theLawsProvide' | translate"></p>
 <div class="step-container-{{sidenavOpen ? 1490 : 1200}}">
-  <div #cueCard class="step-item-{{sidenavOpen ? 1490 : 1200}}" id="cueCard-{{sidenavOpen ? 1490 : 1200}}">
+  <div #cueCard class="step-item-{{sidenavOpen ? 1490 : 1200}}" id="cueCard-{{sidenavOpen ? 1490 : 1200}}"
+    appClickStopPropagation>
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>search</mat-icon>
@@ -76,7 +77,8 @@
     </mat-card>
   </div>
 
-  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #cravingCard id="cravingCard-{{sidenavOpen ? 1490 : 1200}}">
+  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #cravingCard id="cravingCard-{{sidenavOpen ? 1490 : 1200}}"
+    appClickStopPropagation>
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>local_fire_department</mat-icon>
@@ -130,7 +132,8 @@
     </mat-card>
   </div>
 
-  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #rewardCard id="rewardCard-{{sidenavOpen ? 1490 : 1200}}">
+  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #rewardCard id="rewardCard-{{sidenavOpen ? 1490 : 1200}}"
+    appClickStopPropagation>
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>emoji_events</mat-icon>
@@ -177,11 +180,11 @@
             <p>{{'shared.components.habit-explanation.theOtherLongTerm' | translate}}</p>
             <p>{{'shared.components.habit-explanation.youCanTrack' | translate}}</p>
             <mat-list role="list">
-              <mat-list-item class="bg-white-smoke-hover" role="listitem">
+              <mat-list-item class="bg-hover" role="listitem">
                 <mat-icon mat-list-icon class="mr-2">how_to_reg</mat-icon>
                 {{'shared.components.habit-explanation.linkingHabit' | translate}}
               </mat-list-item>
-              <mat-list-item class="bg-white-smoke-hover" role="listitem">
+              <mat-list-item class="bg-hover" role="listitem">
                 <mat-icon mat-list-icon class="mr-2">straighten</mat-icon>
                 {{'shared.components.habit-explanation.definingMetrics' | translate}}
               </mat-list-item>
@@ -193,7 +196,8 @@
     </mat-card>
   </div>
 
-  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #responseCard id="responseCard-{{sidenavOpen ? 1490 : 1200}}">
+  <div class="step-item-{{sidenavOpen ? 1490 : 1200}}" #responseCard id="responseCard-{{sidenavOpen ? 1490 : 1200}}"
+    appClickStopPropagation>
     <mat-card>
       <mat-card-header>
         <mat-icon mat-card-avatar>done</mat-icon>

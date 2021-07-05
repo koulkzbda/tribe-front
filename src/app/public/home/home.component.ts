@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getLargerScreen();
     this.getOrientationScreen();
     this.updateOffsets();
+    this.layoutService.setIsOnHomePage(true);
   }
 
   ngOnDestroy(): void {
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.orientationSub.unsubscribe();
     this.widthSub.unsubscribe();
     this.heightSub.unsubscribe();
+    this.layoutService.setIsOnHomePage(false);
   }
 
   public goToRegister(): void {

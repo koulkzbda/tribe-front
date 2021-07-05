@@ -1,9 +1,10 @@
-<mat-card *ngIf="habitForm" id="create-habit-card">
+<mat-card *ngIf="habitForm" id="create-habit-card" appClickStopPropagation>
 
   <form [formGroup]="habitForm">
     <mat-card-content>
 
-      <mat-form-field *ngIf="tribes?.length" [floatLabel]="'auto'" appearance="outline" class="w-100">
+      <mat-form-field *ngIf="tribes?.length" [floatLabel]="'auto'" appearance="outline" class="w-100"
+        appClickStopPropagation>
         <mat-label>{{'shared.components.habit-explanation.tribe' | translate}}</mat-label>
         <mat-select formControlName="tribeId">
           <mat-option *ngFor="let tribe of tribes; let tribeIndex = index;" [value]="tribe.id"
@@ -14,7 +15,8 @@
         <mat-icon class="align-icon-with-mat-form-field mr-2" matPrefix>groups</mat-icon>
       </mat-form-field>
 
-      <mat-form-field *ngIf="possibleSystems?.length" [floatLabel]="'auto'" appearance="outline" class="w-100">
+      <mat-form-field *ngIf="possibleSystems?.length" [floatLabel]="'auto'" appearance="outline" class="w-100"
+        appClickStopPropagation>
         <mat-label>{{'protected.protected-shared.create-habit.System' | translate}}</mat-label>
         <mat-select formControlName="systemId">
           <mat-option *ngFor="let system of possibleSystems; let systemIndex = index;" [value]="system.id"
@@ -27,7 +29,7 @@
       </mat-form-field>
 
       <mat-form-field *ngIf="possibleSystems?.length && selectedSystemIndex != null" [floatLabel]="'auto'"
-        appearance="outline" class="w-100">
+        appearance="outline" class="w-100" appClickStopPropagation>
         <mat-label>{{'shared.components.habit-explanation.habitStack' | translate}}</mat-label>
         <input matInput formControlName="habitStackName" [matAutocomplete]="habitStackSuggestion">
         <mat-autocomplete #habitStackSuggestion="matAutocomplete">
@@ -51,7 +53,7 @@
             {{'protected.protected-shared.create-habit.CREATION_OF' | translate}}</p>
           <p *ngIf="habitSelected" class="align-with-mat-form-field ml-sm-3 ml-md-5 text-muted min-w-87 mr-3">
             {{'protected.protected-shared.create-habit.UPDATE_OF' | translate}}</p>
-          <mat-form-field class="flex-2 mr-sm-3" appearance="outline" [floatLabel]="'auto'">
+          <mat-form-field class="flex-2 mr-sm-3" appearance="outline" [floatLabel]="'auto'" appClickStopPropagation>
             <mat-label>{{'protected.protected-shared.create-habit.habitName' | translate}}</mat-label>
             <input type="text" matInput formControlName="habitName" [matAutocomplete]="habitSuggestion"
               (change)="setHabitName($event)">
@@ -64,7 +66,7 @@
             <mat-error *ngIf="habitName?.errors?.required">{{'protected.protected-shared.create-habit.habitNameRequired'
               | translate}}</mat-error>
           </mat-form-field>
-          <mat-form-field appearance="outline" [floatLabel]="'auto'" class="flex-1-3">
+          <mat-form-field appearance="outline" [floatLabel]="'auto'" class="flex-1-3" appClickStopPropagation>
             <mat-label>Version</mat-label>
             <input placeholder="V.1" matInput formControlName="versionName">
             <mat-hint *ngIf="habitSelected">{{'protected.protected-shared.create-habit.previousVersion' |
@@ -75,7 +77,7 @@
         </div>
 
         <mat-form-field appearance="outline" [floatLabel]="'auto'" class="w-100"
-          [ngClass]="{'mb-3': !time || selectedSystemIndex == null}">
+          [ngClass]="{'mb-3': !time || selectedSystemIndex == null}" appClickStopPropagation>
           <mat-label>{{'shared.components.habit-explanation.GatewayHabit' | translate}}</mat-label>
           <input matInput formControlName="gatewayHabit">
           <mat-hint>{{'protected.protected-shared.create-habit.gatewayHint' | translate}}</mat-hint>
@@ -108,21 +110,21 @@
         </ng-container>
 
         <mat-list cdkDropList role="list" *ngIf="selectedHabitStack?.progressions?.length && habitName.value"
-          (cdkDropListDropped)="drop($event)">
+          (cdkDropListDropped)="drop($event)" appClickStopPropagation>
           <mat-list-item *ngFor="let progression of selectedHabitStack?.progressions" cdkDrag role="listitem"
-            class="bg-white-smoke-hover">
+            class="bg-hover">
             {{ progression.habitName }}
           </mat-list-item>
         </mat-list>
       </ng-container>
 
     </mat-card-content>
-    <mat-card-actions class="d-flex justify-content-between">
-      <button mat-raised-button *ngIf="false">
+    <mat-card-actions class="d-flex justify-content-between" appClickStopPropagation>
+      <button mat-button *ngIf="showBack" (click)="closeCreateHabit()">
         {{'actions.BACK' | translate}}
       </button>
 
-      <button mat-button color="primary" class="ml-auto mr-3" (click)="submit()"
+      <button mat-raised-button color="accent" class="ml-auto mr-3" (click)="submit()"
         [disabled]="habitForm.invalid || habitForm.untouched">
         {{'actions.CREATE_HABIT' | translate}}
       </button>

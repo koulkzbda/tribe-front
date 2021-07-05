@@ -1,4 +1,4 @@
 <mat-checkbox [ngModel]="value" (click)="next()" [disabled]="disabled" [indeterminate]="value === false"
-  [color]="value === false ? 'warn' : 'accent'">
+  [color]="value === false ? 'warn' : 'accent'" appClickStopPropagation>
   <ng-content></ng-content>
 </mat-checkbox>

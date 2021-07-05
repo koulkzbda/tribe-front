@@ -10,6 +10,8 @@ import { StepFromComponent } from './components/step-from/step-from.component';
 import { IdentitiesFormComponent } from './components/identities-form/identities-form.component';
 import { IdentitiesPanelFormComponent } from './components/identities-panel-form/identities-panel-form.component';
 import { WeekdaysFormComponent } from './components/weekdays-form/weekdays-form.component';
+import { CreateHabitDialogComponent } from './components/create-habit-dialog/create-habit-dialog.component';
+import { ProtectedBannerComponent } from './components/protected-banner/protected-banner.component';
 
 
 
@@ -25,6 +27,8 @@ import { WeekdaysFormComponent } from './components/weekdays-form/weekdays-form.
     WeekdaysFormComponent,
     IdentityListComponent,
     CreateSystemComponent,
+    CreateHabitDialogComponent,
+    ProtectedBannerComponent,
   ],
   imports: [
     SharedModule
@@ -40,6 +44,8 @@ import { WeekdaysFormComponent } from './components/weekdays-form/weekdays-form.
     WeekdaysFormComponent,
     IdentityListComponent,
     CreateSystemComponent,
+    CreateHabitDialogComponent,
+    ProtectedBannerComponent,
   ]
 })
 export class ProtectedSharedModule { }

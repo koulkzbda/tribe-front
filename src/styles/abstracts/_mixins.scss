@@ -1,10 +1,23 @@
 @mixin utility-mat-color {
   @each $key, $value in (primary: $primary-color, accent: $accent-color, warn: $warn-color) {
     .mat-text-#{$key} {
-      color: map-get($value, default) !important;
+      color: map-get($value, getTone($key)) !important;
     }
     .mat-color-#{$key} {
-      background-color: map-get($value, default) !important;
+      background-color: map-get($value, getTone($key)) !important;
+    }
+  }
+}
+
+@mixin utility-mat-color-variant {
+  @each $key, $value in (primary: $primary-color, accent: $accent-color, warn: $warn-color) {
+    @each $tone in $tones {
+      .mat-text-#{$key}-#{$tone} {
+        color: map-get($value, $tone) !important;
+      }
+      .mat-color-#{$key}-#{$tone} {
+        background-color: map-get($value, $tone) !important;
+      }
     }
   }
 }
@@ -40,8 +53,8 @@
     .button-icon-wrapper-#{$key} {
       width: (24px + 3) * 1.41 * $value;
       height: (24px + 3) * 1.41 * $value;
-      background-color: #E4E6EB;
-      border: 0.2rem solid #fff;
+      // background-color: #fff;
+      // border: 0.2rem solid #fff;
       z-index: 100;
       cursor: pointer;
     }
@@ -52,6 +65,22 @@
   @each $w, $value in $min-w {
     .min-w-#{$w} {
       min-width: #{$value};
+    }
+  }
+}
+
+@mixin emphasis {
+  @each $key, $value in $emphasis {
+    .mat-emphasis-#{$key} {
+      color: rgba(255, 255, 255, $value) !important;
+    }
+  }
+}
+
+@mixin dark-elevations {
+  @each $key, $value in $elevations {
+    .mat-dark-elevation-#{$key} {
+      background-color: $value !important;
     }
   }
 }

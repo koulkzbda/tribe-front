@@ -1,5 +1,6 @@
 <h2 class="font-size-4">{{'protected.first-co.design-system.designAccordingly' | translate}}</h2>
-<div class="text-center my-5 font-size-5"><q>You do not rise to the level of your goals. You fall to the level of your
+<div class="text-center my-5 font-size-5 mat-emphasis-high"><q>You do not rise to the level of your goals. You fall to
+    the level of your
     systems.</q>
   <br>
   <p class="text-right pr-5 mt-3">
@@ -12,8 +13,8 @@
 <mat-accordion class="mb-3 accordion-centered">
   <mat-expansion-panel hideToggle class="mat-elevation-z0" [expanded]="!systemName"
     (afterCollapse)="updateArrowPosition()" (afterExpand)="updateArrowPosition()">
-    <mat-expansion-panel-header>
-      <mat-panel-title class="font-size-6">
+    <mat-expansion-panel-header appClickStopPropagation>
+      <mat-panel-title class="font-size-6 mat-emphasis-high">
         {{'protected.first-co.design-system.letsCreateSystem' | translate}}
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -24,7 +25,8 @@
 
 <ng-container *ngIf="systemName">
   <app-habit-explanation [fontSizeBigger]="true"></app-habit-explanation>
-  <p class="ml-1 ml-sm-3 ml-md-5 my-3">{{'protected.first-co.design-system.letsDefineHabit' | translate}}&nbsp;{{
+  <p class="ml-1 ml-sm-3 ml-md-5 my-3 mat-emphasis-high">{{'protected.first-co.design-system.letsDefineHabit' |
+    translate}}&nbsp;{{
     systemName }}.</p>
-  <app-create-habit (habitFormSubmitted)="onHabitFormSubmitted($event)"></app-create-habit>
+  <app-create-habit [showBack]="false" (habitFormSubmitted)="onHabitFormSubmitted($event)"></app-create-habit>
 </ng-container>

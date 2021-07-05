@@ -1,7 +1,8 @@
 <form [formGroup]="step" *ngIf="step" class="min-w-298">
   <mat-expansion-panel class="mat-elevation-z0">
     <mat-expansion-panel-header [collapsedHeight]="'8rem'" [expandedHeight]="'8rem'"
-      [ngClass]="{'align-expansion-indicator-without-hint': !hint, 'align-expansion-indicator-with-hint': !!hint}">
+      [ngClass]="{'align-expansion-indicator-without-hint': !hint, 'align-expansion-indicator-with-hint': !!hint}"
+      appClickStopPropagation>
       <mat-panel-title>
         <mat-icon *ngIf="iconName" class="mr-2 align-icon">{{ iconName }}</mat-icon>
         <mat-form-field appearance="outline" [floatLabel]="'auto'" class="w-100 ml-0 ml-sm-3"

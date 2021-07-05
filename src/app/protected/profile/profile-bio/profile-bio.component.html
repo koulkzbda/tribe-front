@@ -6,19 +6,20 @@
 
 
   <button *ngIf="currentUserId == profile?.userId" mat-icon-button (click)="editBio = true"
-    class="float-right align-with-text">
-    <mat-icon>edit</mat-icon>
+    class="float-right align-with-text" appClickStopPropagation>
+    <mat-icon class="mat-text-primary">edit</mat-icon>
   </button>
 </p>
 <form [formGroup]="profileForm" (ngSubmit)="submit()" *ngIf="editBio"
-  class="mt-3 text-center p-3 rounded w-75 bg-white-smoke mx-auto">
-  <mat-form-field floatLabel="Biographie" class="w-100 mx-auto" *ngIf="editBio" appearance="outline">
+  class="mt-3 text-center p-3 rounded w-75 mat-dark-elevation-z4 mx-auto">
+  <mat-form-field floatLabel="Biographie" class="w-100 mx-auto" *ngIf="editBio" appearance="outline"
+    appClickStopPropagation>
     <textarea matInput [formControl]="bio"></textarea>
   </mat-form-field>
   <div class="d-flex justify-content-center align-item-center">
     <button type="submit" (click)="submit()" mat-raised-button
       [disabled]="(!profileForm.valid || profileForm.untouched) ? true : null"
-      [ngClass]="{'mat-color-primary text-white': profileForm.valid && profileForm.touched, 'color-grey': !profileForm.valid || profileForm.untouched}">
+      [ngClass]="{'mat-color-primary text-white': profileForm.valid && profileForm.touched}" appClickStopPropagation>
       {{'actions.UPDATE' | translate}}
     </button>
   </div>

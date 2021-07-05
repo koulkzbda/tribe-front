@@ -1,6 +1,6 @@
 <form [formGroup]="progression" *ngIf="progression">
   <mat-expansion-panel class="mat-elevation-z0" hideToggle>
-    <mat-expansion-panel-header [collapsedHeight]="'8rem'" [expandedHeight]="'8rem'">
+    <mat-expansion-panel-header [collapsedHeight]="'8rem'" [expandedHeight]="'8rem'" appClickStopPropagation>
       <mat-panel-title>
         <mat-icon *ngIf="iconName" class="mr-2 align-icon">{{ iconName }}</mat-icon>
 

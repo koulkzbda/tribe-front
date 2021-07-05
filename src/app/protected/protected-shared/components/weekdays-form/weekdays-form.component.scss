@@ -1,8 +1,20 @@
-$muted: #6c757d !important;
+$muted: rgba($color: #fff, $alpha: 0.38) !important;
 $mat-warn: #f55a73 !important;
+$mat-primary: #878dfd;
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $mat-primary;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: $mat-primary;
+}
 
 .disabled-icon ::ng-deep svg {
   fill: $muted
+}
+.enabled-icon ::ng-deep svg {
+  fill: $mat-primary
 }
 
 .time-disabled {
@@ -11,6 +23,7 @@ $mat-warn: #f55a73 !important;
 
 .time-enabled {
   cursor: pointer;
+  color: $mat-primary
 }
 
 .material-toggle ::ng-deep svg {

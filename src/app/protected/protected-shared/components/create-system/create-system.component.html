@@ -3,14 +3,14 @@
   <form [formGroup]="systemForm" class="container">
     <mat-card-content>
       <div class="row">
-        <mat-form-field appearance="outline" [floatLabel]="'auto'" class="col-12 col-md-4">
+        <mat-form-field appearance="outline" [floatLabel]="'auto'" class="col-12 col-md-4" appClickStopPropagation>
           <mat-label>{{'protected.protected-shared.create-system.systemName' | translate}}</mat-label>
           <input matInput [formControl]="name">
           <mat-error *ngIf="name.errors?.required">{{'protected.protected-shared.create-system.systemRequired' |
             translate}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="col-12 col-md-8">
+        <mat-form-field appearance="outline" class="col-12 col-md-8" appClickStopPropagation>
           <mat-label>{{'protected.protected-shared.create-system.identities' | translate}}</mat-label>
           <mat-select formControlName="identities" multiple>
             <mat-option *ngFor="let id of possibleIdentities" [value]="id">
@@ -26,14 +26,14 @@
         {{'protected.protected-shared.create-system.typesOfPerson' | translate}}
       </h3>
 
-      <mat-list role="list">
-        <mat-list-item *ngFor="let cat of possibleCategories" class="bg-white-smoke-hover" role="listitem">
+      <mat-list role="list" appClickStopPropagation>
+        <mat-list-item *ngFor="let cat of possibleCategories" class="bg-hover mat-emphasis-high" role="listitem">
           {{ cat }}
         </mat-list-item>
       </mat-list>
 
     </mat-card-content>
-    <mat-card-actions class="d-flex justify-content-between">
+    <mat-card-actions class="d-flex justify-content-between" appClickStopPropagation>
       <button mat-raised-button *ngIf="false">
         {{'actions.BACK' | translate}}
       </button>

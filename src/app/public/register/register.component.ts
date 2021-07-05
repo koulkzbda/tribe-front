@@ -98,6 +98,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         },
         err => this.snackBar.open(err.error.message, 'OK', {
           duration: 60000,
+          panelClass: 'dark-snackbar'
         })
       );
   }
