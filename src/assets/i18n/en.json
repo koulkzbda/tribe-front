@@ -30,6 +30,8 @@
 				"NoHabit": "You don't have any habit planned for today. What about creating a new one ?",
 				"condition-step": "No conditioning step defined",
 				"identities": "No associated identity",
+				"pleaseNumber": "Please enter a number",
+				"required": "required",
 				"reward": "No reward defined"
 			}
 		},
