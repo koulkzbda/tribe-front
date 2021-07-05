@@ -1,0 +1,266 @@
+{
+	"actions": {
+		"BACK": "BACK",
+		"CREATE_HABIT": "CREATE HABIT",
+		"CREATE_SYSTEM": "CREATE SYSTEM",
+		"Delete": "Delete",
+		"Edit": "Edit",
+		"LIKE": "LIKE",
+		"RESEND": "RESEND",
+		"RESET": "RESET",
+		"SEND": "SEND",
+		"SHARE": "SHARE",
+		"UPDATE": "UPDATE"
+	},
+	"core": {
+		"components": {
+			"navbar": {
+				"feedbuzzButton": "Feedbuzz",
+				"loginButton": "LOG IN"
+			},
+			"page-not-found": {
+				"pageNotFound": "Page not found",
+				"previousPage": "Previous page"
+			}
+		}
+	},
+	"protected": {
+		"feedbuzz": {
+			"habit-stack-list": {
+				"NoHabit": "You don't have any habit planned for today. What about creating a new one ?",
+				"condition-step": "No conditioning step defined",
+				"identities": "No associated identity",
+				"pleaseNumber": "Please enter a number",
+				"required": "required",
+				"reward": "No reward defined"
+			}
+		},
+		"first-co": {
+			"define-identity": {
+				"1setYourGoals": "1. Set goals",
+				"2defineHabits": "2. Define habits accordingly",
+				"3ProuveYourself": "3. Prove yourself you're this person whenever you perform this habit",
+				"3change": "3. Change thanks to these habits",
+				"4ObserveResult": "4. Observe long term results",
+				"4reach": "4. Reach your goals",
+				"aYouBelieve": "a. You believe",
+				"bYouThink": "b. You think",
+				"baiscallyAType": "Basically a type of person or an <strong>Identity</strong> is a set of <strong>Categories</strong> to which you can assign <strong>Importance</strong>.",
+				"butRather": "But rather :",
+				"cYouBehave": "c. You behave",
+				"decideTypePerson": "Decide the type of person you want to be",
+				"differentlyNow": "Differently because you are this person by now.",
+				"letsSayMarathon": "Let's say, you want to run a marathon, that's to say want want to be a marathon runner. You can define an <strong>Identity</strong> called \"Marathon runner\" and assign the <strong>Category</strong> \"Athletic\" with an <strong>Importance</strong> of 100% and the <strong>Category</strong> \"Relax\" with an <strong>Importance</strong> of 30% because let's say that after running you feel more relaxed.",
+				"soLetsDefineIdentity": "So let's define the type of person you have decided to be.",
+				"theIdeaIs": "The idea is to associate a <strong>Habit</strong> with a list of <strong>Identities</strong>.",
+				"theMoreEfficientWay": "The more efficient way to stick to your habits on the long run and reach your goals is not :",
+				"wheneverYou": "Whenever you perform this <strong>Habit</strong> it's a vote for the person you want to become."
+			},
+			"defineYourIdentity": "Define your identity",
+			"design-system": {
+				"aSystemIs": "A system is a set of habits driven by a same core of identities.",
+				"designAccordingly": "Design your system of habits accordingly",
+				"letsCreateSystem": "Let's create a first system",
+				"letsDefineHabit": "Let's define a first habit in your system",
+				"youCanDefine": "Basically a system is defined by its identities. You can create as many systems as you have groups of related identities."
+			},
+			"designYourSystems": "Design your systems"
+		},
+		"profile": {
+			"profile-bio": {
+				"noBio": "Hello !\nMy name is {{firstName}}, and I ...oh well.\nThat's a promise, I'm gonna write down my bio here. :)"
+			},
+			"profile-pictures-carousel-dialog": {
+				"profile-picture": "Current profile picture",
+				"set-profile-picture": "Set as profile picture"
+			},
+			"upload-dialog": {
+				"error": {
+					"max-content-size": "The total size must not exceed",
+					"required": "Add a picture"
+				},
+				"title": "Update my pictures"
+			}
+		},
+		"protected-shared": {
+			"create-habit": {
+				"CREATION_OF": "CREATION OF",
+				"System": "System",
+				"UPDATE_OF": "UPDATE OF",
+				"gatewayHint": "Easiest action to do that makes sure your habit will be performed. Ex : \"Put running shoes\" -> \"Run 10 km\"",
+				"gatewayRequired": "Gateway habit is required",
+				"habitName": "Habit name",
+				"habitNameRequired": "Habit name required",
+				"habitStackRequired": "Habit Stack required",
+				"previousVersion": "Previous version :",
+				"versionRequired": "Version name is required"
+			},
+			"create-system": {
+				"identities": "Identities",
+				"oneIdentity": "Let's associate at least one identity",
+				"systemName": "System name",
+				"systemRequired": "System name is required",
+				"typesOfPerson": "Types of person :"
+			},
+			"habit-details-form": {
+				"conditioningStepHint": "A conditioning step is a motivational ritual you perform just before a habit",
+				"identitiesHint": "Every time you achieve this habit it's a vote for the person you want to become.",
+				"preparationHabitHint": "A preparation habit is a task you accomplish after your habit to prepare your next iteration of this habit."
+			},
+			"identities-form": {
+				"ADD_CATEGORY": "ADD CATEGORY",
+				"DEFINE_IDENTITY": "DEFINE IDENTITY",
+				"IDENTITY": "IDENTITY",
+				"Identity": "Identity",
+				"SetOrDelete": "Set a weight or delete",
+				"identityRequired": "Identity name required"
+			},
+			"location-form": {
+				"Address": "Address",
+				"Place": "Place",
+				"placeRequired": "The name of the place is required"
+			},
+			"metrics-form": {
+				"Metric": "Metric",
+				"metricRequired": "The name of the metric is required"
+			},
+			"step-form": {
+				"isRequired": "is required"
+			},
+			"weekdays-form": {
+				"SET_TIME": "SET TIME"
+			}
+		}
+	},
+	"public": {
+		"emailConfirmation": {
+			"confirmationEmailHasBeenSent": "A confirmation email has been sent to you at {{email}}.\n\nPlease open the link in the email to activate your account.",
+			"confirmationMessage": "Your account has been successfully activated",
+			"yourAccountHasBeenCreated": "Your account has been created"
+		},
+		"forgot-password": {
+			"SENDEMAIL": "SEND EMAIL",
+			"resetPassword": "Reset password",
+			"success": "An email has been sent at {{email}}. Please click on the link to reset your password."
+		},
+		"home": {
+			"SignUp": "START MY PROGRESSION",
+			"list": {
+				"goals": "Define your goals.",
+				"progress": "Share your progress.",
+				"tribe": "Join your tribe."
+			}
+		},
+		"login": {
+			"confirmationEmailResent": "A confirmation email has been resent to you at {{email}}.\n\nPlease open the link in the email to activate your account.",
+			"error": {
+				"email": {
+					"invalid": "Invalid Email",
+					"required": "Please enter your email"
+				},
+				"password": {
+					"required": "Please enter your password"
+				}
+			},
+			"logIn": "LOG IN",
+			"password": "Password",
+			"passwordForgotten": "Password forgotten"
+		},
+		"register": {
+			"CreateAccount": "Create an account",
+			"SIGNUP": "SIGN UP",
+			"firstName": "First name",
+			"firstName2chars": "You first name contains at least two letters, lol",
+			"firstNamePattern": "A first name only contains letters and dashes",
+			"firstNameRequired": "The first name is required, I'm pretty sure you have one",
+			"lastName": "Last name",
+			"lastName2chars": "You last name contains at least two letters, lol",
+			"lastNamePattern": "A last name only contains letters and dashes",
+			"lastNameRequired": "Last name is required",
+			"passwordConfirm": "Confirm password",
+			"passwordMinLength": "Password must have at least {{minPw}} characters",
+			"passwordsNoMatch": "Passwords don't match"
+		},
+		"reset-password": {
+			"success": "Your password has been successfully updated"
+		}
+	},
+	"shared": {
+		"components": {
+			"habit-explanation": {
+				"4step": "Habit is a 4 step process: Cue > Craving > Response > Reward.",
+				"Cue": "Cue",
+				"GatewayHabit": "Gateway Habit",
+				"MakeItSatisfying": "Make it satisfying",
+				"PreparationHabit": "Preparation Habit",
+				"Progress": "Progress",
+				"Response": "Response",
+				"ResponseDef": "Actual habit you perform",
+				"Reward": "Reward",
+				"aGatewayHabitIs": "A Gateway Habit is the easiest action to do that makes sure your habit will be performed. This action should take less than two minutes.",
+				"aHabitStackIs": "A <strong>Habit Stack</strong> is a set of ordered habits that you perform one after another.",
+				"aPreparationHabitIs": "A <strong>Preparation Habit</strong> is a action you do just after finishing your habit to prepare your next iteration.",
+				"applyLaw": "You can apply the <strong>Laws of Behavior Change</strong> for each step to build a very strong habit.",
+				"atAGivenPlace": "And at a given place. You may skip a habit, but you wouldn't miss an appointment.",
+				"conditioningStep": "Conditioning Step",
+				"craving": "Craving",
+				"cravingDef": "Motivational force behind a habit, desire to act",
+				"cueAnOtherHabit": "A very strong cue is another habit you already perform.",
+				"cueDef": "Bit of information that predicts a reward",
+				"definingMetrics": "Defining optional metrics to measure your progress",
+				"exPutRunning": "Ex : \"Put running shoes\" -> \"Run 10 km\"",
+				"habitAppointment": "A habit is like an appointment with yourself at a given time.",
+				"habitStack": "Habit stack",
+				"identityChangeReward": "Change in your identity is the real long-term reward for a repeated habit when your habit process focuses on who you wish to become.",
+				"linkingHabit": "Linking your habit with identities",
+				"location": "Location",
+				"makeItAttractive": "Make it attractive",
+				"makeItEasy": "Make it easy",
+				"makeItObv": "Make it obvious",
+				"makingSatisfying": "Making a habit satisfying increases the odd that it will be repeated.",
+				"rewardDef": "End goal of every habit",
+				"temptationBuilding": "Temptation Building",
+				"theAnticipation": "The anticipation of the reward will prompt you to action.",
+				"theCulture": "The culture you live in determines which behaviors are attractive to you.",
+				"theLawsProvide": "The <strong>Laws of Behavior Change</strong> framework provides step level strategies that you can implement with Atomic Tribe.",
+				"theOtherLongTerm": "The other long-term reward is your progress.",
+				"time": "Time",
+				"toMakeAHabitAttractive": "To make a habit attractive you can use the <strong>Temptation Building</strong> strategy.",
+				"toMakeEasy": "To make a habit easy you have to reduce friction between you and the good habit.",
+				"toMakeSatisfying": "To make a habit satisfying you can pair it with an immediate reward.",
+				"toMakeSatisfyingYouCanAlso": "To make a habit satisfying you can also pair it with a long-term reward.",
+				"toReduceFriction": "To reduce friction you can prepare your environment to make future actions easier.",
+				"toReduceWillpower": "To reduce willpower friction you can use the <strong>Two-Minute Rule</strong> tactic defining a <strong>Gateway Habit</strong>.",
+				"tribe": "Tribe",
+				"twoMostCommonCues": "The two most common cues are a time and location.",
+				"useImplementationIntention": "You can use the <strong>Implementation Intention</strong> strategy to pair a habit with a given time and place.",
+				"youCanEven": "You can even define the preparation habit as an independent habit if you don't do it right after.",
+				"youCanLinkHabit": "You can link a habit with a set of <strong>Identities</strong>. Every time you perform this habit, it's a vote in favor this type of person you want to become.",
+				"youCanShare": "You can share your <strong>System</strong> of habits with a tribe of people like you, who praise and approve the same behavior you want to stick with.",
+				"youCanTrack": "You can track your progress by :",
+				"youCanUseConditioning": "You can also use a <strong>Conditioning Step</strong>, it's a motivational ritual, just before a difficult habit.",
+				"youCanUseHabitStacking": "You can use the <strong>Habit Stacking</strong> strategy to pair a new habit with a current habit.",
+				"youPairAHabit": "You pair a habit to want to achieve with a reward."
+			},
+			"publication-carousel": {
+				"menu": {
+					"headlinePicture": "Main picture",
+					"setHeadlinePicture": "Set as main picture"
+				}
+			},
+			"publication-picture-upload-dialog": {
+				"error": {
+					"maxContentSize": "The total size must not exceed",
+					"required": "Add a picture"
+				},
+				"title": "Update my pictures"
+			},
+			"sidenav": {
+				"settings": {
+					"header": "MY SETTINGS",
+					"languages": "Languages"
+				}
+			}
+		}
+	}
+}
