@@ -1,0 +1,17 @@
+$start: 25;
+$end: 45;
+@for $i from $start through $end {
+  .clouds__image--#{$i} {
+    @extend .image;
+    top: calc(1241*45/(100*1612) * 100vw);
+    -webkit-transform: translate3d(0, 0, 3px, 0) scale(parallax-scale-factor(3));
+    transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
+    @media screen and (max-width: 840px) {
+      top: calc((2800/1200 * 100vw) * #{$i}/100);
+      @media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+  top: calc((2800/1200 * 100vw) * calc(#{$i} - 7)/100);
+}}
+    }
+  }
+}

@@ -34,9 +34,6 @@ $base-parallax-perspective: 8px;
 .bg__image {
   @extend .image;
   -webkit-transform: translate3d(0, 0px, 0) scale(1);
-  -moz-transform: translate3d(0, 0px, 0) scale(1);
-  -ms-transform: translate3d(0, 0px, 0) scale(1);
-  -o-transform: translate3d(0, 0px, 0) scale(1);
   transform: translate3d(0, 0px, 0) scale(1);
   @media screen and (max-width: 840px) {
     background-color: #e1e2e2ff;
@@ -49,9 +46,6 @@ $base-parallax-perspective: 8px;
   transform: translateZ(2.5px) scale(parallax-scale-factor(5));
   @media screen and (max-width: 840px) {
     -webkit-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -moz-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -ms-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -o-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
     transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
     left: 1vw;
     top: calc((2800/1200 * 100vw) * 22/100);
@@ -64,9 +58,6 @@ $base-parallax-perspective: 8px;
   transform: translateZ(2.5px) scale(parallax-scale-factor(5));
   @media screen and (max-width: 840px) {
     -webkit-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -moz-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -ms-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -o-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
     transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
     left: 1vw;
     top: calc((2800/1200 * 100vw) * 32/100);
@@ -77,33 +68,9 @@ $base-parallax-perspective: 8px;
   @extend .image;
   top: calc(1241*45/(100*1612) * 100vw);
   -webkit-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-  -moz-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-  -ms-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-  -o-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
   transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
   @media screen and (max-width: 840px) {
     top: calc((2800/1200 * 100vw) * 29/100);
-  }
-}
-
-$start: 20;
-$end: 50;
-@for $i from $start through $end {
-  .clouds__image--#{$i} {
-    @extend .image;
-    top: calc(1241*45/(100*1612) * 100vw);
-    -webkit-transform: translate3d(0, 0, 3px, 0) scale(parallax-scale-factor(3));
-    -moz-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -ms-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    -o-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    @media screen and (max-width: 840px) {
-      top: calc((2800/1200 * 100vw) * #{$i}/100);
-      @media not all and (min-resolution:.001dpcm)
-{ @supports (-webkit-appearance:none) {
-  top: calc((2800/1200 * 100vw) * calc(#{$i} - 7)/100);
-}}
-    }
   }
 }
 
@@ -111,18 +78,12 @@ $end: 50;
   @extend .image;
   top: 125px;
   -webkit-transform: translate3d(0, 0, 1px) scale(parallax-scale-factor(1));
-  -moz-transform: translate3d(0, 0, 1px) scale(parallax-scale-factor(1));
-  -ms-transform: translate3d(0, 0, 1px) scale(parallax-scale-factor(1));
-  -o-transform: translate3d(0, 0, 1px) scale(parallax-scale-factor(1));
   transform: translate3d(0, 0, 1px) scale(parallax-scale-factor(1));
 }
 
 .content {
   transform-origin: 0;
   -webkit-transform: translate3d(0, 0px, 0) scale(parallax-scale-factor(0));
-  -moz-transform: translate3d(0, 0px, 0) scale(parallax-scale-factor(0));
-  -ms-transform: translate3d(0, 0px, 0) scale(parallax-scale-factor(0));
-  -o-transform: translate3d(0, 0px, 0) scale(parallax-scale-factor(0));
   transform: translate3d(0, 0px, 0) scale(parallax-scale-factor(0));
   @media screen and (max-width: 840px) {
     position: relative;
@@ -139,9 +100,6 @@ $end: 50;
       top: calc(2800/1200 * 100vw * 75.5/100);
       right: 31vw;
       -webkit-transform: translate3d(0, 0px, 5px) scale(parallax-scale-factor(5));
-      -moz-transform: translate3d(0, 0px, 5px) scale(parallax-scale-factor(5));
-      -ms-transform: translate3d(0, 0px, 5px) scale(parallax-scale-factor(5));
-      -o-transform: translate3d(0, 0px, 5px) scale(parallax-scale-factor(5));
       transform: translate3d(0, 0px, 5px) scale(parallax-scale-factor(5));
     }}
   }
