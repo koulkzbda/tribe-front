@@ -1,3 +1,19 @@
+$base-parallax-perspective: 8px;
+
+@function parallax-scale-factor($z-distance) {
+  @return ($base-parallax-perspective - $z-distance) / $base-parallax-perspective;
+}
+
+.image {
+  position: absolute;
+  transform-origin: top left;
+  height: calc(1241/1612 * 100vw);
+  object-fit: contain;
+  @media screen and (max-width: 840px) {
+    height: calc(2800/1200 * 100vw);
+  }
+}
+
 $start: 25;
 $end: 45;
 @for $i from $start through $end {

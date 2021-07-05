@@ -47,7 +47,19 @@ $base-parallax-perspective: 8px;
   @media screen and (max-width: 840px) {
     -webkit-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
     transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
-    left: 1vw;
+    left: 0vw;
+    top: calc((2800/1200 * 100vw) * 29/100);
+  }
+  @media screen and (max-width: 610px) {
+    -webkit-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
+    transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
+    left: 1.3vw;
+    top: calc((2800/1200 * 100vw) * 25/100);
+  }
+  @media screen and (max-width: 460px) {
+    -webkit-transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
+    transform: translate3d(0, 0, 3px) scale(parallax-scale-factor(3));
+    left: 1.1vw;
     top: calc((2800/1200 * 100vw) * 22/100);
   }
 }
